@@ -13,13 +13,13 @@ void dfs(int si, int sj, int ls){
 			++ sln;
 			via[si][sj] = 0;
 			
-//			printf("\n");
-//			for(int i = 1; i <= N; ++ i){
-//				for(int j = 1; j <= M; ++ j)
-//					printf("%d ", via[i][j]);
-//				printf("\n");
-//			}
-//			printf("\n");
+			// printf("\n");
+			// for(int i = 1; i <= N; ++ i){
+			// 	for(int j = 1; j <= M; ++ j)
+			// 		printf("%d ", via[i][j]);
+			// 	printf("\n");
+			// }
+			// printf("\n");
 			
 			return;
 		}
