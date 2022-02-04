@@ -16,7 +16,7 @@ def get_date_string(n, startdate):
 # main app
 def main(argv):
 	if len(argv) < 1 or len(argv) > 2:
-		print "Error: Bad input."
+		print("Error: Bad input.")
 		sys.exit(1)
 	n = int(argv[0])
 	if len(argv) == 1:
