@@ -1,3 +1,7 @@
+/*
+    这个才是正解
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 const int maxx = 10010000;

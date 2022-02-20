@@ -1,3 +1,7 @@
+/*
+	不知道脑子抽了啥
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 bool c7(int n){
