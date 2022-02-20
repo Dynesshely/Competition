@@ -18,13 +18,55 @@
 
 /*
     这种题目就无语。。。离谱
+
+    草， 不想做了， 不做了， 草！
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
 int N;
-int main(){
+int getYear(string y){
+    switch(y){
+        case "Ox": return 0;
+        case "Tiger": return 1;
+        case "Rabbit": return 2;
+        case "Dragon": return 3;
+        case "Snake": return 4;
+        case "Horse": return 5;
+        case "Goat": return 6; 
+        case "Monkey": return 7;
+        case "Rooster": return 8;
+        case "Dog": return 9;
+        case "Pig": return 10;
+        case "Rat": return 11;
+    }
+}
 
+int main(){
+    scanf("%d", &N);
+    map<string, bool> defined;
+    map<string, int> year;
+    map<string, string> relation;
+    for(int i = 1; i <= N; ++ i){
+        string inputs[8];
+        for(int j = 0; j < 8; ++ j) cin >> inputs[j];
+        string n1 = inputs[0], n2 = inputs[7];
+        string pn = inputs[3], yy = inputs[4];
+        defined[n1] = true;
+        defined[n2] = true;
+
+        // if(defined[n1]){ // 如果 首牛 已经被定义过了
+
+        // }else{
+        //     if(defined[n2]){ // 尾牛是否被定义过
+
+        //     }else{
+        //         defined[n2] = true;
+        //         year[n2] = 2000;
+        //     }
+        // }
+    }
     return 0;
 }
+
