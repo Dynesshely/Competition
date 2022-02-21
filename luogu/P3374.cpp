@@ -1,3 +1,7 @@
+/*
+    树状数组模板题 1
+*/
+
 #include <bits/stdc++.h>
 #define lowbit(x) (x & (-x))
 using namespace std;
