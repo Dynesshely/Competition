@@ -1,3 +1,7 @@
+/*
+	贵青杯赛事题或者训练题
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 char maze[1005][1005];

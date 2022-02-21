@@ -1,3 +1,7 @@
+/*
+	贵青杯赛事题或者训练题
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 int h, m, s, h1 = 0, m1 = 0, s1 = 0;

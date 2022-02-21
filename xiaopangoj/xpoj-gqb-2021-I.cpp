@@ -1,3 +1,7 @@
+/*
+	贵青杯赛事题或者训练题
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 int n;
