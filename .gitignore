@@ -1,3 +1,5 @@
 *.exe
 *.out
 
+.exe
+.out
