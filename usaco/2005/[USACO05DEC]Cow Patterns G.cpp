@@ -48,6 +48,7 @@ int main(){
         for(int j = 0; j < K; ++ j){
             if(get_index(pattern_tmp[j], pattern_tmp) != get_index(pattern_discre[j], pattern_discre)){
                 isit = false;
+                i += j; // notice
                 break;
             }
         }
