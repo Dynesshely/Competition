@@ -23,8 +23,8 @@ void dfs(int si, int sj, int li, int lj, int sum, int pd){
 	}
 }
 int main(){
-	freopen("tractor.in", "r", stdin);
-	freopen("tractor.out", "w", stdout);
+	// freopen("tractor.in", "r", stdin);
+	// freopen("tractor.out", "w", stdout);
 	scanf("%d", &N);
 	init_tot();
 	for(int i = 1; i <= N; ++ i)

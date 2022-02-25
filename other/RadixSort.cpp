@@ -1,9 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-int maxbit(int data[], int n) //¸¨Öúº¯Êı£¬ÇóÊı¾İµÄ×î´óÎ»Êı
+int maxbit(int data[], int n) //è¾…åŠ©å‡½æ•°ï¼Œæ±‚æ•°æ®çš„æœ€å¤§ä½æ•°
 {
-    int maxData = data[0];      ///< ×î´óÊı
-    /// ÏÈÇó³ö×î´óÊı£¬ÔÙÇóÆäÎ»Êı£¬ÕâÑùÓĞÔ­ÏÈÒÀ´ÎÃ¿¸öÊıÅĞ¶ÏÆäÎ»Êı£¬ÉÔÎ¢ÓÅ»¯µã¡£
+    int maxData = data[0];      ///< æœ€å¤§æ•°
+    /// å…ˆæ±‚å‡ºæœ€å¤§æ•°ï¼Œå†æ±‚å…¶ä½æ•°ï¼Œè¿™æ ·æœ‰åŸå…ˆä¾æ¬¡æ¯ä¸ªæ•°åˆ¤æ–­å…¶ä½æ•°ï¼Œç¨å¾®ä¼˜åŒ–ç‚¹ã€‚
     for (int i = 1; i < n; ++i)
     {
         if (maxData < data[i])
@@ -18,7 +18,7 @@ int maxbit(int data[], int n) //¸¨Öúº¯Êı£¬ÇóÊı¾İµÄ×î´óÎ»Êı
         ++d;
     }
     return d;
-/*    int d = 1; //±£´æ×î´óµÄÎ»Êı
+/*    int d = 1; //ä¿å­˜æœ€å¤§çš„ä½æ•°
     int p = 10;
     for(int i = 0; i < n; ++i)
     {
@@ -30,31 +30,31 @@ int maxbit(int data[], int n) //¸¨Öúº¯Êı£¬ÇóÊı¾İµÄ×î´óÎ»Êı
     }
     return d;*/
 }
-void radixsort(int data[], int n) //»ùÊıÅÅĞò
+void radixsort(int data[], int n) //åŸºæ•°æ’åº
 {
     int d = maxbit(data, n);
     int *tmp = new int[n];
-    int *count = new int[10]; //¼ÆÊıÆ÷
+    int *count = new int[10]; //è®¡æ•°å™¨
     int i, j, k;
     int radix = 1;
-    for(i = 1; i <= d; i++) //½øĞĞd´ÎÅÅĞò
+    for(i = 1; i <= d; i++) //è¿›è¡Œdæ¬¡æ’åº
     {
         for(j = 0; j < 10; j++)
-            count[j] = 0; //Ã¿´Î·ÖÅäÇ°Çå¿Õ¼ÆÊıÆ÷
+            count[j] = 0; //æ¯æ¬¡åˆ†é…å‰æ¸…ç©ºè®¡æ•°å™¨
         for(j = 0; j < n; j++)
         {
-            k = (data[j] / radix) % 10; //Í³¼ÆÃ¿¸öÍ°ÖĞµÄ¼ÇÂ¼Êı
+            k = (data[j] / radix) % 10; //ç»Ÿè®¡æ¯ä¸ªæ¡¶ä¸­çš„è®°å½•æ•°
             count[k]++;
         }
         for(j = 1; j < 10; j++)
-            count[j] = count[j - 1] + count[j]; //½«tmpÖĞµÄÎ»ÖÃÒÀ´Î·ÖÅä¸øÃ¿¸öÍ°
-        for(j = n - 1; j >= 0; j--) //½«ËùÓĞÍ°ÖĞ¼ÇÂ¼ÒÀ´ÎÊÕ¼¯µ½tmpÖĞ
+            count[j] = count[j - 1] + count[j]; //å°†tmpä¸­çš„ä½ç½®ä¾æ¬¡åˆ†é…ç»™æ¯ä¸ªæ¡¶
+        for(j = n - 1; j >= 0; j--) //å°†æ‰€æœ‰æ¡¶ä¸­è®°å½•ä¾æ¬¡æ”¶é›†åˆ°tmpä¸­
         {
             k = (data[j] / radix) % 10;
             tmp[count[k] - 1] = data[j];
             count[k]--;
         }
-        for(j = 0; j < n; j++) //½«ÁÙÊ±Êı×éµÄÄÚÈİ¸´ÖÆµ½dataÖĞ
+        for(j = 0; j < n; j++) //å°†ä¸´æ—¶æ•°ç»„çš„å†…å®¹å¤åˆ¶åˆ°dataä¸­
             data[j] = tmp[j];
         radix = radix * 10;
     }

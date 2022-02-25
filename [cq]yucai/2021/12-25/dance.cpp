@@ -1,3 +1,7 @@
+/*
+	😒 新人是不被尊重的！
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 int N, M, pool[40][40], sln = 0, mls = 0x3fffffff;
