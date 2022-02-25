@@ -1,3 +1,16 @@
+<p align="center">
+  🌐 <a href="#-中文文档">中文</a> | <a href="#-english-docs">English</a><br>
+</p>
+
+</br>
+
+<p align="center">
+  <a href="./LICENSE"><img src="https://img.shields.io/github/license/Dynesshely/competition?style=for-the-badge"></img></a>
+  <a href=""><img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"></img></a>
+  <a href=""><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"></img></a>
+  <a href=""><img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0"></img></a>
+</p>
+
 # 📃 中文文档
 ## 😀 说明
 记录我的 OI 路还有一些经验
