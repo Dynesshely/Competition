@@ -1,3 +1,8 @@
+/*
+    极限:23599
+    极限输出:3.5468e+4931
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 int main(){
