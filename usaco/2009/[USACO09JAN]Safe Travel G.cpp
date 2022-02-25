@@ -6,6 +6,6 @@ int main(){
     scanf("%d%d", &N, &M);
     for(int i = 0; i < M; ++ i)
         scanf("%d%d", &a[i], &b[i], &t[i]);
-        
+    
     return 0;
 }
