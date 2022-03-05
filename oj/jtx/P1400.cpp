@@ -4,8 +4,21 @@ using namespace std;
 const int maxn = 210, maxm = 210;
 int n, m, T, a[maxn][maxm], angle, total_angle = 0;
 
+int angle_converter(int src){
+    switch(src){
+        case -270: return 90;
+        case -180: return 180;
+        case -90: return 270;
+        default: return src / 90;
+    }
+}
+
 void rotate(){
-    int for_num = total_angle
+    int for_num = total_angle > 0 ? (total_angle - ((int)(total_angle / 360) * 360)) / 90 :
+        ((angle_converter(abs(total_angle) - ((int)(abs(total_angle) / 360) * 360))) / 90);
+
+    total_angle = 0;
+
 }
 
 int main(){
@@ -89,9 +102,9 @@ int main(){
 //         }else{
 //             if(total_angle != 0){ rotate(&total_angle); } // 如果总角度不为0，则需要旋转
 //             if(op == 'h'){ // 如果操作符为h，则需要按照横向翻转
-                
+
 //             }else{ // 如果操作符为v，则需要按照纵向翻转
-                
+
 //             }
 //         }
 //     }
