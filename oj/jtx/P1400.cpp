@@ -9,7 +9,7 @@ int angle_converter(int src){
         case -270: return 90;
         case -180: return 180;
         case -90: return 270;
-        default: return src / 90;
+        default: return 0;
     }
 }
 
