@@ -18,7 +18,7 @@ void rotate(){
         ((angle_converter(abs(total_angle) - ((int)(abs(total_angle) / 360) * 360))) / 90);
 
     total_angle = 0;
-
+    
 }
 
 int main(){
