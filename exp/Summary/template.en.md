@@ -1,7 +1,7 @@
 # 📛 NAME
-| 🌏 SRC | 🔗 LINK | ⏱️ TL | 💾 ML | 🗄️ LV | 🎖️ ST |
-| ------ | -------- | ----- | ----- | ------ | ----- |
-| source | [link]() |    1s | 256MB | ※※※+ |  AC  |
+| 🌏 SRC | 🔗 LINK  | ⏱️ TL | 💾 ML | 🗄️ LV | 🎖️ ST |
+|--------|----------|-------|-------|--------|--------|
+| source | [link]() | 1s    | 256MB | ※※※+   | AC     |
 * 🔖 LABEL: String, Search
 
 ## 📘 CONTENT
