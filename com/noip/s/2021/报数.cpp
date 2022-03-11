@@ -17,7 +17,7 @@ bool c7(int x){
     return false;
 }
 int main(){
-	for(int i = 2; i <= maxx; ++ i)
+    for(int i = 2; i <= maxx; ++ i)
         if(via[i] == 0 && c7(i))
             for(int j = i; j <= maxx; j += i) via[j] = 1;
         else if(via[i] == 0) ne[last] = i, last = i;
@@ -27,5 +27,5 @@ int main(){
         if(via[tmp]) printf("-1\n");
         else printf("%d\n", ne[tmp]);
     }
-	return 0;
+    return 0;
 }
