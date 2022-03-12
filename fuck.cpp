@@ -22,3 +22,4 @@ void print(T x) {
 int main() {
   while(1) cout<<"钟神: 你只要把耳机借给我我什么都愿意干"<<endl;
 } 
+
