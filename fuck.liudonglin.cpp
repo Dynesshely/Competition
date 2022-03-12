@@ -22,3 +22,4 @@ void print(T x) {
 int main() {
   while(1) cout<<"fuck liudonglin!!!"<<endl;
 } 
+
