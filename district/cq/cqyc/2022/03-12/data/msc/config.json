@@ -1,0 +1,201 @@
+{
+    "cases": [
+        {
+            "in": "msc1.in",
+            "out": "msc1.out",
+            "time": 1,
+            "score": 1
+        }, 
+        {
+            "in": "msc2.in",
+            "out": "msc2.out",
+            "time": 1,
+            "score": 1,
+            "depends": [1]
+        },
+        {
+            "in": "msc3.in",
+            "out": "msc3.out",
+            "time": 1,
+            "score": 1,
+            "depends": [2]
+        },
+        {
+            "in": "msc4.in",
+            "out": "msc4.out",
+            "time": 1,
+            "score": 1,
+            "depends": [3]
+        },
+        {
+            "in": "msc5.in",
+            "out": "msc5.out",
+            "time": 1,
+            "score": 1,
+            "depends": [4]
+        },
+        {
+            "in": "msc6.in",
+            "out": "msc6.out",
+            "time": 1,
+            "score": 1
+        }, 
+        {
+            "in": "msc7.in",
+            "out": "msc7.out",
+            "time": 1,
+            "score": 1,
+            "depends": [6]
+        },
+        {
+            "in": "msc8.in",
+            "out": "msc8.out",
+            "time": 1,
+            "score": 1,
+            "depends": [7]
+        },
+        {
+            "in": "msc9.in",
+            "out": "msc9.out",
+            "time": 1,
+            "score": 1,
+            "depends": [8]
+        },
+        {
+            "in": "msc10.in",
+            "out": "msc10.out",
+            "time": 1,
+            "score": 1,
+            "depends": [9]
+        },
+        {
+            "in": "msc11.in",
+            "out": "msc11.out",
+            "time": 1,
+            "score": 1
+        }, 
+        {
+            "in": "msc12.in",
+            "out": "msc12.out",
+            "time": 1,
+            "score": 1,
+            "depends": [11]
+        },
+        {
+            "in": "msc13.in",
+            "out": "msc13.out",
+            "time": 1,
+            "score": 1,
+            "depends": [12]
+        },
+        {
+            "in": "msc14.in",
+            "out": "msc14.out",
+            "time": 1,
+            "score": 1,
+            "depends": [13]
+        },
+        {
+            "in": "msc15.in",
+            "out": "msc15.out",
+            "time": 1,
+            "score": 1,
+            "depends": [14]
+        },
+        {
+            "in": "msc16.in",
+            "out": "msc16.out",
+            "time": 1,
+            "score": 1
+        }, 
+        {
+            "in": "msc17.in",
+            "out": "msc17.out",
+            "time": 1,
+            "score": 1,
+            "depends": [16]
+        },
+        {
+            "in": "msc18.in",
+            "out": "msc18.out",
+            "time": 1,
+            "score": 1,
+            "depends": [17]
+        },
+        {
+            "in": "msc19.in",
+            "out": "msc19.out",
+            "time": 1,
+            "score": 1,
+            "depends": [18]
+        },
+        {
+            "in": "msc20.in",
+            "out": "msc20.out",
+            "time": 1,
+            "score": 1,
+            "depends": [19]
+        },
+        {
+            "in": "msc21.in",
+            "out": "msc21.out",
+            "time": 1,
+            "score": 1
+        }, 
+        {
+            "in": "msc22.in",
+            "out": "msc22.out",
+            "time": 1,
+            "score": 1,
+            "depends": [21]
+        },
+        {
+            "in": "msc23.in",
+            "out": "msc23.out",
+            "time": 1,
+            "score": 1,
+            "depends": [22]
+        },
+        {
+            "in": "msc24.in",
+            "out": "msc24.out",
+            "time": 1,
+            "score": 1,
+            "depends": [23]
+        },
+        {
+            "in": "msc25.in",
+            "out": "msc25.out",
+            "time": 1,
+            "score": 1,
+            "depends": [24]
+        }
+    ],
+    "score_map": [
+        {
+            "cases": [1, 2, 3, 4, 5],
+            "type": "min",
+            "weight": 20
+        },
+        {
+            "cases": [6, 7, 8, 9, 10],
+            "type": "min",
+            "weight": 20
+        },
+        {
+            "cases": [11, 12, 13, 14, 15],
+            "type": "min",
+            "weight": 20
+        },
+        {
+            "cases": [16, 17, 18, 19, 20],
+            "type": "min",
+            "weight": 20
+        },
+        {
+            "cases": [21, 22, 23, 24, 25],
+            "type": "min", 
+            "weight": 20
+        }
+    ]
+}
