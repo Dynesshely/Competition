@@ -72,9 +72,9 @@
 | 3 | =16 | =30 | =99 | 使用真实游戏生成 |
 | 4 | ![\le 40](https://latex.codecogs.com/svg.image?\le&space;40) | ![\le 40](https://latex.codecogs.com/svg.image?\le&space;40) | ![\le 320](https://latex.codecogs.com/svg.image?\le&space;320) | 使用真实游戏生成 |
 | 5 ~ 8 | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 10000](https://latex.codecogs.com/svg.image?\le&space;10000) | op = 1 |
-| 9 ~ 12 | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | [\le 10000](https://latex.codecogs.com/svg.image?\le&space;10000) | ![op \in \{1, 2\}](https://latex.codecogs.com/svg.image?op&space;\in&space;\{1,&space;2\}) |
-| 13 ~ 16 | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | [\le 10000](https://latex.codecogs.com/svg.image?\le&space;10000) | ![op \in \{1, 3\}](https://latex.codecogs.com/svg.image?op&space;\in&space;\{1,&space;3\}) |
-| 17 ~ 20 | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | [\le 10000](https://latex.codecogs.com/svg.image?\le&space;10000) | 无 |
+| 9 ~ 12 | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 10000](https://latex.codecogs.com/svg.image?\le&space;10000) | ![op \in \{1, 2\}](https://latex.codecogs.com/svg.image?op&space;\in&space;\{1,&space;2\}) |
+| 13 ~ 16 | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 10000](https://latex.codecogs.com/svg.image?\le&space;10000) | ![op \in \{1, 3\}](https://latex.codecogs.com/svg.image?op&space;\in&space;\{1,&space;3\}) |
+| 17 ~ 20 | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 200](https://latex.codecogs.com/svg.image?\le&space;200) | ![\le 10000](https://latex.codecogs.com/svg.image?\le&space;10000) | 无 |
 
 ### 📝 说明
 以下是对样例一五组数据的解释, 每组数据从左到右依次描述了扫雷局面以及每一次`有效操作`后`玩家矩阵`：  
