@@ -11,8 +11,8 @@ int main(){
     for(int i = 1; i <= L; ++ i)
         for(int r = 1; r <= R; ++ r)
             for(int c = 1; c <= C; ++ c){
-                
-                
+                // 真 -> 好难
+
             }
     return 0;
 }
