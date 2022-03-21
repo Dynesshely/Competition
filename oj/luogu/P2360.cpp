@@ -12,7 +12,7 @@ int main(){
         for(int r = 1; r <= R; ++ r)
             for(int c = 1; c <= C; ++ c){
                 // 真 -> 好难
-
+                // new to GPG in VSCode
             }
     return 0;
 }
