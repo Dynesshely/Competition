@@ -6,5 +6,5 @@ int main(int argc, char * argv[]){
     registerTestlibCmd(argc, argv);
     
     freopen("user_code", "r", stdin);
-
+    
 }
