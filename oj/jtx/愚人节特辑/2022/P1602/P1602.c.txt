@@ -1,0 +1,1180 @@
+Language: C
+
+
+Author: Unknown (from The Jargon File)
+Notes: The first several examples are variations of the standard one-liner C quines. 
+
+main(){char *c="main(){char *c=%c%s%c;printf(c,34,c,34);}";printf(c,3
+4,c,34);}
+
+
+Author: Joe Miller 
+Notes: This causes some warnings but should compile fine. 
+
+p="p=%c%s%c;main(){printf(p,34,p,34);}";main(){printf(p,34,p,34);}
+
+
+Author: John Burger, David Brill, Filip Machi
+
+main(){char q=34,n=10,*a="main(){char q=34,n=10,*a=%c%s%c;printf(a,q,a,q,n);}%c";printf(a,q,a,q,n);}
+
+
+Author: Unknown
+
+main(){char*a="main(){char*a=%c%s%c;int b='%c';printf(a,b,a,b,b);}";int b='"';printf(a,b,a,b,b);}
+
+
+Author: Dario Dariol
+
+main(a,b){a="main(a,b){a=%c%s%c;b='%c';printf(a,b,a,b,b);}";b='"';printf(a,b,a,b,b);}
+
+
+Author: Dario Dariol
+
+main(a){printf(a="main(a){printf(a=%c%s%c,34,a,34);}",34,a,34);}
+
+
+Author: Unknown
+
+char *p="char *p=%c%s%c;main(){printf(p,34,p,34);}";main(){printf(p,34,p,34);}
+
+
+Author: Dario Dariol
+
+main(a){a="main(a){a=%c%s%c;printf(a,34,a,34);}";printf(a,34,a,34);}
+
+
+Author: Unknown
+
+char f[] = "char f[] =%c%c%s%c;%cmain() {printf(f,10,34,f,34,10,10);}%c";   
+main() {printf(f,10,34,f,34,10,10);}
+
+
+Author: Thad Smith
+Notes: The author claims that this one is strict ANSI. 
+
+#include<stdio.h>
+main(){char*c="\\\"#include<stdio.h>%cmain(){char*c=%c%c%c%.102s%cn%c
+;printf(c+2,c[102],c[1],*c,*c,c,*c,c[1]);exit(0);}\n";printf(c+2,c[10
+2],c[1],*c,*c,c,*c,c[1]);exit(0);}
+
+
+Author: Torben Mogensen
+
+char *a="\\\"char *a=%c%.1s%.1s%.71s%.1sn%c;main(){printf(a+2,a[1],a,a,a,a,a[1]);}\n";main(){printf(a+2,a[1],a,a,a,a,a[1]);}
+
+
+Author: Joe Miller 
+
+#define T(a) main(){printf(a,#a);}
+T("#define T(a) main(){printf(a,#a);}\nT(%s)")
+
+
+Author:  Erkki Ruohtula (eru@tnso04.tele.nokia.fi)
+
+#define n(v,w) v(#w"\nn("#v","#w")");}
+n(main(){puts,#define n(v,w) v(#w"\nn("#v","#w")");})
+
+
+Author: Paul Hsieh
+
+#define X(Y) main(){printf("#define X(Y) %s\nX(%s)\n",#Y,#Y);}
+X(main(){printf("#define X(Y) %s\nX(%s)\n",#Y,#Y);})
+
+
+Author: James C Hu
+
+#define q(k)main(){puts(#k"\nq("#k")");}
+q(#define q(k)main(){puts(#k"\nq("#k")");})
+
+
+Author: James C Hu
+
+#define q(k)main(){return!puts(#k"\nq("#k")");}   
+q(#define q(k)main(){return!puts(#k"\nq("#k")");}) 
+
+
+Author: Jeff Hollingsworth
+
+#define Z(q)q,#q
+main()printf(Z("#define Z(q)q,#q\nmain()printf(Z(%s));\n"));
+
+
+Author: unknown
+
+char *f="char *f=%c%s%c;%c#define Q '%c'%c#define N '%cn'%c#define B '%c%c'%c#include <stdio.h>%cvoid main(){printf(f,Q,f,Q,N,Q,N,B,N,B,B,N,N,N);}%c";
+#define Q '"'
+#define N '\n'
+#define B '\\'
+#include <stdio.h>
+void main(){printf(f,Q,f,Q,N,Q,N,B,N,B,B,N,N,N);}
+
+Author: Unknown
+
+char a[] = "int main(){ printf(b,34,a,34,10,34,b,34,10,10,a,10); }";
+char b[] = "char a[] = %c%s%c;%cchar b[] = %c%s%c;%c%c%s%c";
+
+int main(){ printf(b,34,a,34,10,34,b,34,10,10,a,10); }
+
+Author: Travis Emmit
+
+char *s="rfns-.%Äuwnsyk-'hmfw%/xBa'*xa'@as'1x.@|mnqj-/x.uwnsyk-'*h'1/x002:.@Ç";
+main() {
+printf("char *s=\"%s\";\n",s);
+while(*s)printf("%c",*s++-5);
+}
+
+
+Author: Mark Wooding
+
+#include <stdio.h>
+int main(void){char n='\n';char b='\\';char q='"';char*p="#include <stdio.h>%cint main(void){char n='%cn';char b='%c%c';char q='%c';char*p=%c%s%c;printf(p,n,b,b,b,q,q,p,q,n);return 0;}%c";printf(p,n,b,b,b,q,q,p,q,n);return 0;}
+
+
+
+Author: Caucci Luca (caucci@cs.unibo.it)
+
+/*
+   Questo programma visualizza il suo codice sorgente.
+   Autore: Caucci Luca (e-mail: caucci@cs.unibo.it)
+*/
+#include <stdio.h>
+
+char *s = "/*%c   Questo programma visualizza il suo codice sorgente.%c   Autore: Caucci Luca (e-mail: caucci@cs.unibo.it)%c*/%c#include <stdio.h>%c%cchar *s = %c%s%c;%c%cvoid main() {%c   printf(s, 10, 10, 10, 10, 10, 10, 34, s, 34, 10, 10, 10, 10, 10, 10);%c   return;%c}%c";
+
+void main() {
+   printf(s, 10, 10, 10, 10, 10, 10, 34, s, 34, 10, 10, 10, 10, 10, 10);
+   return;
+}
+
+
+Author: Caucci Luca (caucci@cs.unibo.it)
+
+/*
+	Questo programma visualizza il suo codice sorgente.
+	Autore: Luca Caucci (e-mail: caucci@cs.unibo.it)
+*/
+
+#include <stdio.h>
+
+char NewLine = '\n', Tab = '\t', BackSlash = '\\', QuotMark = '"';
+char Str[] = "/*%c%cQuesto programma visualizza il suo codice sorgente.%c%cAutore: Luca Caucci (e-mail: caucci@cs.unibo.it)%c*/%c%c#include <stdio.h>%c%cchar NewLine = '%cn', Tab = '%ct', BackSlash = '%c%c', QuotMark = '%c';%cchar Str[] = %c%s%c;%c%cint main() {%c%cprintf(Str, NewLine, Tab, NewLine, Tab, NewLine, NewLine, NewLine, NewLine, NewLine, BackSlash, BackSlash, BackSlash, BackSlash, QuotMark, NewLine, QuotMark, Str, QuotMark, NewLine, NewLine, NewLine, Tab, NewLine, Tab, NewLine, NewLine, NewLine);%c%creturn(0);%c}%c%c";
+
+int main() {
+	printf(Str, NewLine, Tab, NewLine, Tab, NewLine, NewLine, NewLine, NewLine, NewLine, BackSlash, BackSlash, BackSlash, BackSlash, QuotMark, NewLine, QuotMark, Str, QuotMark, NewLine, NewLine, NewLine, Tab, NewLine, Tab, NewLine, NewLine, NewLine);
+	return(0);
+}
+
+
+
+
+
+Author: Daniel Martin
+
+#include<stdio.h>
+char a[] = "\";\nmain() {char *b=a;printf(\"#include<stdio.h>\\nchar a[] = \\\"\");\nfor(;*b;b++) {switch(*b){case '\\n': printf(\"\\\\n\"); break;\ncase '\\\\': case '\\\"': putchar('\\\\'); default: putchar(*b);}} printf(a);}\n";
+main() {char *b=a;printf("#include<stdio.h>\nchar a[] = \"");
+for(;*b;b++) {switch(*b){case '\n': printf("\\n"); break;
+case '\\': case '\"': putchar('\\'); default: putchar(*b);}} printf(a);}
+
+
+Author: Jan Willem
+
+#define s "#define s %c%s%c%c#include <stdio.h>%cvoid main() { printf(%c%s%c,34,s,34,10,10,34,s,34); }" #include <stdio.h>
+void main() { printf("#define s %c%s%c%c#include <stdio.h>%cvoid main() { printf(%c%s%c,34,s,34,10,10,34,s,34); }",34,s,34,10,10,34,s,34); } 
+
+
+Author: Unknown
+
+void p(char *s){char *t;printf("%s(\"",s);for(t=s; *t!=0; t++)switch(*t){case '\\':case '\"':case'\'':putchar('\\');default:putchar(*t);}printf("\");}");}void main(){p("void p(char *s){char *t;printf(\"%s(\\\"\",s);for(t=s; *t!=0; t++)switch(*t){case \'\\\\\':case \'\\\"\':case\'\\\'\':putchar(\'\\\\\');default:putchar(*t);}printf(\"\\\");}\");}void main(){p");}
+
+Author: Michael Mauldin
+
+char *x="\";\nmain ()\n{ char *s;\n printf (\"char *x=\\\"\");\n for(s=x;*s;s++)\n { printf
+(*s=='\\\\'?\"\\\\\\\\\":*s=='\\\"'?\"\\\\\\\"\":*s=='\\n'?\"\\\\n\":\"%c\", *s); }\n printf (\"%s\", x);\n}\n";
+main () 
+{ char *s; 
+printf ("char *x=\""); 
+for(s=x;*s;s++) 
+{ printf (*s=='\\'?"\\\\":*s=='\"'?"\\\"":*s=='\n'?"\\n":"%c", *s); } printf ("%s", x); 
+} 
+
+
+Author: Dave English <davide@sequent.com> 
+
+char x[]=" main() { int i; putchar(99); putchar(104); putchar(97); putchar(114); putchar(32);
+putchar(120); putchar(91); putchar(93); putchar(61); putchar(34); for(i=0; i<strlen(x); ++i)
+putchar(x[i]); putchar(34); putchar(59); for(i=0; i<strlen(x); ++i) putchar(x[i]); putchar(10); }";
+main() { int i; putchar(99); putchar(104); putchar(97); putchar(114); putchar(32); putchar(120);
+putchar(91); putchar(93); putchar(61); putchar(34); for(i=0; i<strlen(x); ++i) putchar(x[i]);
+putchar(34); putchar(59); for(i=0 ; i<strlen(x); ++i) putchar(x[i]); putchar(10); } 
+
+Author: Charles B Cranston (zben@ni.umd.edu)
+
+main(){char*s="main(){char*s=%c%s%c;%cprintf(%c%s%c,34,s,34,10,34,s,34,10);}%c";
+printf("main(){char*s=%c%s%c;%cprintf(%c%s%c,34,s,34,10,34,s,34,10);}%c",34,s,34,10,34,s,34,10);}
+
+Author: John Hagerman
+
+#define p(s) printf("%s\n",s);
+#define q(v,s) printf("r(%s,%s)\n",#v,s);
+#define r(v,s) char*v=#s;
+#define m main(){p(x)p(y)p(z)p(n)q(x,x)q(y,y)q(z,z)q(n,n)p("m")}
+r(x,#define p(s) printf("%s\n",s);)
+r(y,#define q(v,s) printf("r(%s,%s)\n",#v,s);)
+
+r(z,#define r(v,s) char*v=#s;) 
+r(n,#define m main(){p(x)p(y)p(z)p(n)q(x,x)q(y,y)q(z,z)q(n,n)p("m")}) m 
+
+
+Author: Xiao Zhiwei
+
+#include 
+main()
+{char* list="
+printf(%c#include %cn%c);
+printf(%cmain()%cn%c);
+printf(%c{%c);
+printf(%cchar* list=%cc%c,34);
+printf(%c%cs%c, list);
+printf(%c%cc;%c,34);
+printf(list,34,92,34,34,92,34,34,34,34,37,34,34,37,34,34,37,34);}
+";
+printf("#include \n");
+printf("main()\n");
+printf("{");
+printf("char* list=%c",34);
+printf("%s", list);
+printf("%c;",34);
+printf(list,34,92,34,34,92,34,34,34,34,37,34,34,37,34,34,37,34);}
+
+Author: Dave Harif
+
+#include <stdio.h>
+#define d "\\"
+#define c "\n"
+#define b "\""
+#define a "#include <stdio.h>%s#define d %s%s%s%s%s#define c %s%sn%s%s#define b %s%s%s%s%s#define a %s%s%s%smain(){printf(a,c,b,d,d,b,c,b,d,b,c,b,d,b,b,c,b,a,b,c,c);}%s"
+main(){printf(a,c,b,d,d,b,c,b,d,b,c,b,d,b,b,c,b,a,b,c,c);}
+
+
+Author: Kennth Almquist
+
+char*p="char*p=15415,4*x=52?33/n33/55,c,n,*q;main()33<for(q=p;c=n?*q++:*p++;)"   "4putchar(n?--n,c:c>'0'&c<'6'?c<*x?n=69,'5':*(c-*x+x):c);return 0;33>4",   *x="2???/n??/"",c,n,*q;main()??<for(q=p;c=n?*q++:*p++;)   putchar(n?--n,c:c>'0'&c<'6'?c<*x?n=69,'"':*(c-*x+x):c);return 0;??> 
+
+Author: Zefram (A.Main@dcs.warwick.ac.uk)
+
+char *f="%c%s%c,";
+#include <stdio.h>
+char*x[]={
+"char *f=%c%s%c;",
+"#include <stdio.h>",
+"char*x[]={",
+"},z=0;main(){int n;",
+"printf(*x,34,f,34);puts(&z);",
+"puts(x[1]);puts(x[2]);",
+"for(n=0;n<8;n++)printf(f,34,x[n],34),puts(&z);",
+"for(n=3;n<8;n++)puts(x[n]);}",
+},z=0;main(){int n;
+printf(*x,34,f,34);puts(&z);
+puts(x[1]);puts(x[2]);
+for(n=0;n<8;n++)printf(f,34,x[n],34),puts(&z);
+for(n=3;n<8;n++)puts(x[n]);}
+
+
+
+
+Author: John Burger, David Brill, Filip Machi
+
+char *text [] = {
+        "char *text [] = {",
+        "0 };",
+        "main () {",
+        "        char newline = 012, quote = 042, escape = 0134, *p, **p;",
+        "        printf (\"%s%c\", *text, newline);",
+        "        for (pp = text; *pp; pp++) {",
+        "                printf (\"        %c\", quote);",
+        "                for (p = *pp; *p; p++) {",
+        "                        if (*p == quote)",
+        "                                putchar (escape);",
+        "                        putchar (*p);",
+        "                }",
+        "                printf (\"%c,%c\", quote, newline);",
+        "        }",
+        "        for (pp = text + 1; *pp; pp++);",
+        "}",
+0 };
+main () {
+        char newline = 012, quote = 042, escape = 0134, *p, **pp;
+        printf ("%s%c", *text, newline);
+
+        for (pp = text; *pp; pp++) {
+                printf ("        %c", quote);
+                for (p = *pp; *p; p++) {
+                        if (*p == quote)
+                                putchar (escape);
+                        putchar (*p);
+                }
+                printf ("%c,%c", quote, newline);
+        }
+        for (pp = text + 1; *pp; pp++)
+                printf ("%s%c", *pp, newline);
+
+Author: Daniel Martin
+
+#include<stdio.h>
+char *a[] = {"\"};\n\n",
+	"main() {\n",
+	"  int i=0; char *b;\n",
+	"  printf(\"#include<stdio.h>\\nchar *a[] = {\\\"\");\n",
+	"  while(*a[i]) {\n",
+	"    for(b=a[i];*b;b++)\n",
+	"      switch(*b) {\n",
+	"         case '\\n': printf(\"\\\\n\"); break;\n",
+	"         case '\\\\': case '\\\"': putchar('\\\\'); \n",
+	"         default: putchar(*b);\n",
+	"      } \n",
+	"    printf(\"\\\",\\n\\t\\\"\"); \n",
+	"    i++;\n",
+	"  }\n",
+	"  i=0;\n",
+	"  while(*a[i]) {printf(a[i]);i++;}\n",
+	"}\n",
+	""};
+
+main() {
+  int i=0; char *b;
+  printf("#include<stdio.h>\nchar *a[] = {\"");
+  while(*a[i]) {
+    for(b=a[i];*b;b++)
+      switch(*b) {
+         case '\n': printf("\\n"); break;
+         case '\\': case '\"': putchar('\\'); 
+         default: putchar(*b);
+      } 
+    printf("\",\n\t\""); 
+    i++;
+  }
+  i=0;
+  while(*a[i]) {printf(a[i]);i++;}
+}
+
+
+Author: Unknown
+
+char s[] = "\";\n\
+main ()\n\
+{ int i; printf (\"char s[] = \\\"\");\n\
+  for (i=0; s[i]; i++)\n\
+  { switch (s[i]) {\n\
+    case '\\n': printf (\"\\\\n\\\\\\n\"); break;\n\
+    case '\\\\': printf (\"\\\\\\\\\"); break;\n\
+    case '\\\"': printf (\"\\\\\\\"\"); break;\n\
+    default:   printf (\"%c\", s[i]); break;}\n\
+  }\n\
+  printf (\"%s\",s); }\n\
+";
+
+main ()
+
+{ int i; printf ("char s[] = \"");
+  for (i=0; s[i]; i++)
+  { switch (s[i]) {
+    case '\n': printf ("\\n\\\n"); break;
+    case '\\': printf ("\\\\"); break;
+    case '\"': printf ("\\\""); break;
+    default:   printf ("%c", s[i]); break;}
+  }
+  printf ("%s",s); }
+
+
+
+Author: pjs@euclid.jpl.nasa.gov (Peter Scott) 
+
+#include stdio 
+
+main() 
+{ 
+int i; 
+char *a[27]; 
+
+   a[0] = "#include stdio";
+   a[1] = "";
+   a[2] = "main()";
+   a[3] = " {";
+   a[4] = "   int i;";
+   a[5] = "   char *a[27];";
+   a[6] = "   for (i = 0; i <= 5; i++) printf (\"\%s\\n\", a[i]);";
+   a[7] = "   for (i = 0; i <= 26; i++) printslash (\"   a[\%d] = \\\"\%s\\\";\\
+
+n\", i, a[i]);"; 
+
+   a[8] = "   for (i = 6; i <= 26; i++) printf (\"\%s\\n\", a[i]);";
+   a[9] = " }";
+   a[10] = "";
+   a[11] = "printslash (string, a1, a2)";
+   a[12] = "char *string, *a2;";
+   a[13] = "int a1;";
+   a[14] = " {";
+   a[15] = "   char b[100];";
+   a[16] = "   int i;";
+   a[17] = "   int j = 0;";
+   a[18] = "   for (i = 0; i < strlen(a2); i++)";
+   a[19] = "    {";
+   a[20] = "      char ch = a2[i];";
+   a[21] = "      if ((ch == '\\\\') || (ch == '\\\%') || (ch == '\\\"')) b[j++]
+ = '\\\\';";
+   a[22] = "      b[j++] = ch;";
+   a[23] = "    }";
+   a[24] = "   b[j] = '\\0';";
+
+
+a[25] = " printf (string, a1, b);"; a[26] = " }"; 
+
+   for (i = 0; i <= 5; i++) printf ("%s\n", a[i]);
+   for (i = 0; i <= 26; i++) printslash ("   a[%d] = \"%s\";\n", i, a[i]);
+   for (i = 6; i <= 26; i++) printf ("%s\n", a[i]);
+
+} 
+
+printslash (string, a1, a2) 
+char *string, *a2; 
+int a1; 
+{ 
+char b[100]; 
+int i; 
+int j = 0; 
+for (i = 0; i < strlen(a2); i++) 
+{ 
+
+      char ch = a2[i];
+      if ((ch == '\\') || (ch == '\%') || (ch == '\"')) b[j++] = '\\';
+      b[j++] = ch;
+
+
+} 
+b[j] = '\0'; 
+printf (string, a1, b); 
+} 
+
+
+Author: Celia La
+
+#include <stdio.h>
+char* a = ";
+
+void main() {
+
+char* c;
+
+printf(\"#include <stdio.h>\\nchar* a = \");
+
+putchar(34);
+for (c = a; c[0] != 0; c++) {
+if (c[0] == 34) { putchar(92); putchar(34); } 
+else if (c[0] == 92) { putchar(92); putchar(92); }
+else putchar(c[0]);
+}
+
+putchar(34); 
+
+printf(\"%s\", a);}
+";
+
+void main() {
+
+char* c;
+
+printf("#include <stdio.h>\nchar* a = ");
+
+putchar(34);
+for (c = a; c[0] != 0; c++) {
+if (c[0] == 34) { putchar(92); putchar(34); } 
+else if (c[0] == 92) { putchar(92); putchar(92); }
+else putchar(c[0]);
+}
+
+putchar(34); 
+
+printf("%s", a);}
+
+
+
+
+Author: Joseph N. Wilson (jnw@cise.ufl.edu)
+
+char *s= "char *s= \"%s\";\n\n/* Wilson's straightforward self-reproducing program */\n\nchar *q(char *s) {\n  char *r = (char *) malloc (strlen(s)*4 + 1);\n  int i, j = 0;\n\n  for (i=0; i < strlen(s); i++) {\n    switch (s[i]) {\n      case '\\\\': r[j++] = '\\\\'; r[j++] = '\\\\'; break;\n      case '\\\"': r[j++] = '\\\\'; r[j++] = '\\\"'; break;\n      case '\\n': r[j++] = '\\\\'; r[j++] = 'n'; break;\n      default: r[j++] = s[i]; break;\n      }\n    }\n  r[j++] = '\\0';\n  return r;\n}\n\nmain() {\n  printf(s, q(s));\n}\n";
+
+/* Wilson's straightforward self-reproducing program */
+
+char *q(char *s) {
+  char *r = (char *) malloc (strlen(s)*4 + 1);
+  int i, j = 0;
+
+  for (i=0; i < strlen(s); i++) {
+    switch (s[i]) {
+      case '\\': r[j++] = '\\'; r[j++] = '\\'; break;
+      case '\"': r[j++] = '\\'; r[j++] = '\"'; break;
+      case '\n': r[j++] = '\\'; r[j++] = 'n'; break;
+      default: r[j++] = s[i]; break;
+      }
+    }
+  r[j++] = '\0';
+  return r;
+}
+
+main() {
+  printf(s, q(s));
+}
+
+
+Author: Dave Jones
+Note: No ASCII codes used.  Bootstrapped up, trying to find the bootstrapper.
+
+
+/* This program prints its source. */
+
+main(argc, argv)
+  char** argv;
+{
+  char * dna =
+
+"/* This program prints its source. */\n\nmain(argc, argv)\n\
+  char** argv;\n{\n  char * dna =\n\nZ;\n\n\n  express_stri\
+ng(dna);\n  exit(0);\n}\n\n\n/* Express the string, substit\
+uting a quotation of the string \n * for the character 'Z'.\
+  Breaks the literal into lines of no\n * more than 60 char\
+s.\n */\nexpress_string(str)\n  char* str;\n{\n  char* ptr \
+= str;\n  char ch;\n  int is_quoted = 0;\n\n  while(ch = *p\
+tr++)\n    {\n\n      if(ch == 'Z' && !is_quoted)\n\t{\n\t \
+ int count = 1;\n\t  char* ptr = str;\n\t  char ch;\n\t  pu\
+tchar('\"');\n\t  while(ch = *ptr++)\n\t    {\n\t      swit\
+ch(ch)\n\t      {\n\t\tcase '\\n': printf(\"\\\\n\");  coun\
+t +=2; break;\n\t\tcase '\\t': printf(\"\\\\t\");  count +=\
+2; break;\n\t\tcase '\\\\': printf(\"\\\\\\\\\"); count +=2\
+; break;\n\t\tcase '\"':  printf(\"\\\\\\\"\"); count +=2; \
+break;\n\t\tdefault:   putchar(ch);    count +=1; break;\n\t\
+      }\n\t      if(count >= 59)\n\t\t{ printf(\"\\\\\\n\")\
+;\n\t\t  count = 0;\n\t\t}\n\t    }\n\t  putchar('\"');\n\t\
+}\n\n      else putchar(ch);\n      is_quoted = ( ch == '\\\
+'');\n    }\n}\n";
+
+
+  express_string(dna);
+  exit(0);
+}
+
+
+/* Express the string, substituting a quotation of the string
+ * for the character 'Z'.  Breaks the literal into lines of no
+ * more than 60 chars.
+ */
+express_string(str)
+  char* str;
+{
+  char* ptr = str;
+  char ch;
+  int is_quoted = 0;
+
+  while(ch = *ptr++)
+    {
+
+      if(ch == 'Z' && !is_quoted)
+        {
+          int count = 1;
+          char* ptr = str;
+          char ch;
+          putchar('"');
+          while(ch = *ptr++)
+            {
+              switch(ch)
+              {
+                case '\n': printf("\\n");  count +=2; break;
+                case '\t': printf("\\t");  count +=2; break;
+                case '\\': printf("\\\\"); count +=2; break;
+                case '"':  printf("\\\""); count +=2; break;
+                default:   putchar(ch);    count +=1; break;
+              }
+              if(count >= 59)
+                { printf("\\\n");
+                  count = 0;
+                }
+            }
+          putchar('"');
+        }
+
+      else putchar(ch);
+      is_quoted = ( ch == '\'');
+    }
+}
+
+
+Author: Wolfgang Thumser
+
+#include <stdio.h>
+
+void main(){
+int i=0,j=0;
+char str[500]={"#include <stdio.h>\n\
+\n\
+void main(){\n\
+int i=0,j=0;\n\
+char str[500]={\"y\"};\n\
+\n\
+while(str[i] != 0){\n\
+  if(str[i] == 0x79){\n\
+  i++;\n\
+  while(str[j] != 0){\n\
+    if(str[j] == 0x0a){\n\
+    putchar(0x5c);\n\
+    putchar(0x6e);\n\
+    putchar(0x5c);\n\
+    }\n\
+    if(str[j] == 0x22){\n\
+    putchar(0x5c);\n\
+    }\n\
+    putchar(str[j++]);\n\
+  }\n\
+  }\n\
+  else putchar(str[i++]);\n\
+}\n\
+}\n\
+"};
+
+while(str[i] != 0){
+  if(str[i] == 0x79){
+  i++;
+  while(str[j] != 0){
+    if(str[j] == 0x0a){
+    putchar(0x5c);
+    putchar(0x6e);
+    putchar(0x5c);
+    }
+    if(str[j] == 0x22){
+    putchar(0x5c);
+    }
+    putchar(str[j++]);
+  }
+  }
+  else putchar(str[i++]);
+}
+}
+
+
+
+Author: Don herbison-Evans
+
+
+/*              itself.c
+
+   A program that prints itself out
+   Don Herbison-Evans 15 June 1995
+*/
+
+#define MAXA  100
+#define MAXB   47
+#define CHANGE 18
+#include <stdio.h>
+
+char slosh = '\\';
+
+main()
+{
+   int i,j,k;
+   char str[MAXB][MAXA];
+
+   sprintf(str[0],"/*              itself.c");
+   sprintf(str[1],"");
+   sprintf(str[2],"   A program that prints itself out");
+   sprintf(str[3],"   Don Herbison-Evans 15 June 1995");
+   sprintf(str[4],"*/");
+   sprintf(str[5],"");
+   sprintf(str[6],"#define MAXA  100");
+   sprintf(str[7],"#define MAXB   47");
+   sprintf(str[8],"#define CHANGE 18");
+   sprintf(str[9],"#include <stdio.h>");
+   sprintf(str[10],"");
+   sprintf(str[11],"char slosh = '\\';");
+   sprintf(str[12],"");
+   sprintf(str[13],"main()");
+   sprintf(str[14],"{");
+   sprintf(str[15],"   int i,j,k;");
+   sprintf(str[16],"   char str[MAXB][MAXA];");
+   sprintf(str[17],"");
+   sprintf(str[18],"   for (j = 0; j < CHANGE; ++j)");
+   sprintf(str[19],"   {");
+   sprintf(str[20],"      pr(str[j],0);");
+   sprintf(str[21],"      printf(\"\\n\");");
+   sprintf(str[22],"   }");
+   sprintf(str[23],"   for (j = 0; j < MAXB; ++j)");
+   sprintf(str[24],"   {");
+   sprintf(str[25],"      printf(\"   sprintf(str[%%d],\\\"\",j);");
+   sprintf(str[26],"      pr(str[j],0);");
+   sprintf(str[27],"      printf(\"\\\");\");");
+   sprintf(str[28],"      printf(\"\\n\");");
+   sprintf(str[29],"   }");
+   sprintf(str[30],"   for (j = CHANGE; j < MAXB; ++j)");
+   sprintf(str[31],"   {");
+   sprintf(str[32],"      pr(str[j],1);");
+   sprintf(str[33],"      printf(\"\\n\");");
+   sprintf(str[34],"   }");
+   sprintf(str[35],"}");
+   sprintf(str[36],"pr(str,asis)");
+   sprintf(str[37],"char str[MAXA];");
+   sprintf(str[38],"int  asis;");
+   sprintf(str[39],"{");
+   sprintf(str[40],"   int j;");
+   sprintf(str[41],"   for (j = 0; (j < MAXA) && (str[j] != '\\0');
+++j)");
+   sprintf(str[42],"      if ((asis == 0) && ((str[j] == slosh) ||
+(str[j] == '\"')))");
+   sprintf(str[43],"         printf(\"%%c%%c\",slosh,str[j]);");
+   sprintf(str[44],"      else if ((asis == 0) && (str[j] == '%%'))
+printf(\"%%%%%%%%\");");
+   sprintf(str[45],"      else printf(\"%%c\",str[j]);");
+   sprintf(str[46],"}");
+   for (j = 0; j < CHANGE; ++j)
+   {
+      pr(str[j],0);
+      printf("\n");
+   }
+   for (j = 0; j < MAXB; ++j)
+   {
+      printf("   sprintf(str[%d],\"",j);
+      pr(str[j],0);
+      printf("\");");
+      printf("\n");
+   }
+   for (j = CHANGE; j < MAXB; ++j)
+   {
+      pr(str[j],1);
+      printf("\n");
+   }
+}
+pr(str,asis)
+char str[MAXA];
+int  asis;
+{
+   int j;
+   for (j = 0; (j < MAXA) && (str[j] != '\0'); ++j)
+      if ((asis == 0) && ((str[j] == slosh) || (str[j] == '"')))
+         printf("%c%c",slosh,str[j]);
+      else if ((asis == 0) && (str[j] == '%')) printf("%%%%");
+      else printf("%c",str[j]);
+}
+
+
+Author: josh@cs.rutgers.edu
+
+#include "stdio.h" 
+
+char *stack[2000], buf[2000], chrtab[128][2], *defns[128]; 
+
+char dna[ ]="stdio.h_X#include X\"__\n\ 
+char 4_Cstack_Sbuf_Bchrtab[4]_Hdefns[4]_V5[4]_]5, 4_,4;_;*4_*2000_K128_L\n\ 
+
+_/SK]*BK],LH2]LV*,,C;__5==4_%5=4_=dna_DD ]@\"=C;__54_.copy(4)_K\n\
+_/strlen(4)_Astrcpy(54,)_E4++_^5+4_+200_X'4'_'5*^4=_Z5;/4._!for (7;6;5)4_F\n\
+_/if (5) 4_G{/4/}/_}return(4);/_R(char`*)malloc(4)_M\\\\_$`\"'_Y\n\
+_/5 || 4_| c*t^*c^*=Yc*%$'c*%|t$'ZG\\n.'c*%ttt\\n.\\.\"EA+=G;!}F_W\n\
+_/cK*Cc*Ct*q*,CqtXcA+M==!tYZ!W!tYZ.t0Z!qR!}!__(4)_~\n\
+_/construct(4)_Iarg_J4**_$int 4_Nswitch(5)4}_Odefault: 4_P5-4_-p1-~*_Q\n\
+_/break_Ucase 5: 4;/U_:5<4_<5>4_>5 && 4_&4*8'<4*3'>&_?else 4_XqB=Jp=!_W\n\
+_/Wtc*V=t*t^t?kpt*-3'+=~J<Jk=Gqqqk*EA+=!;}Gqt*ZX;.}F!q*0=.pJ=!pBA1+MZBE!;_W\n\
+_/c*``'p*^ ^c.*H=:YQQK=:!`@'pDZ:!c?p*^c*H=U!;}GP!W.O_W\n\
+_/n0=kS=,kp<nnk*^A+=4F_U Uqn1+M=!qn+k*EU!qR!_O\n\
+_/cI*Cc*CJ$p$,k$,t*,q*,CnN!pS=c*c^W}F!O.}!__\n\
+_/nH5]4=_Ostrncpy(654,,)_Eputs(4)_P923+_T4t.*T%_T\n\
+_/xt=D=t*t^ Tqtx-1+M=qxtx-E!qx-t+~*0=! ^TqIPG!t*VqI=X!xt1+=!;}G}F_Q\n\
+_/main()/t*x*,q*,CnN!n0=nL<n^0nO10O!nVnH=!;}F!Q.}__";
+
+
+char *copy(c) 
+char *c; 
+{ 
+
+char *t, *q; 
+q=t=(char*)malloc(200+strlen(c)); 
+*t++='"'; 
+for ( ;*c;*t++=*c++){ 
+if ('"'==*c || '\\'==*c) *t++='\\'; 
+if ('\n'==*c) t=t+strlen(strcpy(t, "\\n\\")); } 
+*t++='"'; 
+*t++=0; 
+return(q); 
+
+} 
+
+char *construct(c) 
+char *c; 
+{ 
+
+char **arg, **p, **k, *t, *q; 
+int n; 
+for (p=stack;*c;c++){ 
+switch(*c){ 
+case '`': *p++=chrtab[* ++c]; 
+break; 
+case '"': *(p-1)=copy(*(p-1)); 
+break; 
+case '@': *p++=dna; 
+break; 
+default: if (*c<'8' && *c>'3') { 
+*p++=chrtab[*c]; 
+break; 
+} 
+q=buf; 
+arg=p; 
+for (t=defns[*c];*t;t++){ 
+if (*t<'8' && *t>'3') { 
+if ((k=p-*t+'3')<arg) arg=k; 
+q=q+strlen(strcpy(q, *k)); 
+} 
+else *q++=*t; 
+} 
+*q=0; 
+p=arg; 
+strcpy(*p++=(char*)malloc(strlen(buf)+1), buf); } 
+
+} 
+for (n=0, k=stack;k<p;n=n+strlen(*k++)) ; q=(char*)malloc(n+1); 
+for (n=0, k=stack;k<p;n=n+strlen(*k++))strcpy(q+n, *k); return(q); 
+
+} 
+
+main() 
+{ 
+
+char *t, *x, *q; 
+int n; 
+
+for (n=0;n<128;n++){
+chrtab[n][0]=n;
+chrtab[n][1]=0;
+
+
+defns[n]=chrtab[n]; 
+} 
+for (x=t=dna;*t;t++){ 
+if (* t==92+3) { 
+q=(char*)malloc(t-x+1); 
+strncpy(q, x, t-x); 
+*(q-x+t)=0; 
+if (* ++t==92+3) puts(construct(q)); 
+else defns[*t]=construct(q); 
+x=t+1; 
+} 
+
+} 
+
+} 
+
+
+Author: Unknown
+
+#include<stdio.h>
+main(){char*c="\\\"#include<stdio.h>%cmain(){char*c=%c%c%c%.102s%cn%c;printf(c+2,c[102],c[1],*c,*c,c,*c,c[1]);exit(0);}\n";printf(c+2,c[102],c[1],*c,*c,c,*c,c[1]);exit(0);}
+
+
+Author: Soichiro Hidaka
+Note: might only compile in gcc
+
+g(char *s1,char *s2){  printf(s1);  putchar(34);  printf(s1);  putchar(34);  putchar(44);  putchar(34);  printf(s2);  putchar(34);  printf(s2); putchar(10);}main () {  g("g(char *s1,char *s2){  printf(s1);  putchar(34);  printf(s1);  putchar(34);  putchar(44);  putchar(34);  printf(s2);  putchar(34);  printf(s2); putchar(10);}main () {  g(",");}");}
+
+
+Author: Bo Lindbergh (d88-bli@dront.nada.kth.se)
+
+#define D(x) char*t=#x;x
+D(int main(int c,char**v){printf("#define D(x) char*t=#x;x\nD(%s)\n",t);})
+
+
+Author: Charles B. Cranston (zben@ni.umd.edu)
+
+main(){char*s="main(){char*s=%c%s%c;%cprintf(%c%s%c,34,s,34,10,34,s,34,10);}%c";
+printf("main(){char*s=%c%s%c;%cprintf(%c%s%c,34,s,34,10,34,s,34,10);}%c",34,s,34,10,34,s,34,10);}
+
+
+Author: Craig S. Kaplan
+
+char*f="main(){putchar('c');putchar('h');putchar('a');putchar('r');putchar('*');putchar('f');putchar('=');putchar(34);printf(f);putchar(34);putchar(';');putchar(10);printf(f);putchar(10);}";
+main(){putchar('c');putchar('h');putchar('a');putchar('r');putchar('*');putchar('f');putchar('=');putchar(34);printf(f);putchar(34);putchar(';');putchar(10);printf(f);putchar(10);}
+
+
+Author: Craig S. Kaplan
+
+char*f="char*f=;main(){f[7]=0;printf(f);putchar(34);f[7]=';';printf(f);putchar(34);f[8]=0;printf(&f[7]);f[8]='m';putchar(10);printf(&f[8]);putchar(10);}";
+main(){f[7]=0;printf(f);putchar(34);f[7]=';';printf(f);putchar(34);f[8]=0;printf(&f[7]);f[8]='m';putchar(10);printf(&f[8]);putchar(10);}
+
+
+Author: Craig S. Kaplan 
+
+char a='"';char b='\n';char c='\\';
+char*f="char a='%c';char b='%cn';char c='%c%c';%cchar*f=%c%s%c;%cmain(){printf(f,a,c,c,c,b,a,f,a,b,b);}%c";
+main(){printf(f,a,c,c,c,b,a,f,a,b,b);}
+
+
+Author: Craig S. Kaplan 
+
+char*lines[]={
+"char*lines[]={",
+"%c%s%c%c%c",
+"0};",
+"main(){",
+"int idx;",
+"puts(lines[0]);",
+"for(idx=0;lines[idx]!=0;idx++){",
+"printf(lines[1],34,lines[idx],34,',',10);",
+"}",
+"puts(lines[2]);",
+"for(idx=3;lines[idx]!=0;idx++){",
+"puts(lines[idx]);",
+"}",
+"}",
+ 0};
+main(){
+int idx;
+puts(lines[0]);
+for(idx=0;lines[idx]!=0;idx++){
+printf(lines[1],34,lines[idx],34,',',10);
+}
+puts(lines[2]);
+for(idx=3;lines[idx]!=0;idx++){
+puts(lines[idx]);
+}
+}
+
+
+Author:Patrik Lundin (lundin@ludd.luth.se)
+Note: When I wrote it, the point was to try to do it
+without using printf, and with <cr>:s.
+
+void a(char*b,int d,int e,int f){char*c=b;for(;*c;c++){if(!d&*c==68)putchar(
+92),putchar('\n');if(!d&*c==92)putchar(92);if(*c==d)a(b,0,0,0);else putchar(
+*c==e?34:*c==f?'\n':*c);}}main(){char p[]=/*
+andelion '94 */
+"void a(char*b,int d,int e,int f){char*c=b;for(;*c;c++){if(!d&*c==68)putchar(\
+D92),putchar('\\n');if(!d&*c==92)putchar(92);if(*c==d)a(b,0,0,0);else putchar(\
+D*c==e?34:*c==f?'\\n':*c);}}main(){char p[]=/* \
+Dandelion '94 */\
+DCAC;a(p,65,67,68);}";a(p,65,67,68);}
+
+
+Author: Trent Tobler (ttobler@unislc.slc.unisys.com)
+Notes: uses no ascii codes or printf
+
+char *instructions[] = {
+        "#include <stdio.h>",
+        "void copier( s)",
+        "\tchar *s[];",
+        "{",
+        "\tchar **p, *q;",
+        "\tfputs( \"char *instructions[] = {\\n\", stdout);",
+        "\tfor( p = s; *p; p++)",
+        "\t{",
+        "\t\tfputs( \"\\t\\\"\", stdout);",
+        "\t\tfor( q = *p; *q; q++)",
+        "\t\t{",
+        "\t\t\tswitch(*q)",
+        "\t\t\t{",
+        "\t\t\tcase '\\t':",
+        "\t\t\t\tfputs( \"\\\\t\", stdout);",
+        "\t\t\t\tbreak;",
+        "\t\t\tcase '\\\\':",
+        "\t\t\t\tfputs( \"\\\\\\\\\", stdout);",
+        "\t\t\t\tbreak;",
+        "\t\t\tcase '\"':",
+        "\t\t\t\tfputs( \"\\\\\\\"\", stdout);",
+        "\t\t\t\tbreak;",
+        "\t\t\tcase '\\n':",
+        "\t\t\t\tfputs( \"\\\\n\", stdout);",
+        "\t\t\t\tbreak;",
+        "\t\t\tdefault:",
+        "\t\t\t\tfputc( *q, stdout);",
+        "\t\t\t\tbreak;",
+        "\t\t\t}",
+        "\t\t}",
+        "\t\tfputs( \"\\\",\\n\", stdout);",
+        "\t}",
+        "\tfputs( \"\\t0\\n};\\n\", stdout);",
+        "}",
+        "void interp( s)",
+        "\tchar *s[];",
+        "{",
+        "\tchar **p = s;",
+        "\tfor( p = s; *p; p++)",
+        "\t{",
+        "\t\tfputs( *p, stdout);",
+        "\t\tfputc( '\\n', stdout);",
+        "\t}",
+        "}",
+        "int main( ac, av)",
+        "\tint ac;",
+        "\tchar **av;",
+        "{",
+        "\tcopier( instructions);",
+        "\tinterp( instructions);",
+        "}",
+        0
+};
+#include <stdio.h>
+void copier( s)
+        char *s[];
+{
+        char **p, *q;
+        fputs( "char *instructions[] = {\n", stdout);
+        for( p = s; *p; p++)
+        {
+                fputs( "\t\"", stdout);
+                for( q = *p; *q; q++)
+                {
+                        switch(*q)
+                        {
+                        case '\t':
+                                fputs( "\\t", stdout);
+                                break;
+                        case '\\':
+                                fputs( "\\\\", stdout);
+                                break;
+                        case '"':
+                                fputs( "\\\"", stdout);
+                                break;
+                        case '\n':
+                                fputs( "\\n", stdout);
+                                break;
+                        default:
+                                fputc( *q, stdout);
+                                break;
+                        }
+                }
+                fputs( "\",\n", stdout);
+        }
+        fputs( "\t0\n};\n", stdout);
+}
+void interp( s)
+        char *s[];
+{
+        char **p = s;
+        for( p = s; *p; p++)
+        {
+                fputs( *p, stdout);
+                fputc( '\n', stdout);
+        }
+}
+int main( ac, av)
+        int ac;
+        char **av;
+{
+        copier( instructions);
+        interp( instructions);
+}
+
+
+Author: Teemu Suikki
+Note: Self-reproducing .signature
+
+main() {char *p,a;printf(p="main() {char *p,a;printf(p=%c%s%c,a='",a='"',p,
+a);printf(p="%c',p,%ca);printf(p=%c%s%c%c,a,10,a,p,a,10,a,%c%s%c,a,10);}%c"
+,a,10,a,p,a,10,a," *** Email: xxxxxxx@xxx.xx *** IRC: Zuikkis *** ",a,10);}
+
+
+Author: Ashley Roll
+Note: another .sig
+
+#include  /* Ashley Roll aroll@gucis.cit.gu.edu.au */
+main(){char *s,*a,*t;for(t=s="7}|wzarq6*gbr}{<~,6;@6Ug~zqm6H{zz6uh{zzVsaw}g<\\\
+w}b=ow~uh6@g:@u:@b/t{h>b)g)8_8/@g/g??= }t>@g))3K3=t{h>u)b\\\
+/@u/u??=o@u))3JJ3+fh}|bt>8JJJJJJJ|8=0fabw~uh>@u=/i qzgq@g5)3JJ3+fabw~uh>@g9%\\\
+L(%=0%/i6;@6Sh}tt}b~6A|}dqhg}bm:6Xh}gxu|q6Uagbhuz}u6@; ";*s;s++)
+if(*s=='_')for(a=t;*a;a++){*a=='\\'?printf("\\\\\\\n"):putchar(*a);}
+else*s!='\\'?putchar(*s-1^21):1;} /* Griffith University, Brisbane Australia */
+
+
+Author: Larry Jones
+Notes: Obfuscated C entry
+
+char*a??(??)=??<
+"??=include",
+"??=include",
+"??=define o stdout",
+"??=define b break;case",
+"??=define s(p)fputs(p,o);",
+"??=define c(p)fputc(p,o);",
+"void t(p,f)char*p;????/")b'??(':s(??/"???/??/?(??/")b'??)'",
+":s(??/"???/??/?)??/")b'??/??/??/??/':f&&s(??/"???/??/?/??/")",
+"s(??/"???/??/?/??/")b'??/??/n':if(f)s(??/"???/??/?/n??/")",
+"else case'??/"':if(f)s(??/"???/??/?/??/??/??/"??/")",
+"else default:c(*p)??>??>??>main()??;??/",0);for(p=a",
+";*p;p++)t(*p,0);exit(!ferror(o)&&",
+"!fclose(o)?EXIT_SUCCESS",
+":EXIT_FAILURE);",
+"/*NOTREACHED*/",
+"??>",
+0??>;
+??=include
+??=include
+??=define o stdout
+??=define b break;case
+??=define s(p)fputs(p,o);
+??=define c(p)fputc(p,o);
+void t(p,f)char*p;??':s("???/?>")b'??(':s("???/?(")b'??)'
+:s("???/?)")b'??/??/':f&&s("???/?/")
+s("???/?/")b'??/n':if(f)s("???/?/n")
+else case'"':if(f)s("???/?/??/"")
+else default:c(*p)??>??>??>main()??;",0);for(p=a
+;*p;p++)t(*p,0);exit(!ferror(o)&&
+!fclose(o)?EXIT_SUCCESS
+:EXIT_FAILURE);
+/*NOTREACHED*/
+??>
+
+
+Author: Dan Hoey
+Notes: Modified slightly by Joe Miller. This is not only self-printing, it's a palindrome. 
+
+/**/char q='"',*a="*//**/char q='%c',*a=%c%s%c*/};)b(stup;]d[b=]d-852
+[b)--d(elihw;)q,a,q,q,2+a,b(ftnirps{)(niam;031=d tni;]952[b,",b[259];
+int d=130;main(){sprintf(b,a+2,q,q,a,q);while(d--)b[258-d]=b[d];puts(
+b);}/*c%s%c%=a*,'c%'=q rahc/**//*"=a*,'"'=q rahc/**/
+
+
+Author: Dan Hoey
+Notes: Another palindrome
+/**/char q='"',*a="*//**/char q='%c',*a=%c%s%c*/};)b(stup;]d[b=]d-472[b)--d(elihw;)q,a,q,q,2+a,b(ftnirps;)b(stup{)(niam;731=d tni;]572[b,",b[275];int d=137;main(){puts(b);sprintf(b,a+2,q,q,a,q);while(d--)b[274-d]=b[d];puts(b);}/*c%s%c%=a*,'c%'=q rahc/**//*"=a*,'"'=q rahc/**/
+
+
+Author: Dan Hoey
+Notes: He likes those palindromes
+
+/**/char
+q='"',*a="*//**/char
+q='%c',*a=%c%s%c*/};)]d-062[b=]d[b(rahctup)--d(elihw;)q,a,q,q,2+a,b(ftnirps{)(ni
+am;162=d tni;]162[b,",b[261];int d=261;main(){sprintf(b,a+2,q,q,a,q);while(d--)p
+utchar(b[d]=b[260-d]);}/*c%s%c%=a*,'c%'=q
+rahc/**//*"=a*,'"'=q
+rahc/**/
+
+Author: Dan hoey
+Note: Last palindromes...
+
+/**/main(){char*a=/*/};)q,q,a,q,q,811+a(ftnirp;'"'=q,/**/"/**/main(){char*a=/*/};)q,q,a,q,q,811+a(ftnirp;'c%'=q,/**/c%s%c%/**/,q='c%';printf(a+118,q,q,a,q,q);}/*/=a*rahc{)(niam/**/main(){char*a=/*/};)q,q,a,q,q,811+a(ftnirp;'%c'=q,/**/%c%s%c/**/,q='%c';printf(a+118,q,q,a,q,q);}/*/=a*rahc{)(niam/**/"/**/,q='"';printf(a+118,q,q,a,q,q);}/*/=a*rahc{)(niam/**/
+
+
+Author: Dan Hoey
+Note: Prints itself backwards
+
+main(){char*a="main(){char*a=c%s%c%,q='c%';printf(a+49,q,q,a,q);};)q,a,q,q,94+a(ftnirp;'%c'=q,%c%s%c=a*rahc{)(niam",q='"';printf(a+49,q,q,a,q);}
+
+
+Author: Dan Hoey
+Note: Yet another backwards printer
+
+main(){char*a="main(){char*a=c%s%c%;printf(a+42,34,a,34);};)43,a,43,24+a(ftnirp;%c%s%c=a*rahc{)(niam";printf(a+42,34,a,34);}
+
+
+
+Author: smr
+Notes: This program won the "Worst Abuse of the Rules" award in the 1994 Obfuscated C Code contest. It claims to be the world's shortest self-producing C program. Hey, it's also a palindrome! Some compilers give fatal errors on this one. 
+
+Pretty short, eh? 
+
+

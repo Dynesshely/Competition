@@ -1,0 +1,1 @@
+class S{public static void main(String[]a){new S().p('"',"'","class S{public static void main(String[]a){new S().p('",");}void p(char d,String q,String a,String b){System.out.println(a+d+q+','+d+q+d+','+d+a+d+','+d+b+d+b);}}");}void p(char d,String q,String a,String b){System.out.println(a+d+q+','+d+q+d+','+d+a+d+','+d+b+d+b);}}
