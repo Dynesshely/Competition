@@ -1,7 +1,0 @@
-type: default
-
-time: 0.1s
-memory: 1m
-
-checker_type: testlib
-checker: checker.cc
