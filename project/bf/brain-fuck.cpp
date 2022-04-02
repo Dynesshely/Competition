@@ -41,12 +41,16 @@ void exe(string cmd){
 			case '>': cursor ++; break; // 指针右移
 			case '<': cursor --; break; // 指针左移
 			case '+': // 内存值加一
-				if(cursor >= 0 && cursor < size) mem[cursor] ++;
-				else return;
+				if(cursor >= 0 && cursor < size){
+					mem[cursor] ++;
+					if(mem[cursor] == 256) mem[cursor] = 0;
+				}else return;
 				break;
 			case '-': // 内存值减一
-				if(cursor >= 0 && cursor < size) mem[cursor] --;
-				else return;
+				if(cursor >= 0 && cursor < size){
+					mem[cursor] --;
+					if(mem[cursor] == -1) mem[cursor] = 255;
+				}else return;
 				break;
 			case '.': // 输出内存
 				printf("%c", (char)mem[cursor]);
