@@ -1,17 +1,20 @@
+
+// Copyright (c) Catrol 2022.
+// All Rights Reserved.
+
 #include <bits/stdc++.h>
 
-const int maxn = 114514;
-int N, M, W[maxn], V[maxn], f[maxn];
+const int maxm = 12880 + 3;
+const int maxn = 3402 + 3;
+int N, M, W[maxn], D[maxn], dp[maxm];
 
-int main() {
+int main(){
     scanf("%d %d", &N, &M);
-    for (int i = 1; i <= N; ++i)
-        scanf("%d %d", &W[i], &V[i]);
-    for (int i = 1; i <= N; ++i) {
-        for (int j = M; j >= W[i]; --j) {
-            if(f[j-W[i]] + V[i] > f[j]) f[j] = f[j-W[i]] + V[i];
-        }
+    for(int i = 1; i <= N; ++ i) {
+        scanf("%d %d", &W[i], &D[i]);
+        for(int j = M; j >= 1; -- j)
+            if(j >= W[i]) dp[j] = std::max(dp[j], dp[j - W[i]] + D[i]);
     }
-    printf("%d\n", f[M]);
+    printf("%d\n", dp[M]);
     return 0;
 }
