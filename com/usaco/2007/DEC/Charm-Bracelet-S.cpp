@@ -12,8 +12,8 @@ int main(){
     scanf("%d %d", &N, &M);
     for(int i = 1; i <= N; ++ i) {
         scanf("%d %d", &W[i], &D[i]);
-        for(int j = M; j >= 1; -- j)
-            if(j >= W[i]) dp[j] = std::max(dp[j], dp[j - W[i]] + D[i]);
+        for(int j = M; j >= W[i]; -- j)
+            dp[j] = std::max(dp[j], dp[j - W[i]] + D[i]);
     }
     printf("%d\n", dp[M]);
     return 0;
