@@ -34,7 +34,7 @@ inline T max(T a, T b) { return a > b ? a : b; }
 
 const int maxx = 1e6 + 5;
 
-int n, m, ans, cnt = 1, f[maxx], w[maxx], v[maxx];
+int n, m, cnt = 1, f[maxx], w[maxx], v[maxx];
 
 int main() {
     scanf("%d %d", &n, &m);
