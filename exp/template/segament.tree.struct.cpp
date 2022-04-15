@@ -41,6 +41,11 @@ struct SegamentTree {
             s[x].tag_mul = 1;
         }
 
+        inline void Update(i64 x){
+            s[x].sum = s[s[x].ls].sum + s[s[x].rs].sum;
+            s[x].mul = s[s[x].ls].mul * s[s[x].rs].mul;
+        }
+
     public:
         i64 arr[maxn];
 
@@ -55,8 +60,7 @@ struct SegamentTree {
             s[x].ls = x << 1, s[x].rs = (x << 1) | 1;
             Build(s[x].ls, l, mid);
             Build(s[x].rs, mid + 1, r);
-            s[x].sum = s[s[x].ls].sum + s[s[x].rs].sum;
-            s[x].mul = s[s[x].ls].mul * s[s[x].rs].mul;
+            Update(x);
         }
 
         inline void Modify(i64 x, i64 p, i64 v) {
@@ -67,8 +71,7 @@ struct SegamentTree {
             }
             if (p <= Average(s[x].l, s[x].r)) Modify(s[x].ls, p, v);
             else Modify(s[x].rs, p, v);
-            s[x].sum = s[s[x].ls].sum + s[s[x].rs].sum;
-            s[x].mul = s[s[x].ls].mul * s[s[x].rs].mul;
+            Update(x);
         }
 
         inline void Modify(i64 x, i64 l, i64 r, i64 v) {
@@ -82,8 +85,7 @@ struct SegamentTree {
             if (l > mid) Modify(s[x].rs, l, r, v);
             else if (r <= mid) Modify(s[x].ls, l, r, v);
             else Modify(s[x].ls, l, mid, v), Modify(s[x].rs, mid + 1, r, v);
-            s[x].sum = s[s[x].ls].sum + s[s[x].rs].sum;
-            s[x].mul = s[s[x].ls].mul * s[s[x].rs].mul;
+            Update(x);
         }
 
         inline i64 Query_Sum(i64 x, i64 l, i64 r) {
