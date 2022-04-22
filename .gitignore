@@ -3,5 +3,5 @@
 
 .exe
 .out
-/cmake-build-debug/
+/cmake-Build-debug/
 /.idea/

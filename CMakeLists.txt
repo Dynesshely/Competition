@@ -5,5 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 #add_subdirectory(oj)
 
-add_executable(ybt-2067 oj/ybt/ybt-2067.cpp)
-add_executable(Charm-Bracelet-S com/usaco/2007/DEC/Charm-Bracelet-S.cpp)
+add_executable(P1616 oj/luogu/P1616.cpp)
+add_executable(segament.tree.struct exp/template/segament.tree.struct.cpp)
+add_executable(segament.tree exp/template/segament.tree.cpp)
+add_executable(KMP exp/template/KMP.cpp)
