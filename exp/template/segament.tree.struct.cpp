@@ -1,12 +1,15 @@
+// Copyright (c) Catrol 2022-present.
+// ALL RIGHTS RESERVED.
+// Author:   Dynesshely/Catrol
+// E-Mail:   catrol@qq.com
+// Date:     2022-04-26
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "cppcoreguidelines-pro-type-member-init"
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 #pragma ide diagnostic ignored "hicpp-multiway-paths-covered"
 #pragma ide diagnostic ignored "cert-err34-c"
 #pragma ide diagnostic ignored "misc-no-recursion"
-
-// Copyright (c) Catrol 2022.
-// All Rights Reserved.
 
 #include <bits/stdc++.h>
 
