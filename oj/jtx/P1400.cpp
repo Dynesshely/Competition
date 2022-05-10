@@ -103,8 +103,8 @@ inline void process() {
                             swap(&a[l][j], &a[l][je]);
                     break;
                 case 'v':
-                    for(int j = 0; j < cur_w; ++ j)
-                        for(int l = 0, le = cur_h - 1; l < cur_h / 2; ++ l, --le)
+                    for (int j = 0; j < cur_w; ++j)
+                        for (int l = 0, le = cur_h - 1; l < cur_h / 2; ++l, --le)
                             swap(&a[l][j], &a[le][j]);
                     break;
             }
