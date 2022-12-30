@@ -4,8 +4,7 @@ struct num{
     int len, *arr;
 
     num build(int l){
-        num n;
-        n.len = l;
+        num n; n.len = l;
         int *a = new int[l];
         for(int i = 0; i < l; i++) a[i] = 0;
         n.arr = a;
@@ -13,20 +12,20 @@ struct num{
     }
 
     num build(int l, int *a){
-        num n;
-        n.len = l, n.arr = a;
+        num n; n.len = l, n.arr = a;
         return n;
     }
 
-    void print(num *n){
-        num a = *n;
-        for(int i = 0; i < a.len; i++) putchar(a.arr[i] + '0');
+    void reverse(num *n){
+        for(int i = 0, j = n->len - 1, t; i < j; ++i, --j){
+            t = n->arr[i];
+            n->arr[i] = n->arr[j];
+            n->arr[j] = t;
+        }
     }
 
-    void println(num *n){
-        (*n).print(n);
-        putchar('\n');
-    }
+    void print(num *n){ for(int i = 0; i < n->len; ++i) putchar(n->arr[i] + '0'); }
+    void println(num *n){ n->print(n); putchar('\n'); }
 
     num operator +(num a){
         int bl, ll, al, carry = 0; //  bl -> bigger length, ll -> lower length, al -> actual length, carry -> carry
@@ -35,10 +34,11 @@ struct num{
         num rst = build(al);
         for(int i = 0; i < ll; i++){
             int sum = arr[i] + a.arr[i] + carry;    //  sum of this turn sum plus last turn carry
-            if (sum >= 10) rst.arr[-(i - al + 1)] = 0, carry = 1;
-            else rst.arr[-(i - al + 1)] = sum, carry = 0;
+            if (sum >= 10) rst.arr[i] = 0, carry = 1;
+            else rst.arr[i] = sum, carry = 0;
         }
-        if(carry > 0) rst.arr[0] = 1;
+        if(carry > 0) rst.arr[bl] = 1;
+        rst.reverse(&rst);
         return rst;
     }
 };
