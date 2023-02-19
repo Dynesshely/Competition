@@ -2,15 +2,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 int N, M, P, C;
-struct Node{
+struct Node {
     list<Node> sons;
 };
-int main(){
+int main() {
     scanf("%d %d", &N, &M);
     Node head;
-    for(int i = 1; i <= N + M - 1; ++ i){
+    for (int i = 1; i <= N + M - 1; ++i) {
         scanf("%d %d", &P, &C);
-
     }
     return 0;
 }

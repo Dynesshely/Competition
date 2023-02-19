@@ -3,15 +3,18 @@ using namespace std;
 
 int t, n, r;
 double pr[10005][1000];
-int main(){
+int main() {
     scanf("%d", &t);
-    for(int i = 0; i <= 10000; ++ i) pr[i] = sqrt(i);
-    for(int i = 0; i < t; ++ i){
+    for (int i = 0; i <= 10000; ++i)
+        pr[i] = sqrt(i);
+    for (int i = 0; i < t; ++i) {
         scanf("%d%d", &n, &r);
         long long sum = 0;
-        for(int d = 1; d <= n; ++ d){
-            if(((long long)(d * pr[r])) % 2 == 0) ++ sum;
-            else -- sum;
+        for (int d = 1; d <= n; ++d) {
+            if (((long long)(d * pr[r])) % 2 == 0)
+                ++sum;
+            else
+                --sum;
         }
         printf("%lld\n", sum);
     }

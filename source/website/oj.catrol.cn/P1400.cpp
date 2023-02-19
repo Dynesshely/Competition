@@ -37,7 +37,8 @@ inline void input() {
     char o;
     for (int i = 1, arg; i <= T; ++i) {
         std::cin >> o;
-        if (o == 'h' || o == 'v') cmds.push({o, 0});
+        if (o == 'h' || o == 'v')
+            cmds.push({o, 0});
         else {
             scanf("%d", &arg);
             cmds.push({o, arg});
@@ -45,8 +46,7 @@ inline void input() {
     }
 }
 
-template<typename T>
-inline void swap(T *x, T *y) {
+template <typename T> inline void swap(T *x, T *y) {
     T tmp = *x;
     *x = *y;
     *y = tmp;
@@ -71,17 +71,17 @@ inline void rotate() {
             a[i][j] = tmp_mat[i][j];
 
     for (int i = 0; i < cur_h; ++i) {
-        delete[]tmp_mat[i];
+        delete[] tmp_mat[i];
         tmp_mat[i] = nullptr;
     }
-    delete[]tmp_mat;
+    delete[] tmp_mat;
     tmp_mat = nullptr;
 }
 
 inline void rotate(int *angle) {
-    int times = *angle >= 0 ? (*angle % 360) / 90 : (
-            *angle <= -360 ? (360 + -1 * (std::abs(*angle) % 360)) / 90 : (*angle + 360) / 90
-    );
+    int times = *angle >= 0
+                    ? (*angle % 360) / 90
+                    : (*angle <= -360 ? (360 + -1 * (std::abs(*angle) % 360)) / 90 : (*angle + 360) / 90);
 
     while (times--)
         rotate();
@@ -92,21 +92,23 @@ inline void process() {
     int angle = 0, size = cmds.size();
     for (int i = 0; i < size; ++i) {
         std::pair<char, int> cur = cmds.front();
-        if (cur.first == 'r') angle += cur.second;
-        else if (cur.first == 'l') angle -= cur.second;
+        if (cur.first == 'r')
+            angle += cur.second;
+        else if (cur.first == 'l')
+            angle -= cur.second;
         else {
             rotate(&angle);
             switch (cur.first) {
-                case 'h':
-                    for (int l = 0; l < cur_h; ++l)
-                        for (int j = 0, je = cur_w - 1; j < cur_w / 2; ++j, --je)
-                            swap(&a[l][j], &a[l][je]);
-                    break;
-                case 'v':
-                    for (int j = 0; j < cur_w; ++j)
-                        for (int l = 0, le = cur_h - 1; l < cur_h / 2; ++l, --le)
-                            swap(&a[l][j], &a[le][j]);
-                    break;
+            case 'h':
+                for (int l = 0; l < cur_h; ++l)
+                    for (int j = 0, je = cur_w - 1; j < cur_w / 2; ++j, --je)
+                        swap(&a[l][j], &a[l][je]);
+                break;
+            case 'v':
+                for (int j = 0; j < cur_w; ++j)
+                    for (int l = 0, le = cur_h - 1; l < cur_h / 2; ++l, --le)
+                        swap(&a[l][j], &a[le][j]);
+                break;
             }
         }
         cmds.pop();

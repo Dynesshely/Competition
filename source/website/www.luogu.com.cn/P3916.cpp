@@ -8,7 +8,7 @@
 // vector<int> gra[MaxN];
 // int vis[MaxN];
 
-// void dfs(int now, int head) {	
+// void dfs(int now, int head) {
 //     vis[now] = head;
 
 //     for (int k = 0; k < gra[now].size(); k++) {
@@ -89,37 +89,37 @@
 #include <bits/stdc++.h>
 #define MAXM 100
 using namespace std;
-struct point{
+struct point {
     int id, sonsum = 0, sons[MAXM];
 };
 int via[100001];
-void dfs(point p, point points[], int mm){
+void dfs(point p, point points[], int mm) {
     via[p.id] = mm;
-    for(int i = 0; i < p.sonsum; ++ i){
-        if(!via[points[p.sons[i]].id]){
+    for (int i = 0; i < p.sonsum; ++i) {
+        if (!via[points[p.sons[i]].id]) {
             dfs(points[p.sons[i]], points, mm);
         }
     }
 }
-int main(){
+int main() {
     int n, m;
     scanf("%d %d", &n, &m);
     memset(via, 0, sizeof(via));
     point points[n + 1];
-    for(int i = 1; i <= n; ++ i){
+    for (int i = 1; i <= n; ++i) {
         points[i].id = i;
     }
-    for(int i = 1; i <= m; ++ i){
+    for (int i = 1; i <= m; ++i) {
         int start, end;
         scanf("%d %d", &start, &end);
         points[end].sons[points[end].sonsum++] = start;
     }
-    for(int i = n; i >= 1; -- i){
-        if(!via[points[i].id]){
+    for (int i = n; i >= 1; --i) {
+        if (!via[points[i].id]) {
             dfs(points[i], points, points[i].id);
         }
     }
-    for(int i = 1; i <= n; ++ i){
+    for (int i = 1; i <= n; ++i) {
         printf("%d ", via[points[i].id]);
     }
     printf("\n");
@@ -128,7 +128,7 @@ int main(){
 
 #pragma endregion
 
-#pragma region MLE-版本
+#pragma region MLE -版本
 
 // #include <bits/stdc++.h>
 // #define MAXM 10

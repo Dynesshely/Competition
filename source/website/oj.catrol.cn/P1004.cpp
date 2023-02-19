@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
+int main() {
     int i, d;
     scanf("%d %d", &i, &d);
-    if(i == 0){
+    if (i == 0) {
         printf("Nice!\n");
         return 0;
     }

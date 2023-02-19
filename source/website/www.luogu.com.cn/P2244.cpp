@@ -2,68 +2,84 @@
 using namespace std;
 
 #define max(a, b) ((a) > (b) ? (a) : (b))
-int read(){
-    int rt = 0, fl = 1; char ch = getchar();
-    while(ch < '0' || ch > '9'){ if(ch == '-')fl = -1; ch = getchar(); }
-    while(ch >= '0' && ch <= '9'){ rt = rt * 10 + ch - '0'; ch = getchar(); }
+int read() {
+    int rt = 0, fl = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9') {
+        if (ch == '-')
+            fl = -1;
+        ch = getchar();
+    }
+    while (ch >= '0' && ch <= '9') {
+        rt = rt * 10 + ch - '0';
+        ch = getchar();
+    }
     return rt * fl;
 }
 const int maxn = 2000000;
-int h[maxn], nx[maxn], to[maxn], cnt, chudu[maxn], pr[maxn], af[maxn],
-    cnt_winner, n, q[maxn], l, r;
+int h[maxn], nx[maxn], to[maxn], cnt, chudu[maxn], pr[maxn], af[maxn], cnt_winner, n, q[maxn], l, r;
 bool isWinner[maxn];
-void add_edge(int u,int v){
-    cnt ++; to[cnt] = v; nx[cnt] = h[u]; h[u] = cnt;
+void add_edge(int u, int v) {
+    cnt++;
+    to[cnt] = v;
+    nx[cnt] = h[u];
+    h[u] = cnt;
 }
-void del(int nd){
-    af[pr[nd]] = af[nd]; pr[af[nd]] = pr[nd];
+void del(int nd) {
+    af[pr[nd]] = af[nd];
+    pr[af[nd]] = pr[nd];
 }
-void bfs(){
-    while(l < r){
-        int t = q[l ++ ];
+void bfs() {
+    while (l < r) {
+        int t = q[l++];
         t = h[t];
         int x = pr[n + 1];
-        while(x != 0){
-            while(x < to[t]  && t != 0){
+        while (x != 0) {
+            while (x < to[t] && t != 0) {
                 t = nx[t];
             }
-            if(x != to[t]){
+            if (x != to[t]) {
                 isWinner[x] = 1;
                 del(x);
-                cnt_winner ++ ;
-                q[r ++ ] = x;
+                cnt_winner++;
+                q[r++] = x;
             }
             x = pr[x];
         }
     }
 }
-int main(){
+int main() {
     int max_chudu = 0;
     n = read();
-    for(int i = 1;i <= n + 1;i ++ ){
-        pr[i] = i - 1; af[i] = i + 1;
+    for (int i = 1; i <= n + 1; i++) {
+        pr[i] = i - 1;
+        af[i] = i + 1;
     }
-    for(int i = 1;i <= n;i ++ ){
+    for (int i = 1; i <= n; i++) {
         chudu[i] = read();
-        max_chudu = max(max_chudu,chudu[i]);
-        for(int j = chudu[i];j > 0;j -- ){
+        max_chudu = max(max_chudu, chudu[i]);
+        for (int j = chudu[i]; j > 0; j--) {
             int a = read();
-            add_edge(i,a);
+            add_edge(i, a);
         }
     }
-    for(int i = 1;i <= n;i ++ ){
-        if(chudu[i] == max_chudu){
-            q[r ++ ] = i,isWinner[i] = 1; del(i);cnt_winner ++ ;
+    for (int i = 1; i <= n; i++) {
+        if (chudu[i] == max_chudu) {
+            q[r++] = i, isWinner[i] = 1;
+            del(i);
+            cnt_winner++;
         }
     }
     bfs();
-    printf("%d",cnt_winner);
-    for(int i = 1;i <= n;i ++ ) if(isWinner[i]) printf(" %d",i);
+    printf("%d", cnt_winner);
+    for (int i = 1; i <= n; i++)
+        if (isWinner[i])
+            printf(" %d", i);
     printf("\n");
     return 0;
 }
 
-/* 
+/*
 const int maxn  =  1000005;
 int que[maxn  +  5], next[maxn], prev[maxn], pre[maxn], last[maxn], other[maxn], cd[maxn], l, n, m, cnt;
 bool flag[maxn], ans[maxn];
@@ -114,7 +130,7 @@ int main(){
     printf("\n");
     return 0;
 }
-*/ 
+*/
 
 /*  又双叒叕 没过
 const int MAXN  =  1000001;
@@ -181,7 +197,7 @@ int main(){
     printf("\n");
     return 0;
 }
-*/ 
+*/
 
 /*  再次失败
 const int MAXN  =  1000001;
@@ -240,13 +256,13 @@ int main(){
     printf("%ld ", ans_queue.size());
     return 0;
 }
-*/ 
+*/
 
-/* 
+/*
     1. 入度为 0 的点直接加入答案
     2. 入度不为 0 的且出度不为 0 的点直接加入答案
     3. 出度为 0 的点搜索周围
-*/ 
+*/
 
 /*  做法 1  -  >  failed
 const int maxn  =  1000001;
@@ -308,7 +324,7 @@ bool dfs(int src){  //  src  -  >  要搜索的点  -  >  搜索周围两圈
 //                      if(eaten) break;
 //                      int ssnum  =  nodes[nodes[src].father[k]].sons.size();
 //                      for(int u  =  0; u  <  ssnum;  ++  u){  //  搜第一圈的点的子点
-//                          if(nodes[nodes[src].father[k]].sons[u]  == 
+//                          if(nodes[nodes[src].father[k]].sons[u]  ==
 //                              nodes[nodes[src].father[i]].father[j]){
 //                              pass  =  false;
 //                              eaten  =  true;
@@ -367,4 +383,4 @@ int main(){
     return 0;
 }
 
-*/ 
+*/
