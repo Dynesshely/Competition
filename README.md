@@ -28,12 +28,12 @@ _  ___/  __ \_  __ `__ \__  __ \  _ \  __/_  /_  __/_  /_  __ \_  __ \
 ~~尽管完全同步这很难~~
 
 ## 🍛 结构
-1. - competitions: 各大赛事の题目
-2. - districts: 地区赛事の题目
-3. - documents: 一些文档
-4. - experience: 一些经验
-5. - oj: 各大 OJ の题目
-6. - other: 其它
+- documents: 文档, 题解, 该目录与 source 目录结构对应, 一题一题解
+- experience: 一些经验总结
+- other: 其它
+- source: 源代码目录, 该目录与 documents 目录结构对应
+- template: 模板目录
+- tricks: 一些小技巧
 
 # 📃 English Docs
 ## 😀 Explain
@@ -44,9 +44,9 @@ To record my oi way && experience.
 ~~Although it's tough to continue~~
 
 ## 🍛 Construct
-1. - competitions: from major events
-2. - districts: from regional games
-3. - documents: some documents
-4. - experience: some experience
-5. - oj: from oj websites
-6. - other: other
+- documents: docs for problems, the construct is same as source, one p one doc
+- experience: some experience
+- other: other
+- source: source codes, the construct is same as documents
+- template: templates
+- tricks: some tricks
