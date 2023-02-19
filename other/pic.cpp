@@ -1,4 +1,5 @@
 #pragma region 老师的 - 邻接表版本
+
 // 老师的 - 邻接表版本
 // #include <bits/stdc++.h>
 // using namespace std;
@@ -33,43 +34,49 @@
 //     }
 //     return 0;
 // }
+
 #pragma endregion
 
 #pragma region 自写 - 模拟版本
+
 自写 - 模拟版本
+
 #include <bits/stdc++.h>
-using namespace std;
-struct edge{
+
+    using namespace std;
+
+struct edge {
     int start;
     int end;
     int width;
 };
-struct point{
+struct point {
     int sons[100];
     int width[100];
     int count = 0;
 };
-int main(){
+int main() {
     int num_edges;
     scanf("%d", &num_edges);
     edge edges[num_edges];
     point points[6];
-    for(int i = 0; i < num_edges; ++ i){
+    for (int i = 0; i < num_edges; ++i) {
         scanf("%d %d %d", &edges[i].start, &edges[i].end, &edges[i].width);
         points[edges[i].start].sons[points[edges[i].start].count] = edges[i].end;
         points[edges[i].start].width[points[edges[i].start].count] = edges[i].width;
-        points[edges[i].start].count ++;
+        points[edges[i].start].count++;
         // 无向图（此题为有向图）
         // points[edges[i].end].sons[points[edges[i].end].count] = edges[i].start;
         // points[edges[i].end].width[points[edges[i].end].count] = edges[i].width;
         // points[edges[i].end].count ++;
     }
-    for(int i = 1; i <= 5; ++ i){
-        for(int j = points[i].count - 1; j >= 0; -- j){
+    for (int i = 1; i <= 5; ++i) {
+        for (int j = points[i].count - 1; j >= 0; --j) {
             printf("<%d,%d>(%d) ", i, points[i].sons[j], points[i].width[j]);
         }
         printf("\n");
     }
     return 0;
 }
+
 #pragma endregion
