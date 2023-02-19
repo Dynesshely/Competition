@@ -14,7 +14,10 @@ inline int summid(int l, int r) { return (l + r) >> 1; }
 inline void build(int x, int l, int r) {
     seg *cur = &segement[x];
     (*cur).l = l, (*cur).r = r, (*cur).sum = 0, (*cur).tag = 0;
-    if (l == r) { (*cur).sum = arr[l]; return; }
+    if (l == r) {
+        (*cur).sum = arr[l];
+        return;
+    }
     int mid = summid(l, r);
     (*cur).ls = x << 1, (*cur).rs = (x << 1) | 1;
     build((*cur).ls, l, mid);
@@ -39,38 +42,53 @@ inline void pushdown(int x) {
 inline void modify(int x, int l, int r, int v) {
     seg *cur = &segement[x];
     pushdown(x); // 区间修改
-    if ((*cur).l == l && (*cur).r == r) { pushup(x, v); return; }
+    if ((*cur).l == l && (*cur).r == r) {
+        pushup(x, v);
+        return;
+    }
     int mid = summid((*cur).l, (*cur).r);
-    if (l > mid) modify((*cur).rs, l, r, v);
-    else if (r <= mid) modify((*cur).ls, l, r, v);
-    else modify((*cur).ls, l, mid, v), modify((*cur).rs, mid + 1, r, v);
+    if (l > mid)
+        modify((*cur).rs, l, r, v);
+    else if (r <= mid)
+        modify((*cur).ls, l, r, v);
+    else
+        modify((*cur).ls, l, mid, v), modify((*cur).rs, mid + 1, r, v);
 }
 
 // 线段树 -> 单点修改
 inline void modify(int x, int p, int v) {
     seg *cur = &segement[x];
-    if ((*cur).l == (*cur).r) { (*cur).sum += v; return; }
-    if (p <= summid((*cur).l, (*cur).r)) modify((*cur).ls, p, v);
-    else modify((*cur).rs, p, v);
+    if ((*cur).l == (*cur).r) {
+        (*cur).sum += v;
+        return;
+    }
+    if (p <= summid((*cur).l, (*cur).r))
+        modify((*cur).ls, p, v);
+    else
+        modify((*cur).rs, p, v);
     (*cur).sum = segement[(*cur).ls].sum + segement[(*cur).rs].sum;
 }
 
 inline int query(int x, int l, int r) {
     seg *cur = &segement[x];
     pushdown(x); // 区间修改
-    if ((*cur).l == l && (*cur).r == r) return (*cur).sum;
+    if ((*cur).l == l && (*cur).r == r)
+        return (*cur).sum;
     int mid = summid((*cur).l, (*cur).r);
-    if (l > mid) return query((*cur).rs, l, r);
-    else if (r <= mid) return query((*cur).ls, l, r);
-    else return query((*cur).ls, l, mid) + query((*cur).rs, mid + 1, r);
+    if (l > mid)
+        return query((*cur).rs, l, r);
+    else if (r <= mid)
+        return query((*cur).ls, l, r);
+    else
+        return query((*cur).ls, l, mid) + query((*cur).rs, mid + 1, r);
 }
 
 int main() {
     scanf("%d %d", &n, &os);
-    for (int i = 1; i <= n; i ++)
+    for (int i = 1; i <= n; i++)
         scanf("%d", &arr[i]);
     build(1, 1, n);
-    while (os --) {
+    while (os--) {
         char op;
         cin >> op;
         if (op == 'q') {

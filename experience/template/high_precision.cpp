@@ -1,36 +1,49 @@
 #include "bits/stdc++.h"
 
-struct num{
+struct num {
     int len, *arr;
 
-    num build(int l){
-        num n; n.len = l;
+    num build(int l) {
+        num n;
+        n.len = l;
         int *a = new int[l];
-        for(int i = 0; i < l; i++) a[i] = 0;
+        for (int i = 0; i < l; i++)
+            a[i] = 0;
         n.arr = a;
         return n;
     }
 
-    num build(int l, int *a){
-        num n; n.len = l, n.arr = a;
+    num build(int l, int *a) {
+        num n;
+        n.len = l, n.arr = a;
         return n;
     }
 
-    void reverse(num *n){
-        for(int i = 0, j = n->len - 1, t; i < j; ++i, --j){
+    void reverse(num *n) {
+        for (int i = 0, j = n->len - 1, t; i < j; ++i, --j) {
             t = n->arr[i];
             n->arr[i] = n->arr[j];
             n->arr[j] = t;
         }
     }
-    void align2right(num *n){ for(int i = n->len - 1; i > 0; --i) n->arr[i] = n->arr[i - 1]; n->arr[0] = 0; }
-    void print(num *n){ for(int i = 0; i < n->len; ++i) putchar(n->arr[i] + '0'); }
-    void println(num *n){ n->print(n); putchar('\n'); }
+    void align2right(num *n) {
+        for (int i = n->len - 1; i > 0; --i)
+            n->arr[i] = n->arr[i - 1];
+        n->arr[0] = 0;
+    }
+    void print(num *n) {
+        for (int i = 0; i < n->len; ++i)
+            putchar(n->arr[i] + '0');
+    }
+    void println(num *n) {
+        n->print(n);
+        putchar('\n');
+    }
 
-    num operator +(num a){
+    num operator+(num a) {
         int length = len > a.len ? len : a.len, carry = 0;
         num rst = build(length + 1);
-        for(int i = len - 1, j = a.len - 1, p = length - 1; i >= 0 || j >= 0; --i, --j, --p){
+        for (int i = len - 1, j = a.len - 1, p = length - 1; i >= 0 || j >= 0; --i, --j, --p) {
             rst.arr[p] = (i >= 0 ? arr[i] : 0) + (j >= 0 ? a.arr[j] : 0) + carry;
             carry = rst.arr[p] / 10;
             rst.arr[p] %= 10;
@@ -39,12 +52,12 @@ struct num{
         return rst;
     }
 
-    num operator *(num a){
+    num operator*(num a) {
         int length = len + a.len, carry = 0;
         num rst = build(length);
-        for(int i = len - 1, p = length - 1; i >= 0; --i, --p){
+        for (int i = len - 1, p = length - 1; i >= 0; --i, --p) {
             carry = 0;
-            for(int j = a.len - 1, q = p; j >= 0; --j, --q){
+            for (int j = a.len - 1, q = p; j >= 0; --j, --q) {
                 rst.arr[q] += arr[i] * a.arr[j] + carry;
                 carry = rst.arr[q] / 10;
                 rst.arr[q] %= 10;
@@ -55,7 +68,7 @@ struct num{
     }
 };
 
-void testAdd(num *a, num *b){
+void testAdd(num *a, num *b) {
     a->println(a);
     b->println(b);
     num c = *a + *b;
@@ -63,7 +76,7 @@ void testAdd(num *a, num *b){
     putchar('\n');
 }
 
-void testMul(num *a, num *b){
+void testMul(num *a, num *b) {
     a->println(a);
     b->println(b);
     num c = *a * *b;
@@ -71,26 +84,19 @@ void testMul(num *a, num *b){
     putchar('\n');
 }
 
-int main(int argc, char* argv[]){
+int main(int argc, char *argv[]) {
     int num1[] = {1, 2, 3, 4, 5}, num2[] = {5, 4, 3, 2, 1};
     int num3[] = {1, 2, 3, 4}, num4[] = {4, 3, 2, 1};
     int num5[] = {1, 2, 3, 4, 5}, num6[] = {5, 4, 3, 2};
     int num7[] = {1, 2, 3, 4}, num8[] = {5, 4, 3, 2, 1};
     int num9[] = {4, 8, 2, 6, 7}, num10[] = {4, 6, 8, 1, 1, 9, 9};
-    int num11[] = {
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9
-    }, num12[] = {
-        9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1,
-        9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1,
-        9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1,
-        9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1,
-        9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1
-    };
+    int num11[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                   1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                   1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                   1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+        num12[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7,
+                   6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4,
+                   3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
     num n1 = n1.build(5, num1), n2 = n2.build(5, num2);
     num n3 = n3.build(4, num3), n4 = n4.build(4, num4);
@@ -115,4 +121,3 @@ int main(int argc, char* argv[]){
 
     return 0;
 }
-
