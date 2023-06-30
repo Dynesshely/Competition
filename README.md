@@ -9,44 +9,19 @@ _  ___/  __ \_  __ `__ \__  __ \  _ \  __/_  /_  __/_  /_  __ \_  __ \
 </pre>
 </p>
 
-<p align="center">
-  🌐 <a href="#-中文文档">中文</a> | <a href="#-english-docs">English</a><br>
-</p>
+# About
 
-<p align="center">
-  <a href=""><img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"></img></a>
-  <a href=""><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"></img></a>
-  <a href=""><img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0"></img></a>
-</p>
+This repo records the problems I encountered during the information competition, including the corresponding problem-solving ideas.
 
-# 📃 中文文档
-## 😀 说明
-记录我的 OI 路还有一些经验
+# Construct
 
-## 💧 同步
-~~所有题目都会同步到 <a href="https://oi.blog.catrol.cn" target="_blank">oi.blog.catrol.cn</a> 上<br>~~
-~~尽管完全同步这很难~~
+- `documents`: docs.
+- `source`: source code for problems
+  - `competitions`: problems in actual competitions, such as CSP, NOIP, NOI, USACO, COCI, ..., etc.
+  - `districts`: ---
+  - `website`: problems in oj sites (Online Judge).
+- `templates`: template for some problems.
 
-## 🍛 结构
-- documents: 文档, 题解, 该目录与 source 目录结构对应, 一题一题解
-- experience: 一些经验总结
-- other: 其它
-- source: 源代码目录, 该目录与 documents 目录结构对应
-- template: 模板目录
-- tricks: 一些小技巧
+# Build
 
-# 📃 English Docs
-## 😀 Explain
-To record my oi way && experience.
-
-## 💧 Async
-~~All p will be asynced into <a href="https://oi.blog.catrol.cn" target="_blank">oi.blog.catrol.cn</a><br>~~
-~~Although it's tough to continue~~
-
-## 🍛 Construct
-- documents: docs for problems, the construct is same as source, one p one doc
-- experience: some experience
-- other: other
-- source: source codes, the construct is same as documents
-- template: templates
-- tricks: some tricks
+For every .cpp file, you can just run `g++` command.
