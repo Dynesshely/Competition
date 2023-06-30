@@ -2,8 +2,10 @@
 
 # 现在时间
 nowTime=""
+
 # 带颜色格式的时间 echo 时 带上 -e 选项
 colorTime=""
+
 # 文件名时间
 fileTime=""
 
@@ -17,13 +19,21 @@ gtime() {
 # 编译全部 cpp 文件到 sh 脚本
 
 gtime
-echo -e "$colorTime \033[34m编译开始\033[0m"
+
+mkdir ./com_log/
+mkdir ./compiled/
+
 logname=$fileTime_Compile.log # 日志文件名
 touch ./com_log/$logname      # 创建日志文件
+
 startTime="$nowTime"          # 编译开始时间
+
 fileNum=0                     # 文件数
 cppNum=0                      # c++ 文件数
 cNum=0                        # c 文件数
+
+echo -e "$colorTime \033[34m编译开始\033[0m"
+
 for file in $(ls); do
 	if [ -f "$file" ]; then
 		if [ "${file##*.}"x = "cpp"x ]; then
@@ -52,12 +62,17 @@ for file in $(ls); do
 		fi
 	fi
 done
+
 gtime
-echo -e "$colorTime 编译日志已记录，位置在：./com_log/$logname"
+
 endTime="$nowTime"
+
 sys_date1=$(date -d "$startTime" +%s)
 sys_date2=$(date -d "$endTime" +%s)
+
 deltaTime=$(expr $sys_date2 - $sys_date1)
-echo -e "$colorTime 编译总用时：\033[35m$deltaTime\033[0m 秒, 编译项目：\033[35m$fileNum\033[0m 个"
-echo -e "$colorTime 编译 C++ 项目 : \033[37;45m$cppNum\033[0m 个 ; C 项目 : \033[37;45m$cNum\033[0m 个 ;"
+
+echo -e "$colorTime 编译日志已记录，位置在：./com_log/$logname"
+echo -e "$colorTime 编译总用时 \033[35m$deltaTime\033[0m 秒, 共编译 \033[35m$fileNum\033[0m 个项目"
+echo -e "$colorTime 编译 C++ 项目 \033[35m$cppNum\033[0m 个, C 项目 \033[35m$cNum\033[0m 个 ;"
 echo -e "$colorTime \033[31m编译结束，程序已退出\033[0m"
