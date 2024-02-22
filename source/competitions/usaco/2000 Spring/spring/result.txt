@@ -1,0 +1,190 @@
+Rankings  
+
+--------------------------------------------------------------------------------
+  
+ Senior Division
+GR Age Country  Name             Total
+13 18 POL Czajka, Tomasz          1000
+11 16 LTU Pasukonis, Jurgis        938
+12 17 CHN Yi, Guo                  938
+13 18 USA Arthur, David            904
+11 16 USA Barton, Reid             876
+11 17 ROM Alexandru, Catalin       852
+12 18 ROM Sauciuc, Raluca          847
+11 16 LAT Gorbovitskiy, Igor       835
+10 16 CHN Luo, Ji                  832
+11 17 CHN Qi, Yingyi               828
+12 17 RSA Merry, Bruce             825
+10 16 BLR Hanchar, Yauhen          810
+10 15 USA Novakovski, Vladimir     809
+12 17 USA Danaher, John            809
+12 17 USA Liang, Percy             809
+12 17 USA Loh, Po-Shen             809
+12 18 BUL Haralambiev, Kristiya    809
+99 18 NLD Kuipers, Jan             809
+12 19 CHN Xu, Jing                 805
+10 16 CHN Gao, Hanrui              802
+11 16 GRE Tsoukalidis, Ioannis     782
+12 16 SVK Dvorsky, Marian          774
+12 18 BUL Kapralov, Kaloyan        774
+12 16 LTU Luksys, Gediminas        761
+12 18 VIE HIEU, NGUYEN TRUNG       753
+10 15 USA Sivek, Steven            732
+10 16 SVK Tvarozek, Jozef          732
+12 18 ROM Leu, Ioan Tudor          732
+11 17 ROM Patrascu, Mihai          721
+12 17 IRI Tazari, Siamak           721
+12 18 BUL Rusev, George            718
+12 18 VIE Duy, Huynh Tran Quang    718
+10 16 EST Pettai, Martin           698
+12 18 YUG Savic, Marko             695
+12 17 YUG Mihajlovic, Nikola       679
+11 17 BLR Danchanka, Aliaksei      675
+99 18 NED Vogelzang, Mathijs       666
+11 16 USA Lu, Yuran                660
+11 16 USA Huang, Gary              647
+12 17 USA Lee, George              626
+13 17 CAN Pritchard, David         588
+11 17 BLR Shalagin, Dmitry         578
+12 17 LAT Midrijanis, Gatis        558
+10 15 USA Sivek, Gary              550
+11 16 USA Rabiej, Dominik          550
+11 18 BUL Chuchulanov, Benjamin    538
+11 16 KGZ Chubakov, Tilek          522
+12 17 BG  Arabadjiyski, Kiril      520
+12 17 USA Cheng, David             504
+12 17 USA Lindamood, Jack          493
+10 16 SIN Moh, Christopher         488
+10 14 CAN Zhang, David             482
+12 17 LAT Hamidullin, Konstanti    475
+11 16 USA Nir, Oaz                 460
+10 16 USA Cohen, Jeff              451
+11 17 ROM Andreica, Mugurel Ion    450
+12 18 POL Zytka, Jakub             432
+12 18 USA Mahan, William           431
+12 18 USA Zaharopol, Daniel        429
+10 16 USA Burnim, Jacob            422
+12 17 USA Ruderman, Jesse          422
+12 18 LAT Barbarin, Dmitry L.      418
+11 17 BLR Baranau, Aliaksandr      406
+12 17 LAT Shantar, Alexander       395
+12 17 MOL Bejenari, Andrei         389
+10 16 LAT matisons, kristaps       386
+11 17 BLR Koranchuk, Andrei        382
+11 16 ROM Drumea, George           380
+10 15 BLR Poleshuk, Oleg           375
+12 18 SIN Tan, Fabian              357
+ 9 15 SLO List, Ivo                354
+12 17 KOR Lee, Junhee              353
+12 18 ROM Popa, Alexandru          348
+10 16 GEO Tsiskaridze, Archil      340
+11 17 LAT Redjko, Vladimir         327
+10 16 BLR Volgin, Kirill           323
+12 16 INA Kurnia, Ilham Winata     321
+12 16 CHN Wu, Shuo                 316
+11 16 USA Widland, Tom             310
+10 15 USA Price, Gregory           305
+12 17 USA Do, Chuong               301
+11 16 USA Bomash, Illya            296
+11 17 POL Sadziak, Slawomir        295
+12 18 USA Price, Kevin             289
+11 15 INA Kartiwa, Johan Mustik    286
+12 17 GRE Zadorozhny, Tim          276
+11 17 POL Noworyta, Filip          275
+11 16 LAT Shved, Konstantin        266
+13 18 MKD Kolovski, Vlatko         256
+12 17 COL Congote, John            255
+ 9 15 BLR Ezhov, Sergey            253
+ 9 14 CHN Xiao, Hang               243
+10 16 USA Shenoy, Nikhil           243
+11 17 BLR Vinnikov, Maksim         243
+11 17 USA Mirkin, Ilia             238
+12 17 USA Kinnersley, Bill         235
+10 15 USA Tan, Meng                227
+ 9 14 CHN Hang, Xiao               223
+12 17 USA Tsang, Brian             222
+ 9 14 USA Arnold, Jeff             221
+11 17 USA Koch, Chad               217
+11 17 BLR Gorbachev, Sergey        210
+10 15 USA Caffrey, Kevin           205
+13 18 DEU Battre, Dominic          199
+12 17 USA Hertz, Joia              190
+ 8 14 BLR Kostukovets, Maxim       188
+11 17 BLR Eremin, Vladimir         185
+12 14 COL Henao, Duvan             179
+12 17 COL Garcia, Raul             179
+12 17 CHN Guo, Jam                 162
+10 16 BLR Legchilkin, Vitaly       161
+12 17 USA Gondarenko, Alex         154
+13 18 CRO Zivic, Mario             147
+10 17 GER Zumbiehl, Florian        126
+12 17 USA Kirlin, Phil             125
+ 8 14 BLR Lewchunow, Anton         111
+ 9 14 USA Zhou, Yoyo               111
+12 17 USA Connor, Michael          102
+10 15 USA Chen, Kevin              101
+10 16 USA Dezube, Josh              96
+11 16 USA Gershaft, Alex            95
+ 9 15 BLR Julid, Andrew             88
+11 17 BLR Trocenko, Sergey          78
+11 17 BLR Tolkachev, Anton          74
+12 18 USA O'Rorke, John             64
+ 9 13 USA Zhang, Yan                63
+11 16 LAT Bebris, Ervins            62
+11 17 LAT Rebrov, Maxim             58
+11 17 USA Tabaka, Greg              58
+ 9 14 CHN Wentao, Han               52
+11 15 USA Blackman, David           46
+11 16 CAN Mika, Marcin              38
+ 9 15 BLR Bodunov, Evgen            34
+ 9 15 USA Chan, Jing                33
+10 15 USA Halperin, Daniel          33
+10 18 USA Rudwick, Allan            33
+11 16 LAT Afanasyev, Alexander      33
+ 7 13 BLR Korzhik, Ruslan           32
+11 18 BUL Kostov, Georgi            22
+12 17 USA Dave, Nirav               19
+99 18 POR Santos, Jose              15
+11 16 USA Fridman, Alex             14
+11 17 USA Martin, Jonathan          14
+10 15 USA Ragan, Kyle               11
+12 17 USA Mao, Albert               11
+12 18 CRO Snajder, Boris             6
+ 9 14 USA Xue, Alex                  0
+10 15 USA Craciunescu, Cosmin        0
+10 15 USA Klein, Jeff                0
+11 17 USA Olson, Chris               0
+
+--------------------------------------------------------------------------------
+
+Junior Division
+ GR Age Country  Name            Total
+11 17 USA Carroll, Gabriel       726
+ 9 14 LAT Zogla, Gatis           608
+12 17 CAN Ajmal, Mohammed        491
+10 15 RUS Titov, Vladislav       474
+10 16 LAT matisons, kristaps     444
+12 17 CRO vidos, nenad           308
+11 16 USA Bassik, Oren           288
+ 8 13 USA Danaher, Evan          285
+11 16 USA Syu, Eric              266
+10 14 UKR Trotsenko, Bohdan      255
+11 17 LAT Krastins, Austris      255
+12 17 CRO Srdanovich, Damir      242
+11 16 USA Gejji, Richard         230
+10 15 LAT Matrosov, Anton        224
+11 17 CHN Chen, XiaoYuan         191
+10 15 INA Suryawijaya, Sony Rad  145
+12 18 USA Kinde, Logan           121
+11 17 ROM Vlad, Chica Alexandru  104
+10 16 LAT Strazdins, Girts        69
+11 17 USA Mitropolitsky, Stefan   64
+12 17 USA Gleyzer, Artem          56
+10 15 USA Chang, Guhn             45
+12 18 USA Chan, Patrick           45
+11 17 USA Wong, Abe               28
+11 16 USA Dachman-Soled, Joshua   26
+12 17 USA Gadda, Matt             26
+11 16 USA Chernosky, Aaron        23
+11 17 USA Giuffre, Ryan           16
+12 17 USA Gerard, Ryan             0
