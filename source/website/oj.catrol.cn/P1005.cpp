@@ -12,9 +12,7 @@ void input() {
     }
 }
 
-void process() {
-    sort(a, a + m);
-}
+void process() { sort(a, a + m); }
 
 void output() {
     printf("%d\n", a[m - k]);

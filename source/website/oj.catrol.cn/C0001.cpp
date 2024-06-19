@@ -3,7 +3,7 @@
 
 constexpr unsigned int XOR_KEY = 0x185;
 
-unsigned int calc_name(const std::string& name, unsigned int xor_key) {
+unsigned int calc_name(const std::string &name, unsigned int xor_key) {
     unsigned int eax = 0x0;
     unsigned int edx = 0x0;
 

@@ -79,9 +79,7 @@ inline void rotate() {
 }
 
 inline void rotate(int *angle) {
-    int times = *angle >= 0
-                    ? (*angle % 360) / 90
-                    : (*angle <= -360 ? (360 + -1 * (std::abs(*angle) % 360)) / 90 : (*angle + 360) / 90);
+    int times = *angle >= 0 ? (*angle % 360) / 90 : (*angle <= -360 ? (360 + -1 * (std::abs(*angle) % 360)) / 90 : (*angle + 360) / 90);
 
     while (times--)
         rotate();

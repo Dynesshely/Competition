@@ -17,35 +17,44 @@ using namespace std;
 */
 
 long long T, l, r, k;
-int main(){
+int main() {
     freopen("output.in", "r", stdin);
     freopen("output.out", "w", stdout);
     scanf("%lld", &T);
-    for(long long i = 0; i < T; ++ i){
+    for (long long i = 0; i < T; ++i) {
         scanf("%lld %lld %lld", &l, &r, &k);
-        if(k > r){
-            if(l == 1) printf("1 ");
-            else printf("None.\n");
-        }else if(k > l){
-            if(l <= 1) printf("1 ");
-            for(long long j = 0, src = k; true; ++ j){
-                if(k > r || k < 0) break;
-                else{
+        if (k > r) {
+            if (l == 1)
+                printf("1 ");
+            else
+                printf("None.\n");
+        } else if (k > l) {
+            if (l <= 1)
+                printf("1 ");
+            for (long long j = 0, src = k; true; ++j) {
+                if (k > r || k < 0)
+                    break;
+                else {
                     printf("%lld ", k);
                     k *= src;
                 }
             }
             printf("\n");
-        }else if(k == 0){
-            if(l <= 0 && r >= 0)
-                if(r >= 1) printf("0 1\n");
-                else printf("0\n");
-        }else{
-            if(l == 1) printf("1 ");
-            for(long long j = 0, src = k; true; ++ j){
-                if(k > r || k <= 0) break;
-                else{
-                    if(k >= l && k <= r) printf("%lld ", k);
+        } else if (k == 0) {
+            if (l <= 0 && r >= 0)
+                if (r >= 1)
+                    printf("0 1\n");
+                else
+                    printf("0\n");
+        } else {
+            if (l == 1)
+                printf("1 ");
+            for (long long j = 0, src = k; true; ++j) {
+                if (k > r || k <= 0)
+                    break;
+                else {
+                    if (k >= l && k <= r)
+                        printf("%lld ", k);
                     k *= src;
                 }
                 // printf("debug >> %d\n", k);
@@ -55,7 +64,6 @@ int main(){
     }
     return 0;
 }
-
 
 // #include <bits/stdc++.h>
 // using namespace std;
@@ -85,8 +93,8 @@ int main(){
 // 	for(int i = 0; i < T; ++ i){
 // 		scanf("%lld %lld %lld", &l, &r, &k);
 // 		for(long long j = l; j < r; ++ j){
-            
+
 // 		}
 // 	}
 // 	return 0;
-// } 
+// }

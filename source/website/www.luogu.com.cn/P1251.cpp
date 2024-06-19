@@ -6,47 +6,54 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) {
-    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
-}
+inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
 inline void putch(char x) {
     *oS++ = x;
-    if (oS == oT) flush();
+    if (oS == oT)
+        flush();
     return;
 }
 string getstr(void) {
     string s = "";
     char c = getch();
-    while (c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == EOF) c = getch();
-    while (!(c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == EOF)) s.push_back(c), c = getch();
+    while (c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == EOF)
+        c = getch();
+    while (!(c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == EOF))
+        s.push_back(c), c = getch();
     return s;
 }
 void putstr(string str, int begin = 0, int end = -1) {
-    if (end == -1) end = str.size();
-    for (register int i = begin; i < end; i++) putch(str[i]);
+    if (end == -1)
+        end = str.size();
+    for (register int i = begin; i < end; i++)
+        putch(str[i]);
     return;
 }
-template <typename T>
-inline T read() {
+template <typename T> inline T read() {
     register T x = 0;
     for (f = 1, c = getch(); c < '0' || c > '9'; c = getch())
-        if (c == '-') f = -1;
-    for (x = 0; c <= '9' && c >= '0'; c = getch()) x = x * 10 + (c & 15);
+        if (c == '-')
+            f = -1;
+    for (x = 0; c <= '9' && c >= '0'; c = getch())
+        x = x * 10 + (c & 15);
     return x * f;
 }
-template <typename T>
-inline void write(const T& t) {
+template <typename T> inline void write(const T &t) {
     register T x = t;
-    if (!x) putch('0');
-    if (x < 0) putch('-'), x = -x;
-    while (x) qu[++qr] = x % 10 + '0', x /= 10;
-    while (qr) putch(qu[qr--]);
+    if (!x)
+        putch('0');
+    if (x < 0)
+        putch('-'), x = -x;
+    while (x)
+        qu[++qr] = x % 10 + '0', x /= 10;
+    while (qr)
+        putch(qu[qr--]);
     return;
 }
 struct Flusher_ {
     ~Flusher_() { flush(); }
 } io_flusher_;
-}  // namespace io
+} // namespace io
 using io::getch;
 using io::getstr;
 using io::putch;
@@ -54,11 +61,10 @@ using io::putstr;
 using io::read;
 using io::write;
 
-template <size_t maxn>
-class ZkwCostFlow {
+template <size_t maxn> class ZkwCostFlow {
 #define INF 0x3f3f3f3f3f3f3f3f
 
-   private:
+  private:
     long long dist[maxn];
     bool vis[maxn];
     int n, S, T;
@@ -66,7 +72,8 @@ class ZkwCostFlow {
 
     bool SPFA(void) {
         memset(vis, 0, sizeof(vis));
-        for (register int i = 1; i <= n; i++) dist[i] = INF;
+        for (register int i = 1; i <= n; i++)
+            dist[i] = INF;
         que.clear(), que.push_back(T), dist[T] = 0, vis[T] = true;
         while (!que.empty()) {
             int p = que.front();
@@ -85,19 +92,22 @@ class ZkwCostFlow {
     }
     long long DFS(int p, long long rest) {
         vis[p] = true;
-        if (p == T) return rest;
+        if (p == T)
+            return rest;
         long long flow = 0;
-        for (typename vector<Edge>::iterator& i = cur[p]; i != graph[p].end(); i++)
+        for (typename vector<Edge>::iterator &i = cur[p]; i != graph[p].end(); i++)
             if (!vis[i->to] && i->cap > i->flow && dist[p] - i->cost == dist[i->to]) {
                 long long ret = DFS(i->to, min(i->cap - i->flow, rest));
-                if (!ret) continue;
+                if (!ret)
+                    continue;
                 answer += ret * i->cost, i->flow += ret, graph[i->to][i->rev].flow -= ret, flow += ret, rest -= ret;
-                if (!rest) break;
+                if (!rest)
+                    break;
             }
         return flow;
     }
 
-   public:
+  public:
     struct Edge {
         int to;
         long long cap, flow, cost;
@@ -105,7 +115,7 @@ class ZkwCostFlow {
         bool real;
     };
 
-    vector<vector<Edge> > graph;
+    vector<vector<Edge>> graph;
     typename vector<Edge>::iterator cur[maxn];
     long long answer;
 
@@ -128,7 +138,8 @@ class ZkwCostFlow {
         S = tS, T = tT, answer = 0;
         long long flow = 0;
         while (SPFA()) {
-            for (register int i = 1; i <= n; i++) cur[i] = graph[i].begin();
+            for (register int i = 1; i <= n; i++)
+                cur[i] = graph[i].begin();
             flow += DFS(S, INF);
         }
         return flow;
@@ -149,10 +160,14 @@ int main() {
         web.addEdge(S, i + n, p, 0), web.addEdge(i, T, p, 0);
     }
     int p = read<int>(), x = read<int>(), c1 = read<int>(), y = read<int>(), c2 = read<int>();
-    for (register int i = 1; i <= n; i++) web.addEdge(S, i, INF, p);
-    for (register int i = 1; i < n; i++) web.addEdge(i + n, i + 1 + n, INF, 0);
-    for (register int i = 1; i + x <= n; i++) web.addEdge(i + n, i + x, INF, c1);
-    for (register int i = 1; i + y <= n; i++) web.addEdge(i + n, i + y, INF, c2);
+    for (register int i = 1; i <= n; i++)
+        web.addEdge(S, i, INF, p);
+    for (register int i = 1; i < n; i++)
+        web.addEdge(i + n, i + 1 + n, INF, 0);
+    for (register int i = 1; i + x <= n; i++)
+        web.addEdge(i + n, i + x, INF, c1);
+    for (register int i = 1; i + y <= n; i++)
+        web.addEdge(i + n, i + y, INF, c2);
     web.minCostFlow(S, T), write(web.answer), putch('\n');
     return 0;
 }

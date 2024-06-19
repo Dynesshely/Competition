@@ -23,18 +23,18 @@ using namespace std;
 */
 
 int N, M; // N -> 列, M -> 行
-int main(){
+int main() {
     // 输入数据
     scanf("%d%d", &N, &M);
     string src[M]; // 源矩阵
-    for(int i = 0; i < M; ++ i)
+    for (int i = 0; i < M; ++i)
         cin >> src[i];
-    
+
     // 旋转矩阵 (按列从右向左取出向量)
     string rotate[N]; // 旋转后矩阵
-    for(int i = N - 1, index = 0; i >= 0; -- i, ++ index){
+    for (int i = N - 1, index = 0; i >= 0; --i, ++index) {
         string col; // 第 i 列的向量
-        for(int j = 0; j < M; ++ j)
+        for (int j = 0; j < M; ++j)
             col += src[j][i];
         rotate[index] = col;
     }
@@ -53,15 +53,16 @@ int main(){
 
     // 放大两倍
     string doubles[N * 2 + 1];
-    for(int i = 0; i < N; ++ i){
+    for (int i = 0; i < N; ++i) {
         string tmp = rotate[i];
-        for(int j = 0; j < M; ++ j) tmp += tmp[j];
+        for (int j = 0; j < M; ++j)
+            tmp += tmp[j];
         doubles[i * 2] = tmp;
         doubles[i * 2 + 1] = tmp;
     }
 
     // 输出结果
-    for(int i = 0; i <= N * 2; ++ i)
+    for (int i = 0; i <= N * 2; ++i)
         cout << doubles[i] << endl;
     return 0;
 }

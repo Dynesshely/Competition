@@ -7,11 +7,11 @@ const int maxn = 2022;
 
 int n, a[maxn];
 
-int main(){
+int main() {
     freopen("game.in", "r", stdin);
     freopen("game.out", "w", stdout);
     scanf("%d", &n);
-    for(int i = 0; i < n; ++ i)
+    for (int i = 0; i < n; ++i)
         scanf("%d", &a[i]);
     return 0;
 }

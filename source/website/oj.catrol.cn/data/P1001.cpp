@@ -7,7 +7,6 @@ int main() {
         int a = rand() % maxn, b = rand() % maxn;
         long long c = b, d = a;
         ostringstream fin, fout;
-
         fin << "P1001/"
             << "swap" << i << ".in";
         freopen(fin.str().c_str(), "w", stdout);

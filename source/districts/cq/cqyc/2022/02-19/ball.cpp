@@ -43,81 +43,144 @@ using namespace std;
 
 int H, W, xx, yy, ansm = 0, psn = 0; // H -> 行, W -> 列, (x, y) -> 出口坐标, ans -> 答案
 string src[110];
-struct point{
+struct point {
     int x, y;
 };
 queue<point> ps;
 void dfs(char way, queue<point> *pnow, int ans);
 
-int main(){
+int main() {
     // 输入数据
     scanf("%d%d", &H, &W);
-    for(int i = 0; i < H; ++ i){
+    for (int i = 0; i < H; ++i) {
         cin >> src[i];
-        for(int j = 0; j < W; ++ j){
-        	if(src[i][j] == 'E') xx = j, yy = i;
-            if(src[i][j] == 'o'){
-                point p; p.x = j; p.y = i;
+        for (int j = 0; j < W; ++j) {
+            if (src[i][j] == 'E')
+                xx = j, yy = i;
+            if (src[i][j] == 'o') {
+                point p;
+                p.x = j;
+                p.y = i;
                 ps.push(p);
             }
         }
     }
-    dfs('l', &ps, 0); dfs('r', &ps, 0); dfs('u', &ps, 0); dfs('d', &ps, 0);
+    dfs('l', &ps, 0);
+    dfs('r', &ps, 0);
+    dfs('u', &ps, 0);
+    dfs('d', &ps, 0);
     printf("%d\n", ansm);
     return 0;
 }
 
-bool checkp(point p){ return p.x < 0 || p.x > W - 1 || p.y < 0 || p.y > H - 1; }
+bool checkp(point p) { return p.x < 0 || p.x > W - 1 || p.y < 0 || p.y > H - 1; }
 
-void dfs(char way, queue<point> *pnow, int ans){
-    if((*pnow).size() <= 0) return;
-    if(way == 'l'){ // 向左
+void dfs(char way, queue<point> *pnow, int ans) {
+    if ((*pnow).size() <= 0)
+        return;
+    if (way == 'l') { // 向左
         queue<point> tmp = *pnow;
         int num = tmp.size();
-        for(int i = 0; i < num; ++ i){
-            point p = tmp.front(); p.x -= 1;
-            if(checkp(p)){ tmp.pop(); -- num; continue; }
-            if(p.x == xx && p.y == yy){ ++ ans; tmp.pop(); -- num; continue; }
-            tmp.push(tmp.front()); tmp.pop();
+        for (int i = 0; i < num; ++i) {
+            point p = tmp.front();
+            p.x -= 1;
+            if (checkp(p)) {
+                tmp.pop();
+                --num;
+                continue;
+            }
+            if (p.x == xx && p.y == yy) {
+                ++ans;
+                tmp.pop();
+                --num;
+                continue;
+            }
+            tmp.push(tmp.front());
+            tmp.pop();
         }
-    	ansm = max(ansm, ans);
-        dfs('l', &tmp, ans); dfs('r', &tmp, ans); dfs('u', &tmp, ans); dfs('d', &tmp, ans);
+        ansm = max(ansm, ans);
+        dfs('l', &tmp, ans);
+        dfs('r', &tmp, ans);
+        dfs('u', &tmp, ans);
+        dfs('d', &tmp, ans);
     }
-    if(way == 'r'){ // 向右
+    if (way == 'r') { // 向右
         queue<point> tmp = *pnow;
         int num = tmp.size();
-        for(int i = 0; i < num; ++ i){
-            point p = tmp.front(); p.x += 1;
-            if(checkp(p)){ tmp.pop(); -- num; continue; }
-            if(p.x == xx && p.y == yy){ ++ ans; tmp.pop(); -- num; continue; }
-            tmp.push(tmp.front()); tmp.pop();
+        for (int i = 0; i < num; ++i) {
+            point p = tmp.front();
+            p.x += 1;
+            if (checkp(p)) {
+                tmp.pop();
+                --num;
+                continue;
+            }
+            if (p.x == xx && p.y == yy) {
+                ++ans;
+                tmp.pop();
+                --num;
+                continue;
+            }
+            tmp.push(tmp.front());
+            tmp.pop();
         }
-    	ansm = max(ansm, ans);
-        dfs('l', &tmp, ans); dfs('r', &tmp, ans); dfs('u', &tmp, ans); dfs('d', &tmp, ans);
+        ansm = max(ansm, ans);
+        dfs('l', &tmp, ans);
+        dfs('r', &tmp, ans);
+        dfs('u', &tmp, ans);
+        dfs('d', &tmp, ans);
     }
-    if(way == 'u'){ // 向上
+    if (way == 'u') { // 向上
         queue<point> tmp = *pnow;
         int num = tmp.size();
-        for(int i = 0; i < num; ++ i){
-            point p = tmp.front(); p.y -= 1;
-            if(checkp(p)){ tmp.pop(); -- num; continue; }
-            if(p.x == xx && p.y == yy){ ++ ans; tmp.pop(); -- num; continue; }
-            tmp.push(tmp.front()); tmp.pop();
+        for (int i = 0; i < num; ++i) {
+            point p = tmp.front();
+            p.y -= 1;
+            if (checkp(p)) {
+                tmp.pop();
+                --num;
+                continue;
+            }
+            if (p.x == xx && p.y == yy) {
+                ++ans;
+                tmp.pop();
+                --num;
+                continue;
+            }
+            tmp.push(tmp.front());
+            tmp.pop();
         }
-    	ansm = max(ansm, ans);
-        dfs('l', &tmp, ans); dfs('r', &tmp, ans); dfs('u', &tmp, ans); dfs('d', &tmp, ans);
+        ansm = max(ansm, ans);
+        dfs('l', &tmp, ans);
+        dfs('r', &tmp, ans);
+        dfs('u', &tmp, ans);
+        dfs('d', &tmp, ans);
     }
-    if(way == 'd'){ // 向下
+    if (way == 'd') { // 向下
         queue<point> tmp = *pnow;
         int num = tmp.size();
-        for(int i = 0; i < num; ++ i){
-            point p = tmp.front(); p.y += 1;
-            if(checkp(p)){ tmp.pop(); -- num; continue; }
-            if(p.x == xx && p.y == yy){ ++ ans; tmp.pop(); -- num; continue; }
-            tmp.push(tmp.front()); tmp.pop();
+        for (int i = 0; i < num; ++i) {
+            point p = tmp.front();
+            p.y += 1;
+            if (checkp(p)) {
+                tmp.pop();
+                --num;
+                continue;
+            }
+            if (p.x == xx && p.y == yy) {
+                ++ans;
+                tmp.pop();
+                --num;
+                continue;
+            }
+            tmp.push(tmp.front());
+            tmp.pop();
         }
-    	ansm = max(ansm, ans);
-        dfs('l', &tmp, ans); dfs('r', &tmp, ans); dfs('u', &tmp, ans); dfs('d', &tmp, ans);
+        ansm = max(ansm, ans);
+        dfs('l', &tmp, ans);
+        dfs('r', &tmp, ans);
+        dfs('u', &tmp, ans);
+        dfs('d', &tmp, ans);
     }
     ansm = max(ansm, ans);
 }

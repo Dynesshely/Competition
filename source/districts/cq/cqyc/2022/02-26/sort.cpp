@@ -9,7 +9,7 @@ using namespace std;
 */
 
 int n, k;
-int main(){
+int main() {
     freopen("sort.in", "r", stdin);
     freopen("sort.out", "w", stdout);
     scanf("%d %d", &n, &k);

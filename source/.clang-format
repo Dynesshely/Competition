@@ -1,0 +1,3 @@
+﻿BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 200

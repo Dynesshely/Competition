@@ -22,8 +22,7 @@ void exe(string input) {
         printf("%d\n", input.length());
         return;
     }
-    string s1 = substr(0, input.length() / 2 - 1, input),
-           s2 = substr(input.length() / 2, input.length() - 1, input);
+    string s1 = substr(0, input.length() / 2 - 1, input), s2 = substr(input.length() / 2, input.length() - 1, input);
     if (input.length() == 2) {
         printf("2\n");
         return;

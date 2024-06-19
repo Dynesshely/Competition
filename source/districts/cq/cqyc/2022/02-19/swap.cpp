@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
+int main() {
     /*
     题目读不懂哇。QAQ
     样例1中按翻转相邻两个来看

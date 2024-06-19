@@ -19,26 +19,28 @@ const int maxn = 1000100;
 const int maxa = 1000000010;
 
 int n, m, l, r, a[maxn];
-int main(){
+int main() {
     freopen("dis.in", "r", stdin);
     freopen("dis.out", "w", stdout);
     scanf("%d %d", &n, &m);
-    for(int i = 1; i <= n; ++ i)
+    for (int i = 1; i <= n; ++i)
         scanf("%d", &a[i]);
-    for(int i = 0; i < m; ++ i){
+    for (int i = 0; i < m; ++i) {
         scanf("%d %d", &l, &r);
         int ans = maxa;
-        for(int j = l; j <= r; ++ j){
-            for(int k = j + 1; k <= r; ++ k){
-                if(a[j] == a[k]){
+        for (int j = l; j <= r; ++j) {
+            for (int k = j + 1; k <= r; ++k) {
+                if (a[j] == a[k]) {
                     ans = min(ans, abs(j - k));
                     // debug[1]
                 }
             }
             // debug[2]
         }
-        if(ans == maxa) printf("-1\n");
-        else printf("%d\n", ans);
+        if (ans == maxa)
+            printf("-1\n");
+        else
+            printf("%d\n", ans);
     }
     return 0;
 }

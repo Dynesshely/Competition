@@ -5,35 +5,43 @@ using namespace std;
 
 int N, a[310], ans = 0x7fffffff, tmp_a[310];
 
-void multistart(int s){
+void multistart(int s) {
     int tmp_ans = 0;
-    for(int i = s; i <= N; ++ i)
-        for(int j = N; j >= i; -- j)
-            if(tmp_a[i] == tmp_a[j] && tmp_a[i] >= 1 && tmp_a[j] >= 1){
-                ++ tmp_ans; int tmp = tmp_a[i];
-                for(int k = i + 1; k < j; ++ k){
-                    if(tmp_a[k] == -1){
+    for (int i = s; i <= N; ++i)
+        for (int j = N; j >= i; --j)
+            if (tmp_a[i] == tmp_a[j] && tmp_a[i] >= 1 && tmp_a[j] >= 1) {
+                ++tmp_ans;
+                int tmp = tmp_a[i];
+                for (int k = i + 1; k < j; ++k) {
+                    if (tmp_a[k] == -1) {
                         int s = k;
-                        while(true){
-                            if(tmp_a[s] == -1) ++ s;
-                            else break;
+                        while (true) {
+                            if (tmp_a[s] == -1)
+                                ++s;
+                            else
+                                break;
                         }
-                        ++ tmp_ans;
+                        ++tmp_ans;
                         k = s + 1;
                     }
                 }
-                for(int k = i; k <= j; ++ k)
-                    if(tmp_a[k] == tmp) tmp_a[k] = -1;
-                    else break;
-                for(int k = j; k >= i; -- k)
-                    if(tmp_a[k] == tmp) tmp_a[k] = -1;
-                    else break;
+                for (int k = i; k <= j; ++k)
+                    if (tmp_a[k] == tmp)
+                        tmp_a[k] = -1;
+                    else
+                        break;
+                for (int k = j; k >= i; --k)
+                    if (tmp_a[k] == tmp)
+                        tmp_a[k] = -1;
+                    else
+                        break;
             }
-    if(s != 1) tmp_ans += (s - 1);
+    if (s != 1)
+        tmp_ans += (s - 1);
     ans = min(ans, tmp_ans);
 }
 
-int main(){
+int main() {
     freopen("draw.in", "r", stdin);
     freopen("draw.out", "w", stdout);
 
@@ -44,9 +52,11 @@ int main(){
 
     // cur_end = N;
 
-    for(int i = 1; i <= N; ++ i) scanf("%d", &a[i]);
-    for(int i = 1; i <= N; ++ i){
-        for(int j = 1; j <= N; ++ j) tmp_a[j] = a[j];
+    for (int i = 1; i <= N; ++i)
+        scanf("%d", &a[i]);
+    for (int i = 1; i <= N; ++i) {
+        for (int j = 1; j <= N; ++j)
+            tmp_a[j] = a[j];
         multistart(i);
     }
     // for(int i = 1; i <= N; ++ i)
@@ -73,7 +83,7 @@ int main(){
 
     //             // for(int k = i; k <= j; ++ k)
     //             //     if(a[k] == tmp) a[k] = -1;
-                
+
     //             // 调试
     //             // printf("\tdebug>> %d %d\n", i, j);
     //             // for(int m = 1; m <= N; ++ m)
@@ -115,7 +125,6 @@ int main(){
     printf("%d\n", ans);
     return 0;
 }
-
 
 /*
     第一版 14:46
