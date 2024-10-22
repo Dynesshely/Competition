@@ -1,3 +1,6 @@
+## Platform Ignores
+.DS_Store
+
 *.log
 
 com_log/
