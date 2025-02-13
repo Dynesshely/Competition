@@ -16,7 +16,6 @@ int main() {
         scanf("%d", &tmp);
         sum_per_sub_real += tmp;
     }
-    printf("%0.6f\n", ((double)sum_per_sub_max * 3 - (double)sum_per_sub_real * 2) /
-                          (double)(sum_per_sub_max - sum_per_sub_real));
+    printf("%0.6f\n", ((double)sum_per_sub_max * 3 - (double)sum_per_sub_real * 2) / (double)(sum_per_sub_max - sum_per_sub_real));
     return 0;
 }

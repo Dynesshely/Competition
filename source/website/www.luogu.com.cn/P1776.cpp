@@ -3,7 +3,7 @@
 
 #include <bits/stdc++.h>
 
-template <typename T> inline T max(T a, T b) { return a > b ? a : b; }
+template<typename T> inline T max(T a, T b) { return a > b ? a : b; }
 
 //  ||=======================||
 //  ||  Solution 1 (60 pts)  ||

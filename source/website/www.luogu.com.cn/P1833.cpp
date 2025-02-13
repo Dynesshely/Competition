@@ -15,7 +15,7 @@ inline void getDeltaTime(int *minutes) {
     *minutes = (c - a - 1) * 60 + d + (60 - b);
 }
 
-template <typename T> inline T max(T a, T b) { return a > b ? a : b; }
+template<typename T> inline T max(T a, T b) { return a > b ? a : b; }
 
 int main() {
     getDeltaTime(&t);

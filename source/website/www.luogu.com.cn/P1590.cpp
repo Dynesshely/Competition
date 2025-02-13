@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 const long long maxn = 4294967295;
-int f[maxn], t, last = 0, tmp;
-bool has7(long long x) {
+int             f[maxn], t, last = 0, tmp;
+bool            has7(long long x) {
     while (x) {
         if (x % 10 == 7)
             return true;

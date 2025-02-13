@@ -3,7 +3,7 @@ using namespace std;
 long long cal(long long n) {
     ostringstream os;
     os << n;
-    string ns = os.str();
+    string    ns  = os.str();
     long long ans = 0;
     for (int i = 0; i < ns.length(); ++i)
         ans += ns[i] - '0';

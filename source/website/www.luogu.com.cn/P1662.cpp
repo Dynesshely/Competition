@@ -1,6 +1,6 @@
 #include <cstdio>
 using namespace std;
-int n, i, j, k, t, pd, m;
+int         n, i, j, k, t, pd, m;
 inline bool c7(int x) {
     int remain = 0;
     while (x) {

@@ -18,29 +18,29 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-const double check = 1e-6; // 实数计算误差
-int ans, v[5], pm[5], f[5], g[5];
+const double  check = 1e-6;   // 实数计算误差
+int           ans, v[5], pm[5], f[5], g[5];
 map<int, int> mp;
-double num(double x, double y, int z) { // 计算
-    switch (z) {                        // z表示运算符：0加，1减，2乘，3除
-    case 0:
-        return x + y;
-        break;
-    case 1:
-        return x - y;
-        break;
-    case 2:
-        return x * y;
-        break;
-    case 3:
-        return x / y;
-        break;
+double        num(double x, double y, int z) {   // 计算
+    switch (z) {                          // z表示运算符：0加，1减，2乘，3除
+        case 0:
+            return x + y;
+            break;
+        case 1:
+            return x - y;
+            break;
+        case 2:
+            return x * y;
+            break;
+        case 3:
+            return x / y;
+            break;
     }
 }
-double Abs(double p) { // 实数绝对值
+double Abs(double p) {   // 实数绝对值
     return (p < 0 ? -p : p);
 }
-int useful(int a, int b) { // 能不能加括号
+int useful(int a, int b) {   // 能不能加括号
     // 括号前面是减号、除号，加上括号要变号
     if (a % 2 == 1)
         return 1;
@@ -49,18 +49,18 @@ int useful(int a, int b) { // 能不能加括号
     else
         return (b < 2 ? 1 : 0);
 }
-void mplus(int a1, int a2, int a3, int a4, int a5, int a6, int a7) { // map+状压去重
+void mplus(int a1, int a2, int a3, int a4, int a5, int a6, int a7) {   // map+状压去重
     int x = (a1 | a2 << 3 | a3 << 6 | a4 << 9 | a5 << 12 | a6 << 15 | a7 << 18);
     if (++mp[x] == 1)
         ans++;
 }
-int find(int x) { // x是第几个
+int find(int x) {   // x是第几个
     for (int i = 1; i <= 4; i++)
         if (f[i] == x)
             return i;
 }
-void count(int a, int b, int c, int d) { // 暴力计算
-    for (int i = 0; i <= 3; i++)         // i,j,k枚举符号
+void count(int a, int b, int c, int d) {   // 暴力计算
+    for (int i = 0; i <= 3; i++)           // i,j,k枚举符号
         for (int j = 0; j <= 3; j++)
             for (int k = 0; k <= 3; k++) {
                 /*      5种添括号
@@ -82,7 +82,7 @@ void count(int a, int b, int c, int d) { // 暴力计算
                     mplus(pm[find(a)], pm[find(b)], pm[find(c)], pm[find(d)], (i + 4), (j + 4), (k + 4));
             }
 }
-void dfs(int x) { // dfs求排列
+void dfs(int x) {   // dfs求排列
     if (x > 4) {
         count(g[1], g[2], g[3], g[4]);
         return;
@@ -96,7 +96,7 @@ int main() {
         scanf("%d", &f[i]);
     for (int i = 1; i <= 4; i++)
         for (int j = 1; j <= 4; j++)
-            pm[i] = pm[i] + (f[i] < f[j] ? 1 : 0); // 排第几，用于状压判重（最大0）
+            pm[i] = pm[i] + (f[i] < f[j] ? 1 : 0);   // 排第几，用于状压判重（最大0）
     dfs(1);
     printf("%d\n", ans);
 }

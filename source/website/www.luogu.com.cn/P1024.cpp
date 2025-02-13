@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 200010;
-double a, b, c, d, ans;
-int n, m;
+double    a, b, c, d, ans;
+int       n, m;
 
 double f(double x) { return a * x * x * x + b * x * x + c * x + d; }
 

@@ -2,11 +2,11 @@
 using namespace std;
 
 const int MAXN = 100010;
-int n, os;
+int       n, os;
 long long arr[MAXN];
 
 struct seg {
-    int ls, rs, l, r;
+    int       ls, rs, l, r;
     long long sum, tag;
 } segement[MAXN << 2];
 
@@ -19,7 +19,7 @@ inline void build(int x, int l, int r) {
         (*cur).sum = arr[l];
         return;
     }
-    int mid = summid(l, r);
+    int mid   = summid(l, r);
     (*cur).ls = x << 1, (*cur).rs = (x << 1) | 1;
     build((*cur).ls, l, mid);
     build((*cur).rs, mid + 1, r);
@@ -42,7 +42,7 @@ inline void pushdown(int x) {
 // 线段树 -> 区间修改
 inline void modify(int x, int l, int r, long long v) {
     seg *cur = &segement[x];
-    pushdown(x); // 区间修改
+    pushdown(x);   // 区间修改
     if ((*cur).l == l && (*cur).r == r) {
         pushup(x, v);
         return;
@@ -73,7 +73,7 @@ inline void modify(int x, int p, long long v) {
 
 inline long long query(int x, int l, int r) {
     seg *cur = &segement[x];
-    pushdown(x); // 区间修改
+    pushdown(x);   // 区间修改
     if ((*cur).l == l && (*cur).r == r)
         return (*cur).sum;
     int mid = summid((*cur).l, (*cur).r);
@@ -99,7 +99,7 @@ int main() {
             scanf("%d %d", &l, &r);
             printf("%lld\n", query(1, l, r));
         } else if (op == 1) {
-            int l, r;
+            int       l, r;
             long long v;
             scanf("%d %d %lld", &l, &r, &v);
             modify(1, l, r, v);

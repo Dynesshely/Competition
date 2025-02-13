@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int maxx = 10010000;
-int T, x;
-bool via[maxx];
-bool c7(int x) {
+int       T, x;
+bool      via[maxx];
+bool      c7(int x) {
     int remain = 0;
     while (x) {
         remain = x % 10;

@@ -3,7 +3,7 @@
 
 #include <bits/stdc++.h>
 
-template <typename T>
+template<typename T>
 
 inline T max(T a, T b) {
     return a > b ? a : b;
@@ -12,7 +12,7 @@ inline T max(T a, T b) {
 const int maxn = 1e4 + 5;
 const int maxm = 1e7 + 5;
 
-int n, m, w[maxn], v[maxn];
+int       n, m, w[maxn], v[maxn];
 long long f[maxm];
 
 int main() {

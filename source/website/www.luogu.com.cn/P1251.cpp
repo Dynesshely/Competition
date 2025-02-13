@@ -3,8 +3,8 @@ using namespace std;
 
 namespace io {
 #define SIZE (1 << 20)
-char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
-int f, qr;
+char        ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
+int         f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
 inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
 inline void putch(char x) {
@@ -15,7 +15,7 @@ inline void putch(char x) {
 }
 string getstr(void) {
     string s = "";
-    char c = getch();
+    char   c = getch();
     while (c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == EOF)
         c = getch();
     while (!(c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == EOF))
@@ -29,7 +29,7 @@ void putstr(string str, int begin = 0, int end = -1) {
         putch(str[i]);
     return;
 }
-template <typename T> inline T read() {
+template<typename T> inline T read() {
     register T x = 0;
     for (f = 1, c = getch(); c < '0' || c > '9'; c = getch())
         if (c == '-')
@@ -38,7 +38,7 @@ template <typename T> inline T read() {
         x = x * 10 + (c & 15);
     return x * f;
 }
-template <typename T> inline void write(const T &t) {
+template<typename T> inline void write(const T &t) {
     register T x = t;
     if (!x)
         putch('0');
@@ -53,7 +53,7 @@ template <typename T> inline void write(const T &t) {
 struct Flusher_ {
     ~Flusher_() { flush(); }
 } io_flusher_;
-} // namespace io
+}   // namespace io
 using io::getch;
 using io::getstr;
 using io::putch;
@@ -61,13 +61,13 @@ using io::putstr;
 using io::read;
 using io::write;
 
-template <size_t maxn> class ZkwCostFlow {
+template<size_t maxn> class ZkwCostFlow {
 #define INF 0x3f3f3f3f3f3f3f3f
 
   private:
-    long long dist[maxn];
-    bool vis[maxn];
-    int n, S, T;
+    long long  dist[maxn];
+    bool       vis[maxn];
+    int        n, S, T;
     deque<int> que;
 
     bool SPFA(void) {
@@ -109,15 +109,15 @@ template <size_t maxn> class ZkwCostFlow {
 
   public:
     struct Edge {
-        int to;
+        int       to;
         long long cap, flow, cost;
-        int rev;
-        bool real;
+        int       rev;
+        bool      real;
     };
 
-    vector<vector<Edge>> graph;
+    vector<vector<Edge>>            graph;
     typename vector<Edge>::iterator cur[maxn];
-    long long answer;
+    long long                       answer;
 
     void INIT(int tn) {
         n = tn;

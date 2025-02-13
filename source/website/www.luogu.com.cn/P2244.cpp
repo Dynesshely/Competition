@@ -3,7 +3,7 @@ using namespace std;
 
 #define max(a, b) ((a) > (b) ? (a) : (b))
 int read() {
-    int rt = 0, fl = 1;
+    int  rt = 0, fl = 1;
     char ch = getchar();
     while (ch < '0' || ch > '9') {
         if (ch == '-')
@@ -17,13 +17,13 @@ int read() {
     return rt * fl;
 }
 const int maxn = 2000000;
-int h[maxn], nx[maxn], to[maxn], cnt, chudu[maxn], pr[maxn], af[maxn], cnt_winner, n, q[maxn], l, r;
-bool isWinner[maxn];
-void add_edge(int u, int v) {
+int       h[maxn], nx[maxn], to[maxn], cnt, chudu[maxn], pr[maxn], af[maxn], cnt_winner, n, q[maxn], l, r;
+bool      isWinner[maxn];
+void      add_edge(int u, int v) {
     cnt++;
     to[cnt] = v;
     nx[cnt] = h[u];
-    h[u] = cnt;
+    h[u]    = cnt;
 }
 void del(int nd) {
     af[pr[nd]] = af[nd];
@@ -32,7 +32,7 @@ void del(int nd) {
 void bfs() {
     while (l < r) {
         int t = q[l++];
-        t = h[t];
+        t     = h[t];
         int x = pr[n + 1];
         while (x != 0) {
             while (x < to[t] && t != 0) {
@@ -50,13 +50,13 @@ void bfs() {
 }
 int main() {
     int max_chudu = 0;
-    n = read();
+    n             = read();
     for (int i = 1; i <= n + 1; i++) {
         pr[i] = i - 1;
         af[i] = i + 1;
     }
     for (int i = 1; i <= n; i++) {
-        chudu[i] = read();
+        chudu[i]  = read();
         max_chudu = max(max_chudu, chudu[i]);
         for (int j = chudu[i]; j > 0; j--) {
             int a = read();

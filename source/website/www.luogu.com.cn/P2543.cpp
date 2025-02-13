@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 string a, b;
-int main() {
+int    main() {
     cin >> a >> b;
     int f[a.length() + 1][b.length() + 1];
     memset(f, 0, sizeof(f));

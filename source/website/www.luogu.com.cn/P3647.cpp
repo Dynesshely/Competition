@@ -3,11 +3,11 @@
 using namespace std;
 const int maxn = 200010;
 const int maxe = maxn * (maxn / 400);
-int u[maxe], v[maxe], w[maxe], first[maxe], ne[maxe], tot = 0;
-void add(int uu, int vv, int ww) {
+int       u[maxe], v[maxe], w[maxe], first[maxe], ne[maxe], tot = 0;
+void      add(int uu, int vv, int ww) {
     ++tot;
     u[tot] = uu, v[tot] = vv, w[tot] = ww;
-    ne[tot] = first[u[tot]];
+    ne[tot]       = first[u[tot]];
     first[u[tot]] = tot;
 }
 int T, ans = 0, tu, tv, tw;

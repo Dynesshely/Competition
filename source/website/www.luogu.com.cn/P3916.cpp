@@ -92,7 +92,7 @@ using namespace std;
 struct point {
     int id, sonsum = 0, sons[MAXM];
 };
-int via[100001];
+int  via[100001];
 void dfs(point p, point points[], int mm) {
     via[p.id] = mm;
     for (int i = 0; i < p.sonsum; ++i) {

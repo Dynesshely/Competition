@@ -4,12 +4,12 @@ const int maxn = 30005, maxm = 50005;
 struct Edges {
     int next, to, weight;
 } e[maxm << 4];
-int dist[maxn], head[maxn], tot, n, m;
-bool vis[maxn];
+int        dist[maxn], head[maxn], tot, n, m;
+bool       vis[maxn];
 queue<int> q;
-void link(int u, int v, int w) {
+void       link(int u, int v, int w) {
     e[++tot] = (Edges){head[u], v, w};
-    head[u] = tot;
+    head[u]  = tot;
 }
 void spfa(int s) {
     memset(dist, -1, sizeof(dist));

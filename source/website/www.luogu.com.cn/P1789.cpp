@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, m, k, ans = 0;
+int  n, m, k, ans = 0;
 bool light[110][110];
 
 int main() {

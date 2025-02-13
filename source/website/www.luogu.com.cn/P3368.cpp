@@ -7,7 +7,7 @@
 using namespace std;
 
 const int n = 500005;
-int N, M, a[n], c[n], t[n];
+int       N, M, a[n], c[n], t[n];
 
 int query(int x) {
     int ret = 0;

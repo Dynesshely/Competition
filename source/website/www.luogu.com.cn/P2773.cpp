@@ -23,9 +23,9 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-long long X, Y, A, B;
+long long        X, Y, A, B;
 inline long long min(long long x, long long y) { return x < y ? x : y; }
-int main() {
+int              main() {
     while (scanf("%lld %lld %lld %lld", &X, &Y, &A, &B) != EOF) {
         A = min(X, A);
         B = min(Y, B);
