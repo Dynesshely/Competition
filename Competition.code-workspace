@@ -36,7 +36,8 @@
       "barrier": "cpp",
       "latch": "cpp",
       "limits": "cpp",
-      "semaphore": "cpp"
+      "semaphore": "cpp",
+      "*.tcc": "c"
     },
     "dotnet.defaultSolution": "disable"
   }
