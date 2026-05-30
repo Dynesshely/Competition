@@ -1,8 +1,8 @@
 {
   "folders": [
     {
-      "path": "."
-    }
+      "path": ".",
+    },
   ],
   "settings": {
     "git.autorefresh": true,
@@ -37,8 +37,8 @@
       "latch": "cpp",
       "limits": "cpp",
       "semaphore": "cpp",
-      "*.tcc": "c"
+      "*.tcc": "c",
     },
-    "dotnet.defaultSolution": "disable"
-  }
+    "dotnet.defaultSolution": "disable",
+  },
 }
