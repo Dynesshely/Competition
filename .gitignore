@@ -1,15 +1,54 @@
-## Platform Ignores
+# ============================================================
+#  Competition Repository — .gitignore
+# ============================================================
+
+# --- OS Generated Files ---
 .DS_Store
+Thumbs.db
+desktop.ini
 
-*.log
+# --- Editor / IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 
-com_log/
-compiled/
-
+# --- Build Artifacts ---
 *.exe
 *.out
+*.o
+*.obj
+*.ilk
+*.pdb
+compiled/
+com_log/
+cmake-Build-debug/
 
-.exe
-.out
-/cmake-Build-debug/
-/.idea/
+# --- Logs ---
+*.log
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# --- Node.js (future website) ---
+node_modules/
+dist/
+.next/
+.nuxt/
+.output/
+
+# --- Environment ---
+.env
+.env.local
+.env.*.local
+
+# --- Claude Code ---
+.claude/
+
+# --- Misc ---
+*.tmp
+*.temp
