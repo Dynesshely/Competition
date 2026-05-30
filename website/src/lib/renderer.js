@@ -23,27 +23,19 @@ const md = new MarkdownIt({
   linkify: true,
   highlight(str, lang) {
     if (lang && hljs.getLanguage(lang)) {
-      try {
-        return '<pre class="hljs"><code>' +
-          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-          "</code></pre>";
-      } catch (_) {}
+      try { return '<pre class="hljs"><code>' + hljs.highlight(str, { language: lang, ignoreIllegals: true }).value + "</code></pre>"; }
+      catch (_) {}
     }
-    try {
-      return '<pre class="hljs"><code>' + hljs.highlightAuto(str).value + "</code></pre>";
-    } catch (_) {}
+    try { return '<pre class="hljs"><code>' + hljs.highlightAuto(str).value + "</code></pre>"; }
+    catch (_) {}
     return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + "</code></pre>";
   },
 });
 
-// 数学公式：$...$ 行内，$$...$$ 块级
 md.use(texmath, {
   engine: katex,
   delimiters: ["dollars"],
-  katexOptions: {
-    macros: { "\\bm": "\\boldsymbol" },
-    throwOnError: false,
-  },
+  katexOptions: { macros: { "\\bm": "\\boldsymbol" }, throwOnError: false },
 });
 
 export function renderMarkdown(text) {
@@ -51,15 +43,30 @@ export function renderMarkdown(text) {
   return md.render(text);
 }
 
+/**
+ * 渲染代码并添加行号
+ */
 export function renderCode(code, lang) {
+  if (!code) return "<p>暂无代码</p>";
+
   const language = lang ? lang.replace(".", "") : "";
-  let highlighted;
-  if (language && hljs.getLanguage(language)) {
-    highlighted = hljs.highlight(code, { language }).value;
-  } else {
-    highlighted = hljs.highlightAuto(code).value;
-  }
-  return `<pre class="hljs h-full"><code>${highlighted}</code></pre>`;
+  const lines = code.split("\n");
+
+  // 逐行高亮，避免跨行标签被截断
+  const highlighted = lines
+    .map((line, i) => {
+      const num = `<span class="line-no">${i + 1}</span>`;
+      let content;
+      if (language && hljs.getLanguage(language)) {
+        content = hljs.highlight(line, { language, ignoreIllegals: true }).value;
+      } else {
+        content = hljs.highlightAuto(line).value;
+      }
+      return `<span class="line">${num}<span class="line-code">${content || " "}</span></span>`;
+    })
+    .join("");
+
+  return `<pre class="hljs"><code>${highlighted}</code></pre>`;
 }
 
 export function difficultyClass(difficulty) {

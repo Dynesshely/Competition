@@ -99,9 +99,9 @@ function onSplitUp() {
 </script>
 
 <template>
-  <div v-if="problem" class="flex flex-col h-[calc(100vh-52px)] overflow-hidden">
+  <div v-if="problem" class="flex flex-col h-[calc(100vh-52px-2rem)] sm:h-[calc(100vh-52px-3rem)] overflow-hidden">
     <!--  标题栏 -->
-    <div class="flex-none py-2">
+    <div class="flex-none">
       <div class="flex items-center gap-3">
         <router-link :to="`/oj/${route.params.oj}`" class="text-sm text-[#6e7681] hover:text-[#00d4aa] whitespace-nowrap">← 返回列表</router-link>
         <h1 class="text-lg font-bold flex-1 truncate">{{ problem.id }} {{ problem.title }}</h1>
@@ -114,7 +114,7 @@ function onSplitUp() {
     </div>
 
     <!--  内容区 -->
-    <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2 min-h-0">
+    <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2 min-h-0 mt-4">
       <!-- 左: 题目描述 -->
       <div class="bg-[#1a1d2e] border border-[#2a2d3a] rounded-lg overflow-hidden flex flex-col">
         <div class="flex-none px-3 py-2 bg-[#161822] border-b border-[#2a2d3a] font-semibold text-sm">📋 题目描述</div>
@@ -137,7 +137,7 @@ function onSplitUp() {
 
         <!-- Split bar -->
         <div
-          class="flex-none h-[6px] bg-[#2a2d3a] cursor-ns-resize hover:bg-[#00d4aa] transition-colors rounded-full mx-1 my-0.5"
+          class="flex-none h-[6px] bg-[#2a2d3a] cursor-ns-resize hover:bg-[#00d4aa] transition-colors rounded-full mx-1 my-1.5"
           :class="{ '!bg-[#00d4aa]': dragging }"
           @mousedown="onSplitDown"
         ></div>
