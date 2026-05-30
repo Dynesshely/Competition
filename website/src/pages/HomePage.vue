@@ -3,6 +3,9 @@ import { ref, onMounted } from "vue";
 import { loadIndex } from "../lib/index.js";
 import WordCloud from "../components/WordCloud.vue";
 
+const BASE = import.meta.env.BASE_URL;
+const FALLBACK_ICON = `${BASE}icons/fallback.svg`;
+
 const idx = ref(null);
 
 const ojIconMap = {
@@ -10,7 +13,9 @@ const ojIconMap = {
   "cjsoj.cn": "cjsoj.ico", "oj.crequency.cn": "crequency.ico",
   "www.51nod.com": "51nod.png",
 };
-function ojIcon(key) { return `/icons/${ojIconMap[key] || "fallback.svg"}`; }
+function ojIcon(key) {
+  return `${BASE}icons/${ojIconMap[key] || "fallback.svg"}`;
+}
 
 onMounted(async () => { idx.value = await loadIndex(); });
 </script>
@@ -41,7 +46,7 @@ onMounted(async () => { idx.value = await loadIndex(); });
           onmouseenter="this.style.borderColor='var(--color-accent)';this.style.boxShadow='0 4px 16px rgba(0,0,0,calc(var(--shadow-strength)*0.2))'"
           onmouseleave="this.style.borderColor='var(--color-border)';this.style.boxShadow='none'">
           <span class="flex items-center gap-2 min-w-0">
-            <img :src="ojIcon(o.key)" class="w-5 h-5 rounded flex-shrink-0" @error="e => e.target.src = '/icons/fallback.svg'" />
+            <img :src="ojIcon(o.key)" class="w-5 h-5 rounded flex-shrink-0" @error="e => e.target.src = FALLBACK_ICON" />
             <span class="font-semibold text-sm truncate" style="font-family: var(--font-body); color: var(--color-fg)">{{ o.name }}</span>
           </span>
           <span class="text-xs whitespace-nowrap ml-2" style="font-family: var(--font-display); color: var(--color-muted-fg)">{{ o.count }} 题</span>

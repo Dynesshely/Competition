@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [tailwindcss(), vue()],
+  base: "/Competition/",
   root: ".",
   publicDir: "public",
   build: {

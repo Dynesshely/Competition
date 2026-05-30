@@ -47,19 +47,17 @@ const problem = computed(() => {
 function getBasePath() {
   const p = problem.value;
   if (!p) return "";
-  if (p.oj) return `/_gen/assets/website/${p.oj}`;
+  const base = import.meta.env.BASE_URL;
+  if (p.oj) return `${base}_gen/assets/website/${p.oj}`;
   if (p.type === "competition") {
     const parts = (p.files?.code || "").split("/");
     parts.pop();
-    return `/_gen/assets/competitions/${p.competition}/${parts.join("/")}`.replace(
-      /\/$/,
-      "",
-    );
+    return `${base}_gen/assets/competitions/${p.competition}/${parts.join("/")}`.replace(/\/$/, "");
   }
   if (p.type === "district") {
     const parts = (p.files?.code || "").split("/");
     parts.pop();
-    return `/_gen/assets/districts/${parts.join("/")}`.replace(/\/$/, "");
+    return `${base}_gen/assets/districts/${parts.join("/")}`.replace(/\/$/, "");
   }
   return "";
 }

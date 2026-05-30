@@ -7,7 +7,8 @@ let _indexCache = null;
 
 export async function loadIndex() {
   if (_indexCache) return _indexCache;
-  const resp = await fetch("/_gen/index.json");
+  const base = import.meta.env.BASE_URL;
+  const resp = await fetch(`${base}_gen/index.json`);
   if (!resp.ok) throw new Error(`Failed to load index: ${resp.status}`);
   _indexCache = await resp.json();
   return _indexCache;
