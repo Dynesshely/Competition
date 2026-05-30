@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="bg-[#0f1117]">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Competition Solutions — OI 题解</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script>
+    // 阻塞式读取 Cookie，避免主题闪烁
+    (function() {
+      var m = document.cookie.match(/(?:^|;\s*)academia-theme=([^;]*)/);
+      var theme = m ? m[1] : 'system';
+      if (theme === 'system') {
+        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 <body>
   <div id="app"></div>

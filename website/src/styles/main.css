@@ -1,27 +1,91 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
-/* ── Tailwind 主题变量 ──────────────────────────────────── */
+/* ── Tailwind 主题 ───────────────────────────────────────── */
 @theme {
-  --color-bg: #0f1117;
-  --color-bg-card: #161822;
-  --color-bg-pane: #1a1d2e;
-  --color-border: #2a2d3a;
-  --color-text: #c9d1d9;
-  --color-text-muted: #6e7681;
-  --color-accent: #00d4aa;
-  --color-accent-dim: #00d4aa22;
-  --color-diff-easy: #00d4aa;
-  --color-diff-mid: #f0c000;
-  --color-diff-hard: #f85149;
-  --color-diff-orange: #f0883e;
-  --color-code-bg: #0d1117;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Crimson Pro', serif;
+  --font-display: 'Cinzel', serif;
+}
+
+/* ── Theme: Night (default) ──────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --color-bg: #1C1714;
+  --color-bg-alt: #251E19;
+  --color-fg: #E8DFD4;
+  --color-muted: #3D332B;
+  --color-muted-fg: #9C8B7A;
+  --color-border: #4A3F35;
+  --color-accent: #C9A962;
+  --color-accent-2: #8B2635;
+  --color-accent-fg: #1C1714;
+  --color-code-bg: #14110E;
+  --sepia: 0.6;
+  --texture-opacity: 0.03;
+  --vignette-opacity: 1;
+  --shadow-strength: 1;
+}
+
+/* ── Theme: Day ──────────────────────────────────────────── */
+[data-theme="light"] {
+  --color-bg: #F8F3EB;
+  --color-bg-alt: #EFE8D8;
+  --color-fg: #2C2416;
+  --color-muted: #E3DAC8;
+  --color-muted-fg: #6B5E4A;
+  --color-border: #C4B99A;
+  --color-accent: #C9A962;
+  --color-accent-2: #8B2635;
+  --color-accent-fg: #FFFFFF;
+  --color-code-bg: #F0EADD;
+  --sepia: 0.3;
+  --texture-opacity: 0.015;
+  --vignette-opacity: 0;
+  --shadow-strength: 0.4;
 }
 
 /* ── 全局基础 ────────────────────────────────────────────── */
 body {
   background: var(--color-bg);
-  color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.625;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+/* ── 氛围叠加层 ──────────────────────────────────────────── */
+/* 纸张纹理 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--texture-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* 暗角 (仅夜间) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: var(--vignette-opacity);
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(28, 23, 20, 0.4) 100%);
 }
 
 /* ── 自定义滚动条 ────────────────────────────────────────── */
@@ -35,99 +99,127 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3a3d4a;
+  background: var(--color-muted-fg);
   border-radius: 3px;
+  opacity: 0.5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a4d5a;
+  background: var(--color-accent);
 }
 
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-/* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3a3d4a transparent;
+  scrollbar-color: var(--color-muted-fg) transparent;
+}
+
+/* ── 聚焦环 ──────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /* ── 难度标签 ────────────────────────────────────────────── */
 .diff-e0,
 .diff-e1 {
-  background: var(--color-accent-dim);
+  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
   color: var(--color-accent);
 }
 
 .diff-e2,
 .diff-e3 {
-  background: #f0c00022;
-  color: var(--color-diff-mid);
+  background: color-mix(in srgb, #f0c000 15%, transparent);
+  color: #d4a800;
 }
 
 .diff-e4,
 .diff-e5 {
-  background: #f0883e22;
-  color: var(--color-diff-orange);
+  background: color-mix(in srgb, #f0883e 15%, transparent);
+  color: #d47020;
 }
 
 .diff-e6,
 .diff-e7 {
-  background: #f8514922;
-  color: var(--color-diff-hard);
+  background: color-mix(in srgb, var(--color-accent-2) 15%, transparent);
+  color: var(--color-accent-2);
 }
 
-/* ── 词云 ────────────────────────────────────────────────── */
-.tag-cloud-canvas {
-  display: block;
-  margin: 0 auto;
+/* ── 黄铜渐变按钮 ────────────────────────────────────────── */
+.btn-brass {
+  background: linear-gradient(180deg, #D4B872 0%, #C9A962 50%, #B8953F 100%);
+  color: var(--color-accent-fg);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4), -1px -1px 1px rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 300ms ease, box-shadow 300ms ease;
+}
+
+.btn-brass:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(201, 169, 98, 0.3);
+}
+
+.btn-brass:active {
+  filter: brightness(0.95);
 }
 
 /* ── Markdown 内容样式 ───────────────────────────────────── */
 .pane-body h1 {
-  font-size: 1.3rem;
-  margin: 0.8rem 0 0.4rem;
+  font-size: 1.5rem;
+  margin: 1rem 0 0.5rem;
+  font-family: var(--font-heading);
 }
 
 .pane-body h2 {
-  font-size: 1.1rem;
-  margin: 0.8rem 0 0.4rem;
+  font-size: 1.25rem;
+  margin: 0.9rem 0 0.45rem;
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  font-family: var(--font-heading);
 }
 
 .pane-body h3 {
-  font-size: 1rem;
-  margin: 0.6rem 0 0.3rem;
+  font-size: 1.1rem;
+  margin: 0.7rem 0 0.35rem;
+  font-family: var(--font-heading);
 }
 
 .pane-body p {
-  margin: 0.4rem 0;
+  margin: 0.5rem 0;
 }
 
 .pane-body ul,
 .pane-body ol {
   padding-left: 1.5rem;
-  margin: 0.4rem 0;
+  margin: 0.5rem 0;
 }
 
 .pane-body table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0.5rem 0;
+  margin: 0.6rem 0;
   font-size: 0.9rem;
 }
 
 .pane-body th,
 .pane-body td {
-  padding: 6px 10px;
+  padding: 8px 12px;
   border: 1px solid var(--color-border);
   text-align: left;
 }
 
 .pane-body th {
-  background: var(--color-bg-card);
+  background: var(--color-bg-alt);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .pane-body code {
@@ -153,8 +245,9 @@ body {
 .pane-body blockquote {
   border-left: 3px solid var(--color-accent);
   padding-left: 1rem;
-  color: var(--color-text-muted);
-  margin: 0.5rem 0;
+  color: var(--color-muted-fg);
+  margin: 0.6rem 0;
+  font-style: italic;
 }
 
 .pane-body img {
@@ -164,47 +257,7 @@ body {
   padding: 4px;
 }
 
-/* ── 搜索下拉框 ──────────────────────────────────────────── */
-.search-item {
-  display: flex;
-  gap: 8px;
-  padding: 8px 12px;
-  font-size: 0.88rem;
-  color: var(--color-text);
-  border-bottom: 1px solid var(--color-border);
-  align-items: center;
-}
-
-.search-item:last-child {
-  border-bottom: none;
-}
-
-.search-item:hover {
-  background: var(--color-accent-dim);
-  text-decoration: none;
-}
-
-.search-id {
-  font-weight: 700;
-  color: var(--color-accent);
-  min-width: 60px;
-}
-
-.search-title {
-  flex: 1;
-}
-
-.search-oj {
-  color: var(--color-text-muted);
-  font-size: 0.78rem;
-}
-
-.search-item.muted {
-  color: var(--color-text-muted);
-  justify-content: center;
-}
-
-/* ── 代码面板覆盖 ────────────────────────────────────────── */
+/* ── 代码面板 ────────────────────────────────────────────── */
 .pane-code .pane-body {
   padding: 0 !important;
   overflow: auto;
@@ -234,9 +287,10 @@ body {
   min-width: 48px;
   padding-right: 14px;
   text-align: right;
-  color: #484f58;
+  color: var(--color-muted-fg);
   user-select: none;
   flex-shrink: 0;
+  opacity: 0.6;
 }
 
 .line-code {
@@ -247,10 +301,81 @@ body {
 
 .pane-code .line:hover,
 .pane-body pre .line:hover {
-  background: #ffffff08;
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
 }
 
 .pane-code .line:hover .line-no,
 .pane-body pre .line:hover .line-no {
-  color: #6e7681;
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+/* ── 搜索下拉框 ──────────────────────────────────────────── */
+.search-item {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  color: var(--color-fg);
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-item:hover {
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  text-decoration: none;
+}
+
+.search-id {
+  font-weight: 700;
+  color: var(--color-accent);
+  min-width: 60px;
+}
+
+.search-title {
+  flex: 1;
+}
+
+.search-oj {
+  color: var(--color-muted-fg);
+  font-size: 0.78rem;
+}
+
+.search-item.muted {
+  color: var(--color-muted-fg);
+  justify-content: center;
+}
+
+/* ── 全局 hover 工具类 ──────────────────────────────────── */
+.hover-accent-border:hover {
+  border-color: var(--color-accent) !important;
+}
+
+.hover-accent-bg:hover {
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent) !important;
+}
+
+.hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, calc(var(--shadow-strength)*0.2));
+}
+
+.hover-accent-glow:hover {
+  box-shadow: 0 4px 12px rgba(201, 169, 98, 0.3);
+}
+
+/* 搜索框 placeholder */
+.input-academia::placeholder {
+  color: var(--color-muted-fg);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* 过渡工具 */
+.transition-theme {
+  transition: background 300ms ease, border-color 300ms ease, color 300ms ease;
 }
