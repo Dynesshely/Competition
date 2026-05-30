@@ -139,9 +139,10 @@ body {
 }
 
 .pane-body pre {
-  margin: 0.5rem 0;
+  margin: 0.6rem 0;
   border-radius: 8px;
   overflow-x: auto;
+  padding: 14px 0;
 }
 
 .pane-body pre code {
@@ -158,6 +159,9 @@ body {
 
 .pane-body img {
   max-width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  padding: 4px;
 }
 
 /* ── 搜索下拉框 ──────────────────────────────────────────── */
@@ -241,10 +245,12 @@ body {
   line-height: 1.5;
 }
 
-.pane-code .line:hover {
+.pane-code .line:hover,
+.pane-body pre .line:hover {
   background: #ffffff08;
 }
 
-.pane-code .line:hover .line-no {
+.pane-code .line:hover .line-no,
+.pane-body pre .line:hover .line-no {
   color: #6e7681;
 }
