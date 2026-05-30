@@ -1,0 +1,35 @@
+{
+  "name": "competition-solutions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OI 竞赛题解网站",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 scripts/copy_assets.py && vite",
+    "build": "python3 scripts/copy_assets.py && vite build",
+    "preview": "vite preview",
+    "index": "cd scripts && source .venv/bin/activate && python3 generate_index.py"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "fuse.js": "^7.0.0",
+    "highlight.js": "^11.9.0",
+    "katex": "^0.17.0",
+    "markdown-it": "^14.0.0",
+    "markdown-it-texmath": "^1.0.0",
+    "tailwindcss": "^4.3.0",
+    "vue": "^3.5.35",
+    "vue-router": "^5.1.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.2.2",
+      "onFail": "download"
+    }
+  }
+}
