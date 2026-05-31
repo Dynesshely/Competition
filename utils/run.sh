@@ -52,47 +52,61 @@ if [[ "$1" == "--install" ]]; then
 
     ALIAS_LINE="alias runcpp='$SCRIPT_PATH'"
 
-    # 记录实际写入的配置文件列表
-    INSTALLED=()
+    # --- 解析目标配置文件 -----------------------------------------
+    TARGET="${2:-}"
 
-    # ~/.bashrc
-    if [[ -f "$HOME/.bashrc" ]]; then
-        if grep -q "alias runcpp=" "$HOME/.bashrc" 2>/dev/null; then
-            # 替换已有的 alias runcpp=...
-            sed -i "s|^alias runcpp=.*|$ALIAS_LINE|" "$HOME/.bashrc"
+    if [[ -z "$TARGET" ]]; then
+        # 交互式选择
+        echo "请选择要写入的配置文件:"
+        echo ""
+
+        # 收集可用的配置文件
+        declare -A RC_FILES
+        idx=1
+
+        for rc in "$HOME/.bash_aliases" "$HOME/.bashrc" "$HOME/.zshrc"; do
+            label="${rc#$HOME/}"
+            if [[ -f "$rc" ]]; then
+                printf "  ${GREEN}[%d]${RESET} %-20s (已存在)\n" "$idx" "$label"
+            else
+                printf "  ${GREEN}[%d]${RESET} %-20s (新建)\n" "$idx" "$label"
+            fi
+            RC_FILES["$idx"]="$rc"
+            idx=$((idx + 1))
+        done
+
+        printf "  ${GREEN}[%d]${RESET} %s\n" "$idx" "自定义路径"
+
+        echo ""
+        read -r -p "输入序号 [1-$idx]: " CHOICE
+
+        if [[ "$CHOICE" == "$idx" ]]; then
+            read -r -p "输入配置文件完整路径: " TARGET
+        elif [[ -n "${RC_FILES["$CHOICE"]:-}" ]]; then
+            TARGET="${RC_FILES["$CHOICE"]}"
         else
-            echo "$ALIAS_LINE" >> "$HOME/.bashrc"
+            fail "无效选择"
+            exit 1
         fi
-        INSTALLED+=("~/.bashrc")
+    else
+        # 允许短名（bashrc → ~/.bashrc 等）
+        case "$TARGET" in
+            bashrc)       TARGET="$HOME/.bashrc" ;;
+            bash_aliases) TARGET="$HOME/.bash_aliases" ;;
+            zshrc)        TARGET="$HOME/.zshrc" ;;
+            .bashrc|.bash_aliases|.zshrc) TARGET="$HOME/$TARGET" ;;
+        esac
     fi
 
-    # ~/.bash_aliases
-    if [[ -f "$HOME/.bash_aliases" ]]; then
-        if grep -q "alias runcpp=" "$HOME/.bash_aliases" 2>/dev/null; then
-            sed -i "s|^alias runcpp=.*|$ALIAS_LINE|" "$HOME/.bash_aliases"
-        else
-            echo "$ALIAS_LINE" >> "$HOME/.bash_aliases"
-        fi
-        INSTALLED+=("~/.bash_aliases")
+    # --- 写入别名 ------------------------------------------------
+    if grep -q "alias runcpp=" "$TARGET" 2>/dev/null; then
+        sed -i "s|^alias runcpp=.*|$ALIAS_LINE|" "$TARGET"
+        ok "已更新: $TARGET"
+    else
+        echo "$ALIAS_LINE" >> "$TARGET"
+        ok "已写入: $TARGET"
     fi
 
-    # ~/.zshrc
-    if [[ -f "$HOME/.zshrc" ]]; then
-        if grep -q "alias runcpp=" "$HOME/.zshrc" 2>/dev/null; then
-            sed -i "s|^alias runcpp=.*|$ALIAS_LINE|" "$HOME/.zshrc"
-        else
-            echo "$ALIAS_LINE" >> "$HOME/.zshrc"
-        fi
-        INSTALLED+=("~/.zshrc")
-    fi
-
-    # 兜底：如果以上都不存在，写入 ~/.bashrc
-    if [[ ${#INSTALLED[@]} -eq 0 ]]; then
-        echo "$ALIAS_LINE" >> "$HOME/.bashrc"
-        INSTALLED+=("~/.bashrc")
-    fi
-
-    ok "别名已写入: ${INSTALLED[*]}"
     info "在当前终端执行以下命令使其立即生效:"
     echo ""
     echo -e "    ${GREEN}eval \"$ALIAS_LINE\"${RESET}"
