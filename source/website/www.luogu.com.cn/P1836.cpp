@@ -1,19 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
-long long cal(long long n) {
-    ostringstream os;
-    os << n;
-    string    ns  = os.str();
-    long long ans = 0;
-    for (int i = 0; i < ns.length(); ++i)
-        ans += ns[i] - '0';
-    return ans;
-}
+typedef long long ll;
 int main() {
-    long long n, ans = 0;
+    ll n, ans = 0;
     scanf("%lld", &n);
-    for (long long i = 1; i <= n; ++i)
-        ans += cal(i);
+    for (ll p = 1; p <= n; p *= 10) {
+        ll cycles = n / (p * 10);
+        ans += cycles * 45 * p;
+        ll rem = n % (p * 10);
+        for (ll d = 1; d <= 9; ++d) {
+            ll cnt = min(max(0LL, rem - d * p + 1), p);
+            ans += d * cnt;
+        }
+    }
     printf("%lld\n", ans);
     return 0;
 }
