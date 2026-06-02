@@ -1,28 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
-const long long maxn = 4294967295;
-int             f[maxn], t, last = 0, tmp;
-bool            has7(long long x) {
-    while (x) {
-        if (x % 10 == 7)
-            return true;
-        x /= 10;
+typedef long long ll;
+ll count_no7(ll n) {
+    if (n <= 0) return 0;
+    vector<int> d;
+    for (ll t = n; t; t /= 10) d.push_back(t % 10);
+    reverse(d.begin(), d.end());
+    int m = d.size();
+    vector dp(m + 1, vector<ll>(2, 0));
+    dp[0][1] = 1;
+    for (int i = 0; i < m; ++i) {
+        for (int tight = 0; tight < 2; ++tight) {
+            if (dp[i][tight] == 0) continue;
+            int lim = tight ? d[i] : 9;
+            for (int c = 0; c <= lim; ++c) {
+                if (c == 7) continue;
+                dp[i + 1][tight && c == lim] += dp[i][tight];
+            }
+        }
     }
-    return false;
+    return dp[m][0] + dp[m][1] - 1;
 }
 int main() {
-    printf("%lld\n", maxn);
-    for (long long i = 1; i < maxn; ++i) {
-        if (has7(i)) {
-            ++last;
-            continue;
-        }
-        f[i] = last;
-    }
+    int t;
     scanf("%d", &t);
-    for (int i = 0; i < t; ++i) {
-        scanf("%d", &tmp);
-        printf("%d\n", tmp - f[tmp]);
+    while (t--) {
+        ll n;
+        scanf("%lld", &n);
+        printf("%lld\n", count_no7(n));
     }
     return 0;
 }
