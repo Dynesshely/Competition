@@ -1,48 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int    t, n, r;
-double pr[10005][1000];
-int    main() {
-    scanf("%d", &t);
-    for (int i = 0; i <= 10000; ++i)
-        pr[i] = sqrt(i);
-    for (int i = 0; i < t; ++i) {
-        scanf("%d%d", &n, &r);
-        long long sum = 0;
-        for (int d = 1; d <= n; ++d) {
-            if (((long long)(d * pr[r])) % 2 == 0)
-                ++sum;
-            else
-                --sum;
-        }
-        printf("%lld\n", sum);
-    }
-    return 0;
+using ll = long long;
+using ld = long double;
+
+ll n, r;
+ld sq;
+
+inline ll G(ll a, ll b) { return b ? G(b, a % b) : a; }
+
+ll F(ll a, ll b, ll c, ll n) {
+    if (!n)
+        return 0;
+
+    ll g = G(abs(a), G(abs(b), abs(c)));
+    a /= g;
+    b /= g;
+    c /= g;
+
+    ll k = (ll)((a * sq + b) / c);
+
+    if (k)
+        return k * (n * (n + 1) / 2) + F(a, b - k * c, c, n);
+
+    ll m = (ll)(((a * sq + b) / c) * n);
+
+    return m * n - F(a * c, -b * c, a * a * r - b * b, m);
 }
 
-// int t, n, r;
-// int pa[100000010];
-// bool via[1010000010];
-// int main(){
-//     scanf("%d", &t);
-//     for(int i = 0; i < t; ++ i){
-//         scanf("%d%d", &n, &r);
-//         long long sum = 0;
-//         for(int d = 1; d <= n; ++ d){
-//             int index = (r - 1) * n + d;
-//             if(index < 100000000) if(via[index]) sum += pa[index];
-//             else{
-//                 if(index < 100000000){
-//                     pa[index] = pow(-1, (int)(d * sqrt(r)));
-//                     sum += pa[index];
-//                     via[index] = true;
-//                 }else{
-//                     sum += pow(-1, (int)(d * sqrt(r)));
-//                 }
-//             }
-//         }
-//         printf("%lld\n", sum);
-//     }
-//     return 0;
-// }
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    while (T--) {
+        scanf("%lld%lld", &n, &r);
+
+        sq = sqrt((ld)r);
+
+        ll t = (ll)sq;
+
+        if (t * t == r) {
+            if (t & 1)
+                printf("%lld\n", (n & 1) ? -1LL : 0LL);
+            else
+                printf("%lld\n", n);
+            continue;
+        }
+
+        printf("%lld\n", n - 2 * F(1, 0, 1, n) + 4 * F(1, 0, 2, n));
+    }
+
+    return 0;
+}
