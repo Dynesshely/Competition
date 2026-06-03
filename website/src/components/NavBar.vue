@@ -3,6 +3,7 @@ import { ref, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import Fuse from "fuse.js";
 import { loadIndex } from "../lib/index.js";
+import { BookOpen, Monitor, Moon, Sun } from "lucide-vue-next";
 
 const router = useRouter();
 const query = ref(""); const results = ref([]); const showDropdown = ref(false);
@@ -31,7 +32,7 @@ function cycleTheme() {
   const order = ["system", "dark", "light"]; const idx = order.indexOf(theme.value);
   theme.value = order[(idx + 1) % 3]; setCookie("academia-theme", theme.value, 365); applyTheme(theme.value);
 }
-const themeLabel = { system: "🖥️", dark: "🌙", light: "☀️" };
+const themeIcon = { system: Monitor, dark: Moon, light: Sun };
 </script>
 
 <template>
@@ -39,7 +40,7 @@ const themeLabel = { system: "🖥️", dark: "🌙", light: "☀️" };
     :style="{ background: `color-mix(in srgb, var(--color-bg-alt) 95%, transparent)`, borderColor: 'var(--color-border)' }"
     @click="closeDropdown">
     <router-link to="/" class="font-bold text-lg no-underline whitespace-nowrap tracking-tight" style="font-family: var(--font-heading); color: var(--color-fg)">
-      🏆 Dynesshely's OI Solutions
+      <BookOpen :size="18" class="inline-block mr-1 -mt-0.5" style="color: var(--color-accent)" />Dynesshely's OI Solutions
     </router-link>
 
     <div class="flex items-center gap-2">
@@ -65,7 +66,7 @@ const themeLabel = { system: "🖥️", dark: "🌙", light: "☀️" };
       <button @click="cycleTheme" :title="'主题: ' + theme"
         class="w-8 h-8 flex items-center justify-center rounded-full border text-sm cursor-pointer transition-theme hover-accent-border"
         :style="{ background: 'var(--color-bg)', borderColor: 'var(--color-border)', color: 'var(--color-accent)' }">
-        {{ themeLabel[theme] || '🖥️' }}
+        <component :is="themeIcon[theme] || Monitor" :size="15" />
       </button>
     </div>
   </nav>

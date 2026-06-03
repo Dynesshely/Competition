@@ -7,6 +7,7 @@ import {
   renderCode,
   difficultyClass,
 } from "../lib/renderer.js";
+import { ArrowLeft, ExternalLink, ClipboardList, Code2, FileText, Copy, Check } from "lucide-vue-next";
 
 const route = useRoute();
 const idx = ref(null);
@@ -151,7 +152,7 @@ function onSplitUp() {
           :to="`/oj/${route.params.oj}`"
           class="text-sm whitespace-nowrap hover:underline"
           style="color: var(--color-muted-fg)"
-          >← 返回列表</router-link
+          ><ArrowLeft :size="14" class="inline-block -mt-0.5 mr-0.5" /> 返回列表</router-link
         >
         <h1
           class="text-xl font-medium flex-1 truncate"
@@ -165,7 +166,7 @@ function onSplitUp() {
           target="_blank"
           class="text-xs whitespace-nowrap hover:underline"
           style="font-family: var(--font-display); color: var(--color-muted-fg)"
-          >原题链接 →</a
+          >原题链接 <ExternalLink :size="12" class="inline-block -mt-0.5" /></a
         >
       </div>
       <div class="flex gap-2 flex-wrap items-center mt-1">
@@ -207,7 +208,7 @@ function onSplitUp() {
             color: var(--color-accent);
           "
         >
-          📋 题目描述
+          <ClipboardList :size="14" class="inline-block -mt-0.5 mr-1" /> 题目描述
         </div>
         <div
           class="flex-1 overflow-y-auto px-4 py-3 pane-body"
@@ -239,7 +240,7 @@ function onSplitUp() {
               color: var(--color-accent);
             "
           >
-            <span>💻 代码</span>
+            <span><Code2 :size="14" class="inline-block -mt-0.5 mr-1" /> 代码</span>
             <div class="flex items-center gap-2">
               <select
                 v-if="codeOptions.length > 1"
@@ -249,7 +250,8 @@ function onSplitUp() {
                 <option v-for="(opt, i) in codeOptions" :key="i" :value="i">{{ opt.label }}</option>
               </select>
               <button @click="copyCode" class="btn-brass px-3 py-1 text-[10px]">
-                {{ copied ? "✓ 已复制" : "📋 复制" }}
+                <Check v-if="copied" :size="12" class="inline-block -mt-0.5 mr-0.5" /><span v-if="copied">已复制</span>
+                <Copy v-if="!copied" :size="12" class="inline-block -mt-0.5 mr-0.5" /><span v-if="!copied">复制</span>
               </button>
             </div>
           </div>
@@ -290,7 +292,7 @@ function onSplitUp() {
               color: var(--color-accent);
             "
           >
-            📝 题解
+            <FileText :size="14" class="inline-block -mt-0.5 mr-1" /> 题解
           </div>
           <div
             class="flex-1 overflow-y-auto px-4 py-3 pane-body"

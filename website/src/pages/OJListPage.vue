@@ -3,6 +3,7 @@ import { ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import { loadIndex } from "../lib/index.js";
 import { difficultyClass } from "../lib/renderer.js";
+import { ArrowLeft, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-vue-next";
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100, 200];
 
@@ -61,7 +62,7 @@ function goPage(n) {
 
 <template>
   <div v-if="idx" class="space-y-4">
-    <router-link to="/" class="inline-block text-sm hover:underline" style="color: var(--color-muted-fg)">← 返回首页</router-link>
+    <router-link to="/" class="inline-block text-sm hover:underline" style="color: var(--color-muted-fg)"><ArrowLeft :size="14" class="inline-block -mt-0.5 mr-0.5" /> 返回首页</router-link>
     <h1 class="text-2xl font-medium" style="font-family: var(--font-heading); color: var(--color-fg)">
       {{ ojName }} <span class="text-base font-normal" style="color: var(--color-muted-fg)">({{ list.length }} 题)</span>
     </h1>
@@ -109,19 +110,19 @@ function goPage(n) {
       <div class="flex items-center justify-center gap-2 py-4" style="font-family: var(--font-body)">
         <button @click="goPage(1)" :disabled="currentPage === 1"
           class="px-3 py-1.5 rounded text-sm cursor-pointer transition-colors border-none disabled:opacity-40 disabled:cursor-default"
-          style="background: var(--color-muted); color: var(--color-fg)">« 首页</button>
+          style="background: var(--color-muted); color: var(--color-fg)"><ChevronsLeft :size="14" class="inline-block -mt-0.5" /> 首页</button>
         <button @click="goPage(currentPage - 1)" :disabled="currentPage === 1"
           class="px-3 py-1.5 rounded text-sm cursor-pointer transition-colors border-none disabled:opacity-40 disabled:cursor-default"
-          style="background: var(--color-muted); color: var(--color-fg)">‹ 上一页</button>
+          style="background: var(--color-muted); color: var(--color-fg)"><ChevronLeft :size="14" class="inline-block -mt-0.5" /> 上一页</button>
         <span class="text-sm px-3" style="color: var(--color-muted-fg)">
           第 {{ currentPage }} / {{ totalPages }} 页
         </span>
         <button @click="goPage(currentPage + 1)" :disabled="currentPage === totalPages"
           class="px-3 py-1.5 rounded text-sm cursor-pointer transition-colors border-none disabled:opacity-40 disabled:cursor-default"
-          style="background: var(--color-muted); color: var(--color-fg)">下一页 ›</button>
+          style="background: var(--color-muted); color: var(--color-fg)">下一页 <ChevronRight :size="14" class="inline-block -mt-0.5" /></button>
         <button @click="goPage(totalPages)" :disabled="currentPage === totalPages"
           class="px-3 py-1.5 rounded text-sm cursor-pointer transition-colors border-none disabled:opacity-40 disabled:cursor-default"
-          style="background: var(--color-muted); color: var(--color-fg)">末页 »</button>
+          style="background: var(--color-muted); color: var(--color-fg)">末页 <ChevronsRight :size="14" class="inline-block -mt-0.5" /></button>
       </div>
     </template>
   </div>

@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { loadIndex } from "../lib/index.js";
 import WordCloud from "../components/WordCloud.vue";
+import { FileText, CheckCheck, Tag, Globe, Trophy, MapPin } from "lucide-vue-next";
 
 const BASE = import.meta.env.BASE_URL;
 const FALLBACK_ICON = `${BASE}icons/fallback.svg`;
@@ -26,9 +27,9 @@ onMounted(async () => { idx.value = await loadIndex(); });
     <section class="text-center py-12 px-4">
       <h1 class="text-5xl font-medium mb-3 tracking-tight" style="font-family: var(--font-heading); color: var(--color-fg)">OI 竞赛题解库</h1>
       <p class="flex justify-center gap-6 flex-wrap text-sm" style="color: var(--color-muted-fg)">
-        <span>📝 <strong style="color: var(--color-fg)">{{ idx.summary.totalProblems }}</strong> 道题目</span>
-        <span>✅ <strong style="color: var(--color-fg)">{{ idx.summary.withMetadata }}</strong> 篇题解</span>
-        <span>🏷️ <strong style="color: var(--color-fg)">{{ idx.tags.length }}</strong> 个标签</span>
+        <span><FileText :size="15" class="inline-block mr-1 -mt-0.5" style="color: var(--color-accent)" /> <strong style="color: var(--color-fg)">{{ idx.summary.totalProblems }}</strong> 道题目</span>
+        <span><CheckCheck :size="15" class="inline-block mr-1 -mt-0.5" style="color: var(--color-accent)" /> <strong style="color: var(--color-fg)">{{ idx.summary.withMetadata }}</strong> 篇题解</span>
+        <span><Tag :size="15" class="inline-block mr-1 -mt-0.5" style="color: var(--color-accent)" /> <strong style="color: var(--color-fg)">{{ idx.tags.length }}</strong> 个标签</span>
       </p>
     </section>
 
@@ -38,7 +39,7 @@ onMounted(async () => { idx.value = await loadIndex(); });
         <span class="text-xs uppercase tracking-[0.25em]" style="font-family: var(--font-display); color: var(--color-accent)">Volume I</span>
         <div class="flex-1 h-px" style="background: linear-gradient(90deg, var(--color-border), transparent)"></div>
       </div>
-      <h2 class="text-2xl font-medium mb-4" style="font-family: var(--font-heading); color: var(--color-fg)">📋 OJ 平台</h2>
+      <h2 class="text-2xl font-medium mb-4" style="font-family: var(--font-heading); color: var(--color-fg)"><Globe :size="16" class="inline-block mr-1 -mt-0.5" style="color: var(--color-accent)" /> OJ 平台</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
         <router-link v-for="o in idx.ojs.filter(o => !o.type)" :key="o.key" :to="`/oj/${o.key}`"
           class="flex justify-between items-center px-4 py-3 rounded border transition-all duration-300 no-underline hover:-translate-y-0.5"
@@ -60,7 +61,7 @@ onMounted(async () => { idx.value = await loadIndex(); });
         <span class="text-xs uppercase tracking-[0.25em]" style="font-family: var(--font-display); color: var(--color-accent)">Volume II</span>
         <div class="flex-1 h-px" style="background: linear-gradient(90deg, var(--color-border), transparent)"></div>
       </div>
-      <h2 class="text-2xl font-medium mb-4" style="font-family: var(--font-heading); color: var(--color-fg)">🏆 竞赛</h2>
+      <h2 class="text-2xl font-medium mb-4" style="font-family: var(--font-heading); color: var(--color-fg)"><Trophy :size="15" class="inline-block mr-1 -mt-0.5" style="color: var(--color-accent)" /> 竞赛</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
         <router-link v-for="o in idx.ojs.filter(o => o.type === 'competition')" :key="o.key" :to="`/oj/${o.key}`"
           class="flex justify-between items-center px-4 py-3 rounded border border-l-[3px] transition-all duration-300 no-underline"
@@ -68,7 +69,7 @@ onMounted(async () => { idx.value = await loadIndex(); });
           onmouseenter="this.style.borderColor='var(--color-accent)'"
           onmouseleave="this.style.borderColor='var(--color-border)';this.style.borderLeftColor='#f0c000'">
           <span class="flex items-center gap-2 min-w-0">
-            <span class="w-5 h-5 rounded flex-shrink-0 flex items-center justify-center text-xs font-bold" style="background: #f0c00022; color: #f0c000">🏆</span>
+            <span class="w-5 h-5 rounded flex-shrink-0 flex items-center justify-center text-xs font-bold" style="background: #f0c00022; color: #f0c000"><Trophy :size="13" /></span>
             <span class="font-semibold text-sm truncate" style="font-family: var(--font-body); color: var(--color-fg)">{{ o.name }}</span>
           </span>
           <span class="text-xs whitespace-nowrap ml-2" style="font-family: var(--font-display); color: var(--color-muted-fg)">{{ o.count }} 题</span>
@@ -82,7 +83,7 @@ onMounted(async () => { idx.value = await loadIndex(); });
         <span class="text-xs uppercase tracking-[0.25em]" style="font-family: var(--font-display); color: var(--color-accent)">Volume III</span>
         <div class="flex-1 h-px" style="background: linear-gradient(90deg, var(--color-border), transparent)"></div>
       </div>
-      <h2 class="text-2xl font-medium mb-4" style="font-family: var(--font-heading); color: var(--color-fg)">📍 地区训练</h2>
+      <h2 class="text-2xl font-medium mb-4" style="font-family: var(--font-heading); color: var(--color-fg)"><MapPin :size="15" class="inline-block mr-1 -mt-0.5" style="color: var(--color-accent)" /> 地区训练</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
         <router-link v-for="o in idx.ojs.filter(o => o.type === 'district')" :key="o.key" :to="`/oj/${o.key}`"
           class="flex justify-between items-center px-4 py-3 rounded border border-l-[3px] transition-all duration-300 no-underline"
@@ -90,7 +91,7 @@ onMounted(async () => { idx.value = await loadIndex(); });
           onmouseenter="this.style.borderColor='var(--color-accent)'"
           onmouseleave="this.style.borderColor='var(--color-border)';this.style.borderLeftColor='#58a6ff'">
           <span class="flex items-center gap-2 min-w-0">
-            <span class="w-5 h-5 rounded flex-shrink-0 flex items-center justify-center text-xs font-bold" style="background: #58a6ff22; color: #58a6ff">📍</span>
+            <span class="w-5 h-5 rounded flex-shrink-0 flex items-center justify-center text-xs font-bold" style="background: #58a6ff22; color: #58a6ff"><MapPin :size="13" /></span>
             <span class="font-semibold text-sm truncate" style="font-family: var(--font-body); color: var(--color-fg)">{{ o.name }}</span>
           </span>
           <span class="text-xs whitespace-nowrap ml-2" style="font-family: var(--font-display); color: var(--color-muted-fg)">{{ o.count }} 题</span>
@@ -104,7 +105,7 @@ onMounted(async () => { idx.value = await loadIndex(); });
         <span class="text-xs uppercase tracking-[0.25em]" style="font-family: var(--font-display); color: var(--color-accent)">Index</span>
         <div class="flex-1 h-px" style="background: linear-gradient(90deg, var(--color-border), transparent)"></div>
       </div>
-      <h2 class="text-2xl font-medium mb-4" style="font-family: var(--font-heading); color: var(--color-fg)">🏷️ 标签</h2>
+      <h2 class="text-2xl font-medium mb-4" style="font-family: var(--font-heading); color: var(--color-fg)"><Tag :size="15" class="inline-block mr-1 -mt-0.5" style="color: var(--color-accent)" /> 标签</h2>
       <WordCloud :words="idx.tags.map(t => ({ text: t.name, weight: t.count }))" :height="260" :min-font-size="12" :max-font-size="42" />
     </section>
   </div>
