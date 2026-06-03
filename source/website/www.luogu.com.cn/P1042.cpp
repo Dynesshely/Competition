@@ -24,11 +24,6 @@ int main() {
                     enemy++;
                     break;
             }
-            //			if(((huahua == k || enemy == k) && (huahua <= k - 2 || enemy <= k - 2)) || ((huahua > k || enemy > k) && abs(huahua - enemy) == 2)){
-            //				printf("%d:%d\n", huahua, enemy);
-            //				huahua = 0;
-            //				enemy = 0;
-            //			}
             if ((huahua >= k || enemy >= k) && abs(huahua - enemy) >= 2) {
                 printf("%d:%d\n", huahua, enemy);
                 huahua = 0;
@@ -55,11 +50,6 @@ int main() {
                     enemy++;
                     break;
             }
-            //			if(((huahua == k || enemy == k) && (huahua <= k - 2 || enemy <= k - 2)) || ((huahua > k || enemy > k) && abs(huahua - enemy) == 2)){
-            //				printf("%d:%d\n", huahua, enemy);
-            //				huahua = 0;
-            //				enemy = 0;
-            //			}
             if ((huahua >= k || enemy >= k) && abs(huahua - enemy) >= 2) {
                 printf("%d:%d\n", huahua, enemy);
                 huahua = 0;
