@@ -17,6 +17,7 @@ const copied = ref(false);
 const rightPanelRef = ref(null);
 const codeRatio = ref(0.6);
 const dragging = ref(false);
+const selectedCodeIdx = ref(0);
 
 onMounted(async () => {
   idx.value = await loadIndex();
@@ -25,9 +26,12 @@ onMounted(async () => {
 watch(
   () => route.params.pid,
   async () => {
-    if (idx.value) await loadContent();
+    if (idx.value) { selectedCodeIdx.value = 0; await loadContent(); }
   },
 );
+watch(selectedCodeIdx, async () => {
+  if (idx.value && problem.value) await loadContent();
+});
 
 const problem = computed(() => {
   if (!idx.value) return null;
@@ -62,6 +66,9 @@ function getBasePath() {
   return "";
 }
 
+const codeOptions = computed(() => problem.value?.codes || []);
+const selectedCode = computed(() => codeOptions.value[selectedCodeIdx.value]);
+
 const problemUrl = computed(() => {
   const f = problem.value?.files?.problem;
   return f ? `${getBasePath()}/${f}` : null;
@@ -71,12 +78,13 @@ const explainUrl = computed(() => {
   return f ? `${getBasePath()}/${f}` : null;
 });
 const codeUrl = computed(() => {
-  const f = problem.value?.files?.code;
+  const f = selectedCode.value?.file || problem.value?.files?.code;
   return f ? `${getBasePath()}/${f}` : null;
 });
-const codeLang = computed(
-  () => (problem.value?.files?.code || "").split(".").pop() || "cpp",
-);
+const codeLang = computed(() => {
+  const f = selectedCode.value?.file || problem.value?.files?.code || "";
+  return f.split(".").pop() || "cpp";
+});
 
 async function loadContent() {
   problemMd.value = "";
@@ -232,9 +240,18 @@ function onSplitUp() {
             "
           >
             <span>💻 代码</span>
-            <button @click="copyCode" class="btn-brass px-3 py-1 text-[10px]">
-              {{ copied ? "✓ 已复制" : "📋 复制" }}
-            </button>
+            <div class="flex items-center gap-2">
+              <select
+                v-if="codeOptions.length > 1"
+                v-model="selectedCodeIdx"
+                class="academia-select text-xs! py-1! px-1.5!"
+              >
+                <option v-for="(opt, i) in codeOptions" :key="i" :value="i">{{ opt.label }}</option>
+              </select>
+              <button @click="copyCode" class="btn-brass px-3 py-1 text-[10px]">
+                {{ copied ? "✓ 已复制" : "📋 复制" }}
+              </button>
+            </div>
           </div>
           <div
             class="flex-1 overflow-y-auto pane-code h-full"

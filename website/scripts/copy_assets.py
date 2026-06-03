@@ -25,7 +25,8 @@ GEN_DIR = PUBLIC_DIR / "_gen"
 ASSETS_DIR = GEN_DIR / "assets"
 
 COPY_EXTENSIONS = {".cpp", ".c", ".pas", ".java", ".py",
-                   ".problem.md", ".explain.md", ".json"}
+                   ".problem.md", ".explain.md", ".json",
+                   ".in", ".ans"}
 
 
 def needs_copy(src: Path, dst: Path) -> bool:
@@ -51,7 +52,7 @@ def copy_assets(force: bool = False) -> None:
             continue
 
         full_suffix = "".join(src_file.suffixes)
-        if full_suffix not in COPY_EXTENSIONS:
+        if full_suffix not in COPY_EXTENSIONS and src_file.suffix not in COPY_EXTENSIONS:
             continue
 
         rel = src_file.relative_to(SOURCE_DIR)

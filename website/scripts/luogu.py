@@ -269,7 +269,7 @@ def parse_problem(raw: dict) -> dict:
 
     # 标签
     tag_ids = problem.get("tags", [])
-    tags = [TAG_MAP.get(tid, f"Tag-{tid}") for tid in tag_ids]
+    tags = [name for tid in tag_ids if (name := TAG_MAP.get(tid))]
 
     # 正文内容：优先取 content，其次 contenu（旧字段拼写保留）
     body = problem.get("content") or problem.get("contenu") or {}

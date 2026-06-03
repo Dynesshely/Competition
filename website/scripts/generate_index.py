@@ -82,7 +82,7 @@ def parse_problem_md(filepath: Path) -> dict[str, Any] | None:
 
     # 提取标签（可能以 " / " 分隔多个标签）
     tags_str = meta.get("标签", "")
-    tags = [t.strip() for t in tags_str.split("/") if t.strip()] if tags_str else []
+    tags = [t.strip() for t in tags_str.split("/") if t.strip() and not re.match(r"^Tag-\d+$", t.strip())] if tags_str else []
 
     # 提取数值
     def _int(val: str) -> int:
@@ -164,13 +164,18 @@ def scan_oj_problems(oj_dir: Path, oj_key: str) -> list[dict[str, Any]]:
         elif suffix.endswith(".explain.md"):
             problems[pid]["files"]["explain"] = name
         elif suffix.endswith(".cpp") or suffix.endswith(".c"):
-            # 区分主文件和变体文件
             if suffix == ".cpp" or suffix == ".c":
                 problems[pid]["files"]["code"] = name
             else:
-                # 变体文件，如 P1662.helper.cpp, 1351-1.cpp
-                variants = problems[pid].setdefault("variants", [])
-                variants.append(name)
+                problems[pid].setdefault("variants", []).append(name)
+        else:
+            # 测试数据: <pid>_<did>.in / <pid>_<did>.ans
+            td_match = re.match(rf"^{re.escape(pid)}_(\d+)\.(in|ans)$", name)
+            if td_match:
+                did = td_match.group(1)
+                ext = td_match.group(2)
+                td = problems[pid].setdefault("_testData", {})
+                td.setdefault(did, {})[ext] = name
 
     # 为每个题目补充元数据
     result: list[dict[str, Any]] = []
@@ -180,6 +185,36 @@ def scan_oj_problems(oj_dir: Path, oj_key: str) -> list[dict[str, Any]]:
         meta = None
         if prob_file:
             meta = parse_problem_md(oj_dir / prob_file)
+
+        files = entry.get("files", {})
+
+        # 构建代码列表（主代码 + 变体），供前端下拉切换
+        codes = []
+        if files.get("code"):
+            codes.append({"label": "主代码", "file": files["code"]})
+        for v in sorted(entry.get("variants", [])):
+            # 从文件名推断标签，如 "P1001-2.cpp" → "实现 2", "P1662.helper.cpp" → "Helper"
+            vstem = Path(v).stem
+            vpid = pid
+            rest = vstem[len(vpid):]  # "-2", ".helper" 等
+            if rest.startswith("-") and rest[1:].isdigit():
+                label = f"实现 {rest[1:]}"
+            elif rest.startswith(".helper"):
+                label = "Helper"
+            else:
+                label = rest.lstrip("-.") or "变体"
+            codes.append({"label": label, "file": v})
+
+        # 构建测试数据列表
+        test_data = []
+        td = entry.get("_testData", {})
+        for did in sorted(td.keys(), key=int):
+            pair = td[did]
+            test_data.append({
+                "id": did,
+                "input": pair.get("in", ""),
+                "output": pair.get("ans", ""),
+            })
 
         item: dict[str, Any] = {
             "id": pid,
@@ -194,11 +229,13 @@ def scan_oj_problems(oj_dir: Path, oj_key: str) -> list[dict[str, Any]]:
             "totalSubmit": meta.get("totalSubmit", 0) if meta else 0,
             "totalAccepted": meta.get("totalAccepted", 0) if meta else 0,
             "crawlTime": meta.get("crawlTime", "") if meta else "",
-            "files": entry.get("files", {}),
+            "files": files,
         }
 
-        if "variants" in entry:
-            item["variants"] = entry["variants"]
+        if codes:
+            item["codes"] = codes
+        if test_data:
+            item["testData"] = test_data
 
         result.append(item)
 
