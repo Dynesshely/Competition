@@ -21,7 +21,8 @@ _  ___/  __ \_  __ `__ \__  __ \  _ \  __/_  /_  __/_  /_  __ \_  __ \
 
 ```
 Competition/
-├── LICENSE                    # CC0 1.0（仅适用于 source/ templates/ documents/）
+├── LICENSE                    # MIT 许可证（适用于 source/ templates/ documents/）
+├── LICENSE.AGPL               # AGPL-3.0 许可证（适用于 website/）
 ├── LICENSE.md                 # 许可证详细说明
 ├── README.md                  # 本文件
 ├── .gitignore
@@ -119,6 +120,6 @@ bash utils/compile-all.sh --dry-run    # 仅列出文件
 
 ## 许可证
 
-- **`source/`、`templates/`、`documents/`**：CC0 1.0 Universal（公共领域），详见 [LICENSE](LICENSE) 和 [LICENSE.md](LICENSE.md)
-- **`website/`**：保留所有权利，将在后续单独授权
+- **`source/`、`templates/`、`documents/`**：[MIT](LICENSE) — 自由使用、修改、分发，需保留版权声明
+- **`website/`**：[AGPL-3.0](LICENSE.AGPL) — 允许使用和修改，但衍生作品及网络服务必须开源
 - **`.problem.md` 题目描述**：版权归各 OJ 平台及原题作者所有
