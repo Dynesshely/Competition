@@ -44,7 +44,7 @@ Competition/
 │       ├── xiaopangoj.com/    # 小胖 OJ
 │       └── www.51nod.com/     # 51Nod
 │
-├── templates/                 # 算法模板（线段树、KMP、高精度等）
+├── templates/                 # 算法模板（BIT、线段树、KMP、高精度等）
 │
 ├── documents/                 # 学习文档
 │   ├── oier-notices.md        # OIer 考前注意事项（101+ 条）
@@ -58,7 +58,8 @@ Competition/
 │       └── README.md          # 脚本使用说明
 │
 └── utils/                     # 工具脚本
-    └── compile-all.sh         # 批量编译脚本
+    ├── compile-all.sh         # 批量编译脚本
+    └── run.sh                 # 编译运行脚本（含 --install 安装 runcpp 别名）
 ```
 
 ## 文件命名规范（OJ 题目）
@@ -79,12 +80,17 @@ Competition/
 
 | 平台        | 目录                | 题目数 |
 | ----------- | ------------------- | ------ |
-| 洛谷        | `www.luogu.com.cn/` | 45     |
-| 一本通      | `ybt.ssoier.cn/`    | 149    |
-| 云矩创频 OJ | `oj.crequency.cn/`  | —      |
-| 常菁数 OJ   | `cjsoj.cn/`         | —      |
-| 小胖 OJ     | `xiaopangoj.com/`   | —      |
-| 51Nod       | `www.51nod.com/`    | —      |
+| 洛谷        | `www.luogu.com.cn/` | 215    |
+| 一本通      | `ybt.ssoier.cn/`    | 153    |
+| 育才中学    | `cq/cqyc/`          | 77     |
+| USACO       | `usaco/`            | 28     |
+| COCI        | `coci/2006/`        | 7      |
+| NOIP        | `noip/`             | 24     |
+| CSP         | `csp/`              | 3      |
+| 常菁数 OJ   | `cjsoj.cn/`         | 31     |
+| 云矩创频 OJ | `oj.crequency.cn/`  | 19     |
+| 小胖 OJ     | `xiaopangoj.com/`   | 16     |
+| 51Nod OJ    | `www.51nod.com/`    | 15     |
 
 ## 算法覆盖
 
@@ -97,6 +103,13 @@ Competition/
 ```bash
 # 单文件
 g++ -std=c++17 -O2 source/website/www.luogu.com.cn/P1001.cpp
+
+# 编译并运行（自动生成 .out 产物并执行）
+bash utils/run.sh source/website/www.luogu.com.cn/P1001.cpp
+
+# 安装 runcpp 别名（写入 ~/.bashrc / ~/.zshrc 等）
+bash utils/run.sh --install
+# 安装后可直接使用: runcpp source/website/www.luogu.com.cn/P1001.cpp
 
 # 批量编译
 bash utils/compile-all.sh              # 顺序编译全部
