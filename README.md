@@ -119,6 +119,12 @@ bash utils/compile-all.sh -j4          # 4 线程并行
 bash utils/compile-all.sh --dry-run    # 仅列出文件
 ```
 
+## 社区
+
+[![Contributors](https://contrib.rocks/image?repo=Dynesshely/Competition)](https://github.com/Dynesshely/Competition/graphs/contributors)
+
+[![Star History Chart](https://starchart.cc/Dynesshely/Competition.svg?variant=adaptive)](https://starchart.cc/Dynesshely/Competition)
+
 ## 许可证
 
 - **`source/`、`templates/`、`documents/`**：[MIT](LICENSE) — 自由使用、修改、分发，需保留版权声明
