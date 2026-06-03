@@ -1,7 +1,7 @@
-// Copyright (c) Catrol 2022-present.
+// Copyright (c) Dynesshely 2022-present.
 // ALL RIGHTS RESERVED.
-// Author:   Dynesshely/Catrol
-// E-Mail:   catrol@qq.com
+// Author:   Dynesshely
+// E-Mail:   dynesshely@gmail.com
 // Date:     2022-04-26
 
 #pragma clang diagnostic push
@@ -128,23 +128,21 @@ int main() {
     i64 x, y, k;
     scanf("%d %d", &n, &m);
     for (int i = 1; i <= n; ++i)
-        scanf("%d", &st.arr[i]);
+        scanf("%lld", &st.arr[i]);
     st.Build(1, 1, n);
 
     for (int i = 1; i <= m; ++i) {
         scanf("%d", &o);
         switch (o) {
-        case 1:
-            scanf("%lld %lld %lld", &x, &y, &k);
-            st.Modify(1, x, y, k);
-            break;
-        case 2:
-            scanf("%lld %lld", &x, &y);
-            printf("%lld\n", st.Query_Sum(1, x, y));
-            break;
+            case 1:
+                scanf("%lld %lld %lld", &x, &y, &k);
+                st.Modify(1, x, y, k);
+                break;
+            case 2:
+                scanf("%lld %lld", &x, &y);
+                printf("%lld\n", st.Query_Sum(1, x, y));
+                break;
         }
     }
     return 0;
 }
-
-#pragma clang diagnostic pop

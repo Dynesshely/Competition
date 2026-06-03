@@ -3,7 +3,7 @@
 using namespace std;
 
 const int MAXN = 100010;
-int n, os, arr[MAXN];
+int       n, os, arr[MAXN];
 
 struct seg {
     int ls, rs, l, r, sum, tag;
@@ -18,7 +18,7 @@ inline void build(int x, int l, int r) {
         (*cur).sum = arr[l];
         return;
     }
-    int mid = summid(l, r);
+    int mid   = summid(l, r);
     (*cur).ls = x << 1, (*cur).rs = (x << 1) | 1;
     build((*cur).ls, l, mid);
     build((*cur).rs, mid + 1, r);
@@ -41,7 +41,7 @@ inline void pushdown(int x) {
 // 线段树 -> 区间修改
 inline void modify(int x, int l, int r, int v) {
     seg *cur = &segement[x];
-    pushdown(x); // 区间修改
+    pushdown(x);   // 区间修改
     if ((*cur).l == l && (*cur).r == r) {
         pushup(x, v);
         return;
@@ -71,7 +71,7 @@ inline void modify(int x, int p, int v) {
 
 inline int query(int x, int l, int r) {
     seg *cur = &segement[x];
-    pushdown(x); // 区间修改
+    pushdown(x);   // 区间修改
     if ((*cur).l == l && (*cur).r == r)
         return (*cur).sum;
     int mid = summid((*cur).l, (*cur).r);
