@@ -123,7 +123,13 @@ bash utils/compile-all.sh --dry-run    # 仅列出文件
 
 [![Contributors](https://contrib.rocks/image?repo=Dynesshely/Competition)](https://github.com/Dynesshely/Competition/graphs/contributors)
 
-[![Star History Chart](https://starchart.cc/Dynesshely/Competition.svg?variant=adaptive)](https://starchart.cc/Dynesshely/Competition)
+<a href="https://www.star-history.com/?repos=Dynesshely%2FCompetition&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=Dynesshely%2FCompetition&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=Dynesshely%2FCompetition&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=Dynesshely%2FCompetition&type=date&legend=top-left" />
+ </picture>
+</a>
 
 ## 许可证
 
