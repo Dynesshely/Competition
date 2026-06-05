@@ -54,12 +54,10 @@ struct Flusher_ {
     ~Flusher_() { flush(); }
 } io_flusher_;
 }   // namespace io
-using io::getch;
-using io::getstr;
+
 using io::putch;
 using io::putstr;
 using io::read;
-using io::write;
 
 #define maxn 205
 
