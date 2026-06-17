@@ -1,3 +1,4 @@
 # 构建生成文件 — 由 copy_assets.py 和 vite build 生成
 public/_gen/
 dist/
+index.json
