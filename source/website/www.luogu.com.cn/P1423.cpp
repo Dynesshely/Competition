@@ -3,12 +3,10 @@ using namespace std;
 
 double s;
 
-void input() {
-    scanf("%lf", &s);
-}
+void input() { scanf("%lf", &s); }
 
 void process() {
-    int steps = 0;
+    int    steps = 0;
     double cur = 2.0, dist = 0.0;
     while (dist < s) {
         dist += cur;
