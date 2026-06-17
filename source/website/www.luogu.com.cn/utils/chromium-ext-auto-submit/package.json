@@ -1,0 +1,16 @@
+{
+  "name": "luogu-auto-submit",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --filter @luogu-auto/shared build && pnpm -r --filter !@luogu-auto/shared build",
+    "dev:daemon": "pnpm --filter @luogu-auto/daemon dev",
+    "dev:extension": "pnpm --filter @luogu-auto/extension build",
+    "cli": "pnpm --filter @luogu-auto/cli start",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r exec rm -rf dist"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
