@@ -1,0 +1,16 @@
+{
+  "name": "@luogu-auto/extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch"
+  },
+  "devDependencies": {
+    "@luogu-auto/shared": "workspace:*",
+    "esbuild": "^0.25",
+    "typescript": "^5.8",
+    "chrome-types": "^0.1"
+  }
+}

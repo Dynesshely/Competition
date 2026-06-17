@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 280px; padding: 14px; font-family: system-ui, -apple-system, sans-serif; font-size: 13px; color: #333; }
+    .status { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .dot.online { background: #4CAF50; }
+    .dot.offline { background: #F44336; }
+    .section { padding: 8px 0; border-top: 1px solid #eee; }
+    .section:first-of-type { border-top: none; }
+    .label { font-weight: 600; font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 4px; }
+    .value { font-size: 13px; }
+    .value.mono { font-family: 'Consolas', 'Source Code Pro', monospace; font-size: 12px; }
+    .hint { color: #999; font-size: 11px; margin-top: 8px; font-style: italic; }
+  </style>
+</head>
+<body>
+  <div class="status">
+    <span class="dot offline" id="dot"></span>
+    <span id="statusText">Disconnected</span>
+  </div>
+  <div class="section">
+    <div class="label">Current Task</div>
+    <div class="value mono" id="currentTask">None</div>
+  </div>
+  <div class="section">
+    <div class="label">Daemon Address</div>
+    <div class="value mono">ws://127.0.0.1:9528</div>
+  </div>
+  <div class="hint">Submit from terminal: luogu-cli submit P1001.cpp</div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome | Luogu Auto Submit</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { max-width: 640px; margin: 40px auto; font-family: system-ui, -apple-system, sans-serif; padding: 0 20px; color: #333; line-height: 1.6; }
+    h1 { color: #3498db; margin-bottom: 8px; }
+    .subtitle { color: #888; margin-bottom: 30px; }
+    .step { margin: 16px 0; padding: 16px 18px; border-left: 3px solid #3498db; background: #f8f9fa; border-radius: 0 8px 8px 0; }
+    .step h3 { margin-bottom: 6px; font-size: 15px; }
+    .step p { font-size: 13px; color: #555; }
+    .step code { background: #e8e8e8; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+    .status-row { display: flex; align-items: center; gap: 8px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+    .dot.green { background: #4CAF50; }
+    .dot.red { background: #F44336; }
+    .dot.gray { background: #bbb; }
+  </style>
+</head>
+<body>
+  <h1>Luogu Auto Submit</h1>
+  <p class="subtitle">Bridge your terminal to Luogu — submit code from the command line, auto-evaluate in the browser.</p>
+
+  <div class="step">
+    <h3>Step 1: Start the daemon</h3>
+    <p>In your terminal: <code>pnpm --filter @luogu-auto/daemon dev</code></p>
+  </div>
+
+  <div class="step">
+    <h3>Step 2: Connection Status</h3>
+    <p class="status-row">
+      <span class="dot gray" id="wsDot"></span>
+      <span id="wsStatus">Checking...</span>
+    </p>
+    <p style="margin-top: 6px; font-size: 12px; color: #888;">
+      Extension connects to <code>ws://127.0.0.1:9528</code>
+    </p>
+  </div>
+
+  <div class="step">
+    <h3>Step 3: Usage</h3>
+    <p>
+      From your terminal:<br>
+      <code>luogu-cli submit P1001.cpp</code><br>
+      <code>luogu-cli batch ./source/website/www.luogu.com.cn/</code>
+    </p>
+  </div>
+
+  <div class="step">
+    <h3>Step 4: Important</h3>
+    <p>You must be <strong>logged in</strong> to Luogu in your browser. The extension reuses your existing session.</p>
+  </div>
+
+  <script src="welcome.js"></script>
+</body>
+</html>

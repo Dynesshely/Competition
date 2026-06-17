@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Luogu Auto Submit",
+  "version": "0.1.0",
+  "description": "Automates Luogu code submission via WebSocket bridge. Submit code from terminal, evaluate in browser.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://www.luogu.com.cn/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.luogu.com.cn/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Luogu Auto Submit"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
