@@ -1,0 +1,22 @@
+{
+  "name": "@luogu-auto/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "luogu-cli": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@luogu-auto/shared": "workspace:*",
+    "commander": "^13"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4",
+    "typescript": "^5.8"
+  }
+}

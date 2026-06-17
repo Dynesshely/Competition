@@ -1,0 +1,31 @@
+export async function installCommand() {
+  console.log('');
+  console.log('  Luogu Auto Submit — Installation Guide');
+  console.log('  =======================================');
+  console.log('');
+  console.log('  This system has three components:');
+  console.log('');
+  console.log('  1. luogu-daemon  — background service (HTTP + WebSocket)');
+  console.log('  2. luogu-cli     — terminal command (you are using this)');
+  console.log('  3. Chrome Extension — browser automation');
+  console.log('');
+  console.log('  ---');
+  console.log('');
+  console.log('  Step 1: Start the daemon');
+  console.log('    cd <project>/packages/daemon');
+  console.log('    pnpm dev');
+  console.log('');
+  console.log('  Step 2: Load the extension in Chrome');
+  console.log('    1. Open chrome://extensions');
+  console.log('    2. Enable "Developer mode"');
+  console.log('    3. Click "Load unpacked"');
+  console.log('    4. Select: <project>/packages/extension/dist');
+  console.log('');
+  console.log('  Step 3: Verify connection');
+  console.log('    luogu-cli submit <file>.cpp');
+  console.log('');
+  console.log('  ---');
+  console.log('');
+  console.log('  For more details, see the project README.');
+  console.log('');
+}
