@@ -12,7 +12,8 @@ int main() {
     }
     while (p < l) {
         p += d;
-        if (p < l) d *= 0.98;
+        if (p < l)
+            d *= 0.98;
     }
     if (p > r) {
         printf("n\n");
