@@ -28,7 +28,7 @@ fail() { echo -e " ${RED}[FAIL]${RESET} $1"; }
 # --- 路径解析 -------------------------------------------------
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-CLI_DIR="$REPO_ROOT/source/website/www.luogu.com.cn/utils/chromium-ext-auto-submit/packages/cli"
+CLI_DIR="$REPO_ROOT/utils/chromium-ext-auto-submit/packages/cli"
 
 # --- install 模式 -----------------------------------------------
 if [[ "${1:-}" == "--install" ]]; then
