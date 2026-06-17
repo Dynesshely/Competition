@@ -207,5 +207,7 @@ pnpm build      # 构建全部 4 个包
 ## 许可证
 
 - **`source/`、`templates/`、`documents/`**：[MIT](LICENSE) — 自由使用、修改、分发，需保留版权声明
-- **`website/`**：[AGPL-3.0](LICENSE.AGPL) — 允许使用和修改，但衍生作品及网络服务必须开源
+- **`website/`、`utils/`**：[AGPL-3.0](LICENSE.AGPL) — 允许使用和修改，但衍生作品及网络服务必须开源
 - **`.problem.md` 题目描述**：版权归各 OJ 平台及原题作者所有
+
+> 详细的适用范围与例外说明请参阅 **[LICENSE.md](LICENSE.md)**。
