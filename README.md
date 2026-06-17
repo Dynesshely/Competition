@@ -22,48 +22,49 @@ _  ___/  __ \_  __ `__ \__  __ \  _ \  __/_  /_  __/_  /_  __ \_  __ \
 
 ```
 Competition/
-├── LICENSE                       # MIT 许可证（适用于 source/ templates/ documents/）
-├── LICENSE.AGPL                  # AGPL-3.0 许可证（适用于 website/）
-├── LICENSE.md                    # 许可证详细说明
-├── README.md                     # 本文件
+├── LICENSE                                     # MIT 许可证（适用于 source/ templates/ documents/）
+├── LICENSE.AGPL                                # AGPL-3.0 许可证（适用于 website/）
+├── LICENSE.md                                  # 许可证详细说明
+├── README.md                                   # 本文件
 ├── .gitignore
-├── .clang-format                 # C++ 代码格式化配置
+├── .clang-format                               # C++ 代码格式化配置
 │
-├── source/                       # 题解代码（按来源分类）
-│   ├── competitions/             # 正式竞赛
-│   │   ├── coci/2006/            # 克罗地亚公开信息学竞赛
-│   │   ├── csp/                  # 中国 CSP 认证
-│   │   ├── noi/2003/             # 全国青少年信息学奥林匹克
-│   │   ├── noip/                 # 全国青少年信息学奥林匹克联赛
-│   │   └── usaco/                # 美国计算机奥林匹克
-│   ├── districts/                # 地区训练
-│   │   └── cq/cqyc/              # 重庆育才中学
-│   └── website/                  # OJ 平台题目
-│       ├── www.luogu.com.cn/     # 洛谷
-│       │   └── utils/            # 洛谷辅助工具
-│       │       └── script-cat/   # 用户脚本「洛谷助手」
-│       ├── ybt.ssoier.cn/        # 一本通
-│       ├── oj.crequency.cn/      # 云矩创频 OJ
-│       ├── cjsoj.cn/             # 常菁数 OJ
-│       ├── xiaopangoj.com/       # 小胖 OJ
-│       └── www.51nod.com/        # 51Nod
+├── source/                                     # 题解代码（按来源分类）
+│   ├── competitions/                           # 正式竞赛
+│   │   ├── coci/2006/                          # 克罗地亚公开信息学竞赛
+│   │   ├── csp/                                # 中国 CSP 认证
+│   │   ├── noi/2003/                           # 全国青少年信息学奥林匹克
+│   │   ├── noip/                               # 全国青少年信息学奥林匹克联赛
+│   │   └── usaco/                              # 美国计算机奥林匹克
+│   ├── districts/                              # 地区训练
+│   │   └── cq/cqyc/                            # 重庆育才中学
+│   └── website/                                # OJ 平台题目
+│       ├── www.luogu.com.cn/                   # 洛谷
+│       │   └── utils/                          # 洛谷辅助工具
+│       │       ├── script-cat/                 # 用户脚本「洛谷助手」
+│       │       └── chromium-ext-auto-submit/   # 浏览器扩展「洛谷自动提交」
+│       ├── ybt.ssoier.cn/                      # 一本通
+│       ├── oj.crequency.cn/                    # 云矩创频 OJ
+│       ├── cjsoj.cn/                           # 常菁数 OJ
+│       ├── xiaopangoj.com/                     # 小胖 OJ
+│       └── www.51nod.com/                      # 51Nod
 │
-├── templates/                    # 算法模板（BIT、线段树、KMP、高精度等）
+├── templates/                                  # 算法模板（BIT、线段树、KMP、高精度等）
 │
-├── documents/                    # 学习文档
-│   ├── oier-notices.md           # OIer 考前注意事项（101+ 条）
-│   ├── fragments.md              # 算法片段备忘
-│   └── OI.xmind                  # OI 知识体系思维导图
+├── documents/                                  # 学习文档
+│   ├── oier-notices.md                         # OIer 考前注意事项（101+ 条）
+│   ├── fragments.md                            # 算法片段备忘
+│   └── OI.xmind                                # OI 知识体系思维导图
 │
-├── website/                      # 题解网站项目（开发中）
-│   └── scripts/                  # 爬虫脚本
-│       ├── luogu.py              # 洛谷题目爬虫
-│       ├── ybt.py                # 一本通题目爬虫
-│       └── README.md             # 脚本使用说明
+├── website/                                    # 题解网站项目（开发中）
+│   └── scripts/                                # 爬虫脚本
+│       ├── luogu.py                            # 洛谷题目爬虫
+│       ├── ybt.py                              # 一本通题目爬虫
+│       └── README.md                           # 脚本使用说明
 │
-└── utils/                        # 工具脚本
-    ├── compile-all.sh            # 批量编译脚本
-    └── run.sh                    # 编译运行脚本（含 --install 安装 runcpp 别名）
+└── utils/                                      # 工具脚本
+    ├── compile-all.sh                          # 批量编译脚本
+    └── run.sh                                  # 编译运行脚本（含 --install 安装 runcpp 别名）
 ```
 
 ## 文件命名规范（OJ 题目）
@@ -84,7 +85,7 @@ Competition/
 
 | 平台        | 目录                | 题目数 |
 | ----------- | ------------------- | ------ |
-| 洛谷        | `www.luogu.com.cn/` | 215    |
+| 洛谷        | `www.luogu.com.cn/` | 596    |
 | 一本通      | `ybt.ssoier.cn/`    | 153    |
 | 育才中学    | `cq/cqyc/`          | 77     |
 | USACO       | `usaco/`            | 28     |
@@ -144,6 +145,51 @@ cd source/website/www.luogu.com.cn/utils/script-cat
 npm install
 npm run dev      # 开发模式（热更新）
 npm run build    # 构建产物至 dist/
+```
+
+## 浏览器扩展
+
+[洛谷自动提交](source/website/www.luogu.com.cn/utils/chromium-ext-auto-submit/) 是一个 Chrome MV3 扩展项目，通过终端 → 本地服务 → 浏览器三组件协作，实现代码批量在线评测的自动化。
+
+**架构：**
+
+```
+CLI (终端) --HTTP--> Daemon (后台服务) --WebSocket--> Extension (浏览器)
+```
+
+| 组件           | 位置          | 端口                 | 职责                                   |
+| -------------- | ------------- | -------------------- | -------------------------------------- |
+| `luogu-cli`    | 终端          | —                    | 扫描代码文件、提交任务、展示结果       |
+| `luogu-daemon` | 后台守护进程  | HTTP :9527, WS :9528 | 任务队列调度、SQLite 持久化、桥接扩展  |
+| Extension      | Chrome 浏览器 | —                    | 页面自动化（填代码、点提交）、结果采集 |
+
+**使用实例：**
+
+```bash
+# 启动后台服务
+cd source/website/www.luogu.com.cn/utils/chromium-ext-auto-submit
+pnpm --filter @luogu-auto/daemon dev
+
+# 安装 CLI 别名（一次性）
+./utils/luogu.sh --install
+# or execute: eval "alias luogu='/home/dynesshely/projects/dynesshely/Competition/utils/luogu.sh'"
+
+# 单题提交
+luogu submit source/website/www.luogu.com.cn/P/1000-1049/P1000.cpp
+
+# 批量提交（含 Markdown 结果汇总）
+luogu batch source/website/www.luogu.com.cn/ --export markdown
+
+# 批量提交指定范围
+luogu batch source/website/www.luogu.com.cn/P/1400-1499/ --include 'P14(0[2-9]|1[0-9])'
+```
+
+**开发：**
+
+```bash
+cd source/website/www.luogu.com.cn/utils/chromium-ext-auto-submit
+pnpm install
+pnpm build      # 构建全部 4 个包
 ```
 
 ## 社区
