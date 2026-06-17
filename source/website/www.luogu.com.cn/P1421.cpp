@@ -3,9 +3,7 @@ using namespace std;
 
 int a, b;
 
-void input() {
-    scanf("%d%d", &a, &b);
-}
+void input() { scanf("%d%d", &a, &b); }
 
 void process() {
     int total = a * 10 + b;
