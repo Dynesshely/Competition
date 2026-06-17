@@ -137,18 +137,24 @@ def scan_oj_problems(oj_dir: Path, oj_key: str) -> list[dict[str, Any]]:
     """
     problems: dict[str, dict[str, Any]] = {}
 
-    # 收集所有文件，按题目 ID 分组
-    for filepath in oj_dir.iterdir():
+    # 收集所有文件，按题目 ID 分组（递归扫描，支持 sources/P/1000-1049/ 等子目录）
+    for filepath in sorted(oj_dir.rglob("*")):
         if not filepath.is_file():
             continue
+        # 跳过非题目目录（scripts, utils, competitions 等）
+        rel = filepath.relative_to(oj_dir)
+        if rel.parts[0] not in ("sources",):
+            # 兼容旧结构：根目录下的平铺文件
+            pass
 
         name = filepath.name
+        # 路径：相对于 OJ 目录，如 "sources/P/1000-1049/P1001.cpp"
+        rel_path = str(rel)
         # 提取题目 ID：P1001, 1000, C0001 等
         m = re.match(r"^([A-Z]?\d+)", name)
         if not m:
             # 处理中文文件名（如 xiaopangoj 的 "括号匹配.cpp"）
             stem = filepath.stem
-            # 去掉已知后缀变体
             base = re.sub(r"-\d+$|\.helper$", "", stem)
             pid = base if base else stem
         else:
@@ -160,14 +166,14 @@ def scan_oj_problems(oj_dir: Path, oj_key: str) -> list[dict[str, Any]]:
         suffix = name[len(pid):]  # ".cpp", ".problem.md", ".explain.md", "-1.cpp" 等
 
         if suffix.endswith(".problem.md"):
-            problems[pid]["files"]["problem"] = name
+            problems[pid]["files"]["problem"] = rel_path
         elif suffix.endswith(".explain.md"):
-            problems[pid]["files"]["explain"] = name
+            problems[pid]["files"]["explain"] = rel_path
         elif suffix.endswith(".cpp") or suffix.endswith(".c"):
             if suffix == ".cpp" or suffix == ".c":
-                problems[pid]["files"]["code"] = name
+                problems[pid]["files"]["code"] = rel_path
             else:
-                problems[pid].setdefault("variants", []).append(name)
+                problems[pid].setdefault("variants", []).append(rel_path)
         else:
             # 测试数据: <pid>_<did>.in / <pid>_<did>.ans
             td_match = re.match(rf"^{re.escape(pid)}_(\d+)\.(in|ans)$", name)
@@ -175,7 +181,7 @@ def scan_oj_problems(oj_dir: Path, oj_key: str) -> list[dict[str, Any]]:
                 did = td_match.group(1)
                 ext = td_match.group(2)
                 td = problems[pid].setdefault("_testData", {})
-                td.setdefault(did, {})[ext] = name
+                td.setdefault(did, {})[ext] = rel_path
 
     # 为每个题目补充元数据
     result: list[dict[str, Any]] = []
