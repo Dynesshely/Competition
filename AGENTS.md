@@ -32,8 +32,14 @@
      - 入门 / 普及−：重试一次，修正代码后再次提交（最多 3 次尝试）
      - 提高+ / 省选 / NOI-：放弃本轮，移入 `documents/high-difficulty.md` 高难度列表，等待后续集中攻克
 6. **编写题解** — AC 后立即编写 `.explain.md`（格式见下方题解规范）
-7. **逐题提交** — 每道题单独 `git commit -m "feat(AC <PID> @ 洛谷): implemented code of <PID> from 洛谷"`，提交内容包含 `.cpp` + `.problem.md` + `.explain.md` 及关联的测试数据（`_<id>.in/.ans`）
-8. **汇报结果** — 每道题完成后汇报 AC 结果；对于移入高难度列表的题目，说明失败原因（WA/TLE/RE/CE）及得分
+7. **目录整理** — 将题目文件按前缀和编号范围移入对应子目录：
+   - 以 PID 前缀（`P` / `B`）为一级目录
+   - 以每 50 题为一个区间（如 `P1000-1049`、`B2050-2099`）为二级目录
+   - 区间起止计算公式：`start = floor(num / 50) * 50`，`end = start + 49`
+   - 示例：`B2096` → `B/2050-2099/`，`P1415` → `P/1400-1449/`
+   - 若目标子目录不存在则创建
+8. **逐题提交** — 每道题单独 `git commit -m "feat(AC <PID> @ 洛谷): implemented code of <PID> from 洛谷"`，提交内容包含 `.cpp` + `.problem.md` + `.explain.md` 及关联的测试数据（`_<id>.in/.ans`）
+9. **汇报结果** — 每道题完成后汇报 AC 结果；对于移入高难度列表的题目，说明失败原因（WA/TLE/RE/CE）及得分
 
 ### 批量验收流程
 
