@@ -38,7 +38,7 @@
    - 区间起止计算公式：`start = floor(num / 50) * 50`，`end = start + 49`
    - 示例：`B2096` → `B/2050-2099/`，`P1415` → `P/1400-1449/`
    - 若目标子目录不存在则创建
-8. **逐题提交** — 每道题单独 `git commit -m "feat(AC <PID> @ 洛谷): implemented code of <PID> from 洛谷"`，提交内容包含 `.cpp` + `.problem.md` + `.explain.md` 及关联的测试数据（`_<id>.in/.ans`）
+8. **逐题提交** — 每道题单独一个 commit，一套题目（`.cpp` + `.problem.md` + `.explain.md` 及关联的测试数据 `_<id>.in/.ans`）为一个不可拆分的原子提交单位。`git add` 三个文件后一次性 `git commit -m "feat(AC <PID> @ 洛谷): implemented code of <PID> from 洛谷"`，严禁将题解与代码拆开分次提交
 9. **汇报结果** — 每道题完成后汇报 AC 结果；对于移入高难度列表的题目，说明失败原因（WA/TLE/RE/CE）及得分
 
 ### 批量验收流程
