@@ -24,15 +24,16 @@
 
 1. **爬取题目** — `python3 website/scripts/luogu.py <PID>` 生成 `.problem.md`（若不存在）
 2. **编写代码** — 遵循本文件代码风格约定编写 `.cpp`
-3. **编译测试** — `g++ -std=c++17 -O2 -fsyntax-only` 编译检查语法，用题面样例验证正确性
-4. **在线评测** — 确保 daemon 已启动且浏览器扩展已连接后，使用 `luogu submit <.cpp>` 提交洛谷在线评测：
-   - **AC 100 分**：自动进入步骤 5 编写题解并提交 git，无需人工等待验收
+3. **格式化代码** — 编写后必须执行 `clang-format -i <.cpp>`（配置位于仓库根目录 `.clang-format`），确保代码风格一致
+4. **编译测试** — `g++ -std=c++17 -O2 -fsyntax-only` 编译检查语法，用题面样例验证正确性
+5. **在线评测** — 确保 daemon 已启动且浏览器扩展已连接后，使用 `luogu submit <.cpp>` 提交洛谷在线评测：
+   - **AC 100 分**：自动进入步骤 6 编写题解并提交 git，无需人工等待验收
    - **非 AC**：根据题目难度决策：
      - 入门 / 普及−：重试一次，修正代码后再次提交（最多 3 次尝试）
      - 提高+ / 省选 / NOI-：放弃本轮，移入 `documents/high-difficulty.md` 高难度列表，等待后续集中攻克
-5. **编写题解** — AC 后立即编写 `.explain.md`（格式见下方题解规范）
-6. **逐题提交** — 每道题单独 `git commit -m "feat(AC <PID> @ 洛谷): implemented code of <PID> from 洛谷"`，提交内容包含 `.cpp` + `.problem.md` + `.explain.md` 及关联的测试数据（`_<id>.in/.ans`）
-7. **汇报结果** — 每道题完成后汇报 AC 结果；对于移入高难度列表的题目，说明失败原因（WA/TLE/RE/CE）及得分
+6. **编写题解** — AC 后立即编写 `.explain.md`（格式见下方题解规范）
+7. **逐题提交** — 每道题单独 `git commit -m "feat(AC <PID> @ 洛谷): implemented code of <PID> from 洛谷"`，提交内容包含 `.cpp` + `.problem.md` + `.explain.md` 及关联的测试数据（`_<id>.in/.ans`）
+8. **汇报结果** — 每道题完成后汇报 AC 结果；对于移入高难度列表的题目，说明失败原因（WA/TLE/RE/CE）及得分
 
 ### 批量验收流程
 
@@ -83,8 +84,9 @@
 
 1. 读取原代码和 `AGENTS.md` 规范
 2. 逐条应用：展开宏、去注释、换 `scanf/printf`、小驼峰命名、`doSomething` 函数风格、单语句去大括号
-3. 编译验证：`g++ -std=c++17 -O2 -fsyntax-only`
-4. 不改动编译产物（`.out/.exe`）和测试数据
+3. 格式化：`clang-format -i <.cpp>`（配置位于仓库根目录 `.clang-format`）
+4. 编译验证：`g++ -std=c++17 -O2 -fsyntax-only`
+5. 不改动编译产物（`.out/.exe`）和测试数据
 
 ### 高难度题目列表
 
